@@ -3,8 +3,7 @@
         {
             "name": "Albedo",
             "stars": 5,
-            "chance": 0.5,
-            "hasBanner": true
+            "chance": 0.5
         },
         {
             "name": "Amber",
@@ -47,6 +46,11 @@
             "chance": 0.5
         },
         {
+            "name": "Ganyu",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
             "name": "Jean",
             "stars": 5,
             "chance": 0.5
@@ -64,8 +68,7 @@
         {
             "name": "Klee",
             "stars": 5,
-            "chance": 0.5,
-            "hasBanner": true
+            "chance": 0.5
         },
         {
             "name": "Lisa",
@@ -105,14 +108,12 @@
         {
             "name": "Tartaglia",
             "stars": 5,
-            "chance": 0.5,
-            "hasBanner": true
+            "chance": 0.5
         },
         {
             "name": "Venti",
             "stars": 5,
-            "chance": 0.5,
-            "hasBanner": true
+            "chance": 0.5
         },
         {
             "name": "Xiangling",
@@ -132,8 +133,7 @@
         {
             "name": "Zhongli",
             "stars": 5,
-            "chance": 0.5,
-            "hasBanner": true
+            "chance": 0.5
         }
     ]
 }

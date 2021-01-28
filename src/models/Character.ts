@@ -1,18 +1,12 @@
-export default class Character {
-    name: string;
-    stars: number;
-    chance: number;
-    hasBanner: boolean;
-    chancePretty: string;
+import ItemBase from "./ItemBase";
 
-    constructor(name: string, stars: number, chance: number, hasBanner: boolean) {
-        this.name = name;
-        this.stars = stars;
-        this.chance = chance;
-        this.hasBanner = hasBanner;
+export default class Character extends ItemBase{
+    title: string;
+    isEventCharacter: boolean;
 
-        this.chancePretty = `${chance*100}%`;
+    constructor(name: string, stars: number, chance: number, title?: string, isEventCharacter?: boolean) {
+        super(name, stars, chance);
+        this.title = title || '';
+        this.isEventCharacter = !!isEventCharacter;
     }
-
-    setChance = (newChance: number) => this.chance = newChance;
 }
