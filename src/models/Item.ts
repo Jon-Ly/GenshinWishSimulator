@@ -1,3 +1,8 @@
+import Character from "./Character";
+import Weapon from "./Weapon";
+
+export type Item = Character | Weapon;
+
 export default class ItemBase {
     name: string;
     stars: number;

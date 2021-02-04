@@ -1,6 +1,6 @@
-import ItemBase from "./ItemBase";
+import ItemBase from "./Item";
 
-export default class Character extends ItemBase{
+export default class Character extends ItemBase {
     title: string;
     isEventCharacter: boolean;
 

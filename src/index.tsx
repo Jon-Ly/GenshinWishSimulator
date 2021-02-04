@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
-import StoreProvider from './app/Store';
+import { StoreProvider } from "./state-management/store";
 
 ReactDOM.render(
   <React.StrictMode>
