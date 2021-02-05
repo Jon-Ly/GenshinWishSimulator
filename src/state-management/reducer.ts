@@ -1,4 +1,5 @@
 import { BANNER_CODE } from "../constants/Banners";
+import InitialUserData from "../constants/UserData";
 import WishService from "../services/WishService";
 import { WishState } from "./store";
 
@@ -26,7 +27,7 @@ const reducer = (state: WishState, action: WishAction): WishState => {
             return {...state};
         case ACTION_TYPE.RESET:
             wishService.reset();
-            return {...state}
+            return {...state, ...InitialUserData}
         case ACTION_TYPE.WISH:
             state.results = wishService.wish(action.payload as number);
             return {...state}

@@ -1,8 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
-import BannerCenter from './BannerCenter';
-import BannerFooter from './BannerFooter';
-import BannerHeader from './BannerHeader';
+import BannerCenter from './BannerCenter/BannerCenter';
+import BannerFooter from './BannerFooter/BannerFooter';
+import BannerHeader from './BannerHeader/BannerHeader';
 
 interface BannerSelectMenuProps {
     setIsWishing: (isWishing: boolean) => void
@@ -26,13 +26,13 @@ const BannerSelectMenu = (props: BannerSelectMenuProps) => {
 
     return (
         <Box textAlign='center' fontSize='xl'>
-            <Flex direction='column'>
+            <Flex direction='column' justifyContent='space-between'>
                 <BannerHeader/>
                 <BannerCenter/>
                 <BannerFooter setIsWishing={setIsWishing}/>
             </Flex>
         </Box>
-    )
+    );
 };
 
 export default BannerSelectMenu;

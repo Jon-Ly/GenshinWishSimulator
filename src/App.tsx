@@ -15,5 +15,5 @@ export const App = () => {
         {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
         {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelectMenu setIsWishing={setIsWishing}/>}
     </ChakraProvider>
-  )
+  );
 }
