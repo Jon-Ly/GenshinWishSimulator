@@ -10,8 +10,6 @@ interface BannerSelectMenuProps {
 
 /**
  * TODO:
- * Banner tab selection
- * Banner display
  * Wish text w/ icon
  * Primogems button/display
  * Fate (wishes) display
@@ -20,8 +18,6 @@ interface BannerSelectMenuProps {
  * Shop button
  * Details button
  * History button
- * Wish 1
- * Wish 10
  * Insufficent Primogems Dialog
  * Crystal to Primogems Dialog
  */

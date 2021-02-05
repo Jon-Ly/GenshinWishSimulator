@@ -12,7 +12,7 @@ type Dispatch = (action: WishAction) => void;
 
 const wishService = new WishService();
 
-const initialState = {...wishService.fetchUserData(), results: new Array<Item>()}; // May need to change this
+const initialState = {...wishService.fetchUserData(), results: new Array<Item>()};
 
 const StateContext = React.createContext<WishState>(initialState);
 const DispatchContext = React.createContext<Dispatch |  undefined>(undefined);

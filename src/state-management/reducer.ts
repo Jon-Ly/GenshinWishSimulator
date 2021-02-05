@@ -18,7 +18,6 @@ export interface WishAction {
 const reducer = (state: WishState, action: WishAction): WishState => {
     switch (action.type) {
         case ACTION_TYPE.SET_BANNER:
-            console.log(ACTION_TYPE.SET_BANNER);
             if (action.payload) {
                 const newBanner = action.payload as BANNER_CODE
                 wishService.setBanner(newBanner);
@@ -29,8 +28,7 @@ const reducer = (state: WishState, action: WishAction): WishState => {
             wishService.reset();
             return {...state}
         case ACTION_TYPE.WISH:
-            const results = wishService.wish(action.payload as number);
-            state.results = results;
+            state.results = wishService.wish(action.payload as number);
             return {...state}
         default:
             return state;
