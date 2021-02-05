@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserData } from '../constants/UserData';
 import { Item } from '../models/Item';
-import UserDataService from '../services/UserDataService';
+import WishService from '../services/WishService';
 import reducer, { WishAction } from './reducer';
 
 export interface WishState extends UserData{
@@ -10,9 +10,9 @@ export interface WishState extends UserData{
 
 type Dispatch = (action: WishAction) => void;
 
-const userDataService = new UserDataService();
+const wishService = new WishService();
 
-const initialState = {...userDataService.fetchUserData(), results: new Array<Item>()}; // May need to change this
+const initialState = {...wishService.fetchUserData(), results: new Array<Item>()}; // May need to change this
 
 const StateContext = React.createContext<WishState>(initialState);
 const DispatchContext = React.createContext<Dispatch |  undefined>(undefined);

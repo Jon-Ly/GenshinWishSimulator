@@ -1,4 +1,12 @@
+import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
+import BannerCenter from './BannerCenter';
+import BannerFooter from './BannerFooter';
+import BannerHeader from './BannerHeader';
+
+interface BannerSelectMenuProps {
+    setIsWishing: (isWishing: boolean) => void
+}
 
 /**
  * TODO:
@@ -17,11 +25,17 @@ import React from 'react';
  * Insufficent Primogems Dialog
  * Crystal to Primogems Dialog
  */
-const BannerSelectMenu = () => {
+const BannerSelectMenu = (props: BannerSelectMenuProps) => {
+    const { setIsWishing } = props;
+
     return (
-        <div>
-            
-        </div>
+        <Box textAlign='center' fontSize='xl'>
+            <Flex direction='column'>
+                <BannerHeader/>
+                <BannerCenter/>
+                <BannerFooter setIsWishing={setIsWishing}/>
+            </Flex>
+        </Box>
     )
 };
 

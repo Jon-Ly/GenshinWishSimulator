@@ -6,7 +6,7 @@ import Character from "../models/Character";
 import { Item } from "../models/Item"
 import Weapon from "../models/Weapon";
 
-export default class UserService {
+export default class WishService {
 
     userData!: UserData;
     LOCAL_STORAGE_KEY = 'p2w'
@@ -83,12 +83,12 @@ export default class UserService {
     randomFourStar = (): Item => {
         const fourStarLuck = Math.random();
         const isEventCharacter = this.userData.banner !== BANNER_CODE.WANDERLUST && (fourStarLuck >= this.CHANCES.FOUR_STAR_EVENT_CHARACTER || this.userData.eventFourStarGuarantee);
-        const banner = BANNERS.find(b => b.code === this.userData.banner);
+        const currentBanner = BANNERS.find(b => b.code === this.userData.banner);
 
         if (isEventCharacter) {
             // TODO: Give more weight to the 4 star characters for event banner
             // TODO: Include all other eligible 4 star characters
-            const eventFourStarCharacters = banner?.eventFourStars || [];
+            const eventFourStarCharacters = currentBanner?.eventFourStars || [];
             
             let fourStarIndex = Math.floor(Math.random() * (eventFourStarCharacters.length + 1));
             while (fourStarIndex === eventFourStarCharacters.length) {
@@ -102,7 +102,7 @@ export default class UserService {
 
             return eventFourStarCharacters[fourStarIndex];
         } else {
-            const fourStarCharacters = [...banner?.eventFourStars || [], ...banner?.fourStars || []];
+            const fourStarCharacters = [...currentBanner?.eventFourStars || [], ...currentBanner?.fourStars || []];
 
             let fourStarIndex = Math.floor(Math.random() * (fourStarCharacters.length + 1));
             while (fourStarIndex === fourStarCharacters.length) {
@@ -139,21 +139,51 @@ export default class UserService {
 
         return isFiveStar ? this.randomFiveStar() :
             isFourStar ? this.randomFourStar() :
-            new Weapon('3 star wepaon', 3, 0);
+            new Weapon('3 star weapon', 3, 0);
     }
 
     reset = () => localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(InitialUserData));
 
+    setBanner = (newBanner: BANNER_CODE) => {
+        this.userData.banner = newBanner;
+        this.saveUserData();
+    }
+
     wish = (wishes: number): Array<Item> => {
-        const result = new Array<Item>();
+        const results = new Array<Item>();
 
         for (let i = 0; i < wishes; i++) {
-            result.push(this.randomize());
+            results.push(this.randomize());
         }
 
+        this.addItemsToUser(results);
         this.saveUserData();
 
-        return result;
+        return results;
+    }
+
+    private addItemsToUser = (results: Array<Item>): void => {
+        results.forEach((result: Item) => {
+            const itemsLength = this.userData.items.length;
+            let isMatching = false;
+
+            for (let i = 0; i < itemsLength; i++) {
+                const item = this.userData.items[i];
+                if (item.name === result.name) {
+                    item.count += 1;
+                    isMatching = true;
+                    break;
+                }
+            }
+
+            if (!isMatching) {
+                this.userData.items.push({
+                    name: result.name,
+                    stars: result.stars,
+                    count: 1
+                });
+            }
+        });
     }
 
     private saveUserData = (): void => localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.userData));

@@ -76,6 +76,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Xiangling', 4, 0.5, 'Exquisite Delicacy'),
     new Character('Xingqui', 4, 0.5, 'Juvenile Galant'),
     new Character('Xingyan', 4, 0.5, 'Blazing Riff'),
+    new Character('Xiao', 5, 0.5, 'Vigilant Yaksha'),
     new Character('Zhongli', 5, 0.5, 'Vago Mundo', true)
 ];
 

@@ -26,32 +26,32 @@ const InitialUserData: UserData = {
     items: [
         {
             name: 'Amber',
-            count: 0,
+            count: 1,
             stars: 4
         },
         {
             name: 'Barbara',
-            count: 0,
+            count: 1,
             stars: 4
         },
         {
             name: 'Kaeya',
-            count: 0,
+            count: 1,
             stars: 4
         },
         {
             name: 'Lisa',
-            count: 0,
+            count: 1,
             stars: 4
         },
         {
             name: 'Noelle',
-            count: 0,
+            count: 1,
             stars: 4
         },
         {
             name: 'Xiangling',
-            count: 0,
+            count: 1,
             stars: 4
         }
     ],
