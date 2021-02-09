@@ -30,7 +30,7 @@ const Wish = (props: WishProps) => {
     }
 
     return (
-        <>
+        <div style={{overflowY: 'hidden'}}>
             {
                 !hasVideoEnded ?
                 (
@@ -50,7 +50,7 @@ const Wish = (props: WishProps) => {
                 }) : null
             }
             <Button onClick={() => setIsWishing(false)}>Go Back</Button>
-        </>
+        </div>
     );
 }
 

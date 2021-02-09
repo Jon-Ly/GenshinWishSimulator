@@ -86,23 +86,19 @@ export default class WishService {
         const currentBanner = BANNERS.find(b => b.code === this.userData.banner);
 
         if (isEventCharacter) {
-            // TODO: Give more weight to the 4 star characters for event banner
-            // TODO: Include all other eligible 4 star characters
             const eventFourStarCharacters = currentBanner?.eventFourStars || [];
             
             let fourStarIndex = Math.floor(Math.random() * (eventFourStarCharacters.length + 1));
             while (fourStarIndex === eventFourStarCharacters.length) {
                 fourStarIndex = Math.floor(Math.random() * (eventFourStarCharacters.length + 1));
             }
-            // const eventFourStarCharacterNames = banner?.eventFourStars?.map((c: Character) => c.name);
-            
-            // this.userData.eventFourStarGuarantee = eventFourStarCharacterNames?.indexOf(fourStarCharacter.name) !== -1;
+
             this.userData.eventFourStarCharacterPity = 0;
             this.userData.eventFourStarGuarantee = false;
 
             return eventFourStarCharacters[fourStarIndex];
         } else {
-            const fourStarCharacters = [...currentBanner?.eventFourStars || [], ...currentBanner?.fourStars || []];
+            const fourStarCharacters = currentBanner?.fourStars || [];
 
             let fourStarIndex = Math.floor(Math.random() * (fourStarCharacters.length + 1));
             while (fourStarIndex === fourStarCharacters.length) {
@@ -142,7 +138,12 @@ export default class WishService {
             new Weapon('3 star weapon', 3, 0);
     }
 
-    reset = () => localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(InitialUserData));
+    reset = (): UserData => {
+        const resetResult = {...InitialUserData, banner: this.userData.banner};
+        localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(resetResult));
+        this.userData = resetResult;
+        return resetResult;
+    }
 
     setBanner = (newBanner: BANNER_CODE) => {
         this.userData.banner = newBanner;

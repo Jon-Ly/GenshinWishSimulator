@@ -26,7 +26,7 @@ const BannerSelectMenu = (props: BannerSelectMenuProps) => {
 
     return (
         <Box textAlign='center' fontSize='xl'>
-            <Flex direction='column' justifyContent='space-between'>
+            <Flex direction='column' justifyContent='space-between' height='100vh'>
                 <BannerHeader/>
                 <BannerCenter/>
                 <BannerFooter setIsWishing={setIsWishing}/>

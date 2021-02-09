@@ -43,7 +43,7 @@ const BannerHeader = () => {
     }
     
     return (
-        <Flex flex={2} height='150px' justifyContent='space-evenly'>
+        <Flex flex={2} paddingLeft='70px' paddingRight='70px' justifyContent='space-between'>
             <Stack direction='row' marginTop={MARGIN}>
                 <Text>ICON HERE</Text>
                 <Text>Wish</Text>
@@ -55,8 +55,8 @@ const BannerHeader = () => {
                     })
                 }
             </Stack>
-            <Stack direction='row' marginTop={MARGIN}>
-                <Image path={`${PATHS.ITEMS}/item_primogem.png`} height='25px' width='25px'/>
+            <Stack direction='row' marginTop={MARGIN} minWidth='75px' textAlign='right'>
+                <Image src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/>
                 <Text>{wishState.primogems}</Text>
             </Stack>
         </Flex>

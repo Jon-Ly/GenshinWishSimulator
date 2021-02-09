@@ -12,7 +12,7 @@ const BannerCenter = () => {
 
         const baseStyle = {width: '1080px', borderRadius: '8px'};
         const characterEventStyle = {height: '533px', ...baseStyle};
-        const wanderlustStyle = {height: '590px', ...baseStyle}
+        const wanderlustStyle = {height: '590px', ...baseStyle};
 
         return <Image style={wishState.banner !== BANNER_CODE.WANDERLUST ? characterEventStyle : wanderlustStyle} className='banner' src={imagePath}/>
     }
