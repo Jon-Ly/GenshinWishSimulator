@@ -4,8 +4,8 @@ import {
   theme,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import Wish from "./features/wish/Wish";
-import BannerSelectMenu from "./features/banner-select-menu/BannerSelectMenu";
+import Wish from "./components/wish/Wish";
+import BannerSelectMenu from "./components/banner-select-menu/BannerSelectMenu";
 
 export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
