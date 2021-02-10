@@ -1,7 +1,7 @@
 import React from 'react';
-import { UserData } from '../constants/UserData';
-import { Item } from '../models/Item';
-import WishService from '../services/WishService';
+import { UserData } from '../constants/user-data';
+import { Item } from '../models/item';
+import WishService from '../services/wish-service';
 import reducer, { WishAction } from './reducer';
 
 export interface WishState extends UserData{

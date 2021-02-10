@@ -1,5 +1,5 @@
-import { BANNER_CODE } from "../constants/Banners";
-import WishService from "../services/WishService";
+import { BANNER_CODE } from "../constants/banners";
+import WishService from "../services/wish-service";
 import { WishState } from "./store";
 
 const wishService = new WishService();

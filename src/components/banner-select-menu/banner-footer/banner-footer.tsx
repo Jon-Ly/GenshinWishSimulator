@@ -1,10 +1,12 @@
 import { Flex, Stack, Text, Image, Box } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import PATHS from '../../../constants/Paths';
+import { Link } from 'react-router-dom';
+import HEXCODES from '../../../constants/hexcodes';
+import PATHS from '../../../constants/paths';
 import { ACTION_TYPE } from '../../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../../state-management/store';
-import FooterButton from './FooterButton';
-import ResetAlert from './ResetAlert';
+import FooterButton from './footer-button';
+import ResetAlert from './reset-alert';
 
 interface BannerFooterProps {
     setIsWishing: (isWishing: boolean) => void
@@ -33,12 +35,12 @@ const BannerFooter = (props: BannerFooterProps) => {
     const WishButton = ({primogems}: WishButtonProps) => (
       <Box 
         onClick={primogems === 160 ? wishOne : wishTen} 
-        backgroundColor='#ffffff' 
+        backgroundColor={`${HEXCODES.WISH_BUTTON}`}
         _hover={{cursor: 'pointer'}} 
         width='225px'
         borderRadius='25px'
-        color={'#baa996'} 
-        border='4px solid #d8c38b'>
+        color={`${HEXCODES.WISH_BUTTON_TEXT}`} 
+        border={`4px solid ${HEXCODES.WISH_BUTTON_BORDER}`}>
         <p>Wish {primogems === 160 ? 1 : 10}</p>
         <Stack direction='row' justifyContent='center'>
           <Image src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> <span>x {primogems}</span>
@@ -54,23 +56,29 @@ const BannerFooter = (props: BannerFooterProps) => {
               <Stack direction='row'>
                 <Stack direction='row' minWidth='75px'>
                   <Image src={`${PATHS.ITEMS}/item_starglitter.png`} height='25px' width='25px'/>
-                  <Text>{wishState.starglitter}</Text>
+                  <Text key='starglitter_amount'>{wishState.starglitter}</Text>
                 </Stack>
                 <Stack direction='row' minWidth='75px'>
                   <Image src={`${PATHS.ITEMS}/item_stardust.png`} height='25px' width='25px'/>
-                  <Text>{wishState.stardust}</Text>
+                  <Text key='stardust_amount'>{wishState.stardust}</Text>
                 </Stack>
               </Stack>
               <Stack direction='row'>
-                <FooterButton>Shop</FooterButton>
-                <FooterButton>Details</FooterButton>
-                <FooterButton>History</FooterButton>
+                <Link to='/shop'>
+                  <FooterButton>Shop</FooterButton>
+                </Link>
+                <Link to='/details'>
+                  <FooterButton>Details</FooterButton>
+                </Link>
+                <Link to='/history'>
+                  <FooterButton>History</FooterButton>
+                </Link>
                 <FooterButton onClick={() => setIsOpen(true)}>Reset</FooterButton>
               </Stack>
             </Stack>
             <Stack direction='row'>
-              <WishButton primogems={160}/>
-              <WishButton primogems={1600}/>
+              <WishButton key='wish_160' primogems={160}/>
+              <WishButton key='wish_1600' primogems={1600}/>
             </Stack>
         </Flex>
       </>

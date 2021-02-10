@@ -1,4 +1,4 @@
-import Weapon from "../models/Weapon";
+import Weapon from "../models/weapon";
 
 const WANDERLUST_FIVE_STAR_WEAPONS = [
     new Weapon('Placeholder 5 Star Weapon', 5, 0.75),

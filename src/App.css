@@ -1,0 +1,29 @@
+h1 {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+}
+
+h2 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+h3 {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}
+
+h4 {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+h5 {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+}
+
+h6 {
+    font-size: 8px !important;
+    font-weight: 400 !important;
+}

@@ -1,7 +1,7 @@
 import { Button, Image } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import PATHS from '../../constants/Paths';
-import { Item } from '../../models/Item';
+import PATHS from '../../constants/paths';
+import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
 
 interface WishProps {

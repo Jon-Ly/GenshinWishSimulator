@@ -1,13 +1,14 @@
-import Character from '../models/Character';
-import Weapon from '../models/Weapon';
-import CHARACTERS from './Characters';
-import PATHS from './Paths';
-import WEAPONS from './Weapons';
+import Character from '../models/character';
+import Weapon from '../models/weapon';
+import CHARACTERS from './characters';
+import PATHS from './paths';
+import WEAPONS from './weapons';
 
 export enum BANNER_CODE {
     NONE = 'none',
     ALBEDO = 'albedo_banner',
     GANYU = 'ganyu_banner',
+    KEQING = 'keqing_banner',
     KLEE = 'klee_banner',
     TARTAGLIA = 'tartaglia_banner',
     VENTI = 'venti_banner',
@@ -18,6 +19,7 @@ export enum BANNER_CODE {
 
 export interface Banner {
     code: BANNER_CODE,
+    title: string,
     eventFiveStar?: Character,
     eventFourStars?: Array<Character>,
     fiveStars: Array<Character | Weapon>,
@@ -28,6 +30,7 @@ export interface Banner {
 
 const WANDERLUST_BANNER: Banner = {
     code: BANNER_CODE.WANDERLUST,
+    title: 'Wanderlust Invocation',
     fiveStars: [...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS, ...WEAPONS.WANDERLUST_FIVE_STAR_WEAPONS],
     fourStars: [...CHARACTERS.WANDERLUST_FOUR_STAR_CHARACTERS, ...WEAPONS.WANDERLUST_FIVE_STAR_WEAPONS],
     imagePath: `${PATHS.CHARACTER_BANNERS}/wanderlust_banner.png`,
@@ -37,8 +40,9 @@ const WANDERLUST_BANNER: Banner = {
 const EVENT_BANNERS = {
     ALBEDO: {
         code: BANNER_CODE.ALBEDO,
+        title: 'Secretum Secretorum',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.ALBEDO,
-        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.BENNETT, CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.SUCROSE],
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.SUCROSE, CHARACTERS.PLAYABLE_CHARACTERS.BENNETT],
         fiveStars: WANDERLUST_BANNER.fiveStars,
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ALBEDO}.jpg`,
@@ -46,15 +50,27 @@ const EVENT_BANNERS = {
     },
     GANYU: {
         code: BANNER_CODE.GANYU,
+        title: 'Adrift in the Harbor',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.GANYU,
-        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING, CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI, CHARACTERS.PLAYABLE_CHARACTERS.NOELLE],
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.NOELLE, CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI, CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING],
         fiveStars: WANDERLUST_BANNER.fiveStars,
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.GANYU}.jpg`,
         startDate: new Date(2021, 1, 12)
     },
+    KEQING: {
+        code: BANNER_CODE.KEQING,
+        title: 'Dance of Lanterns',
+        eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.KEQING,
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.BENNETT, CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
+        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fourStars: [],
+        imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KEQING}.jpg`,
+        startDate: new Date(2021, 2, 17)
+    },
     KLEE: {
         code: BANNER_CODE.KLEE,
+        title: 'Sparkling Steps',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.KLEE,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.SUCROSE, CHARACTERS.PLAYABLE_CHARACTERS.NOELLE, CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI],
         fiveStars: WANDERLUST_BANNER.fiveStars,
@@ -64,8 +80,9 @@ const EVENT_BANNERS = {
     },
     TARTAGLIA: {
         code: BANNER_CODE.TARTAGLIA,
+        title: 'Farewell of Snezhnaya',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA,
-        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU, CHARACTERS.PLAYABLE_CHARACTERS.DIONA],
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU],
         fiveStars: WANDERLUST_BANNER.fiveStars,
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA}.jpg`,
@@ -73,8 +90,9 @@ const EVENT_BANNERS = {
     },
     VENTI: {
         code: BANNER_CODE.VENTI,
+        title: 'Ballad of Goblets',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.VENTI,
-        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA, CHARACTERS.PLAYABLE_CHARACTERS.FISCHL],
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
         fiveStars: WANDERLUST_BANNER.fiveStars,
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.VENTI}.jpg`,
@@ -82,8 +100,9 @@ const EVENT_BANNERS = {
     },
     XIAO: {
         code: BANNER_CODE.XIAO,
+        title: 'Invitation to Mundane Life',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.XIAO,
-        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.XINGYAN, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU],
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU, CHARACTERS.PLAYABLE_CHARACTERS.XINGYAN],
         fiveStars: WANDERLUST_BANNER.fiveStars,
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.XIAO}.jpg`,
@@ -91,8 +110,9 @@ const EVENT_BANNERS = {
     },
     ZHONGLI: {
         code: BANNER_CODE.ZHONGLI,
+        title: 'Gentry of Hermitage',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.ZHONGLI,
-        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XINGYAN, CHARACTERS.PLAYABLE_CHARACTERS.RAZOR, CHARACTERS.PLAYABLE_CHARACTERS.CHONGYUN],
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XINGYAN, CHARACTERS.PLAYABLE_CHARACTERS.CHONGYUN, CHARACTERS.PLAYABLE_CHARACTERS.RAZOR],
         fiveStars: WANDERLUST_BANNER.fiveStars,
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ZHONGLI}.png`,
@@ -122,6 +142,10 @@ const BANNERS = new Array<Banner>(
     {
         ...EVENT_BANNERS.GANYU,
         fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.GANYU)
+    },
+    {
+        ...EVENT_BANNERS.KEQING,
+        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.KEQING)
     },
     {
         ...EVENT_BANNERS.KLEE,

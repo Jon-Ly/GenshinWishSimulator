@@ -1,8 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
-import BannerCenter from './BannerCenter/BannerCenter';
-import BannerFooter from './BannerFooter/BannerFooter';
-import BannerHeader from './BannerHeader/BannerHeader';
+import BannerCenter from './banner-center/banner-center';
+import BannerFooter from './banner-footer/banner-footer';
+import BannerHeader from './banner-header/banner-header';
 
 interface BannerSelectMenuProps {
     setIsWishing: (isWishing: boolean) => void

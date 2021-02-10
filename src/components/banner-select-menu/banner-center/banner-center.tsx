@@ -1,8 +1,8 @@
 import { Flex, Image } from '@chakra-ui/react';
 import React from 'react';
-import BANNERS, { BANNER_CODE } from '../../../constants/Banners';
+import BANNERS, { BANNER_CODE } from '../../../constants/banners';
 import { useWishState } from '../../../state-management/store';
-import './BannerCenter.css';
+import './banner-center.css';
 
 const BannerCenter = () => {
     const wishState = useWishState();

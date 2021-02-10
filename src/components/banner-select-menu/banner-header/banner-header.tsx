@@ -1,9 +1,10 @@
 import { Button, Flex, Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
-import BANNERS, { Banner } from '../../../constants/Banners';
-import PATHS from '../../../constants/Paths';
+import BANNERS, { Banner } from '../../../constants/banners';
+import PATHS from '../../../constants/paths';
 import { ACTION_TYPE } from '../../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../../state-management/store';
+import HEXCODES from '../../../constants/hexcodes';
 
 interface BannerButtonProps {
     banner: Banner
@@ -30,11 +31,11 @@ const BannerHeader = () => {
 
         const name = banner.eventFiveStar?.name || 'Wanderlust';
 
-        const enlarge = {backgroundColor: '#f7f3d8', color: '#000000'};
+        const enlarge = {backgroundColor: `${HEXCODES.BANNER_TAB_ACTIVE}`, color: '#000000'};
 
         return (
             <Button 
-                backgroundColor='#4d6d96'
+                backgroundColor={`${HEXCODES.BANNER_TAB_INACTIVE}`}
                 style={banner.code ===  wishState.banner ? enlarge : {}}
                 onClick={() => wishDispatch({type: ACTION_TYPE.SET_BANNER, payload: banner.code})}>
                 {name}

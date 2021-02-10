@@ -1,5 +1,5 @@
-import Character from "./Character";
-import Weapon from "./Weapon";
+import Character from "./character";
+import Weapon from "./weapon";
 
 export type Item = Character | Weapon;
 

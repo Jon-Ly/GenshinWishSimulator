@@ -1,4 +1,4 @@
-import { BANNER_CODE } from "./Banners";
+import { BANNER_CODE } from "./banners";
 
 export interface ItemData {
     name: string,

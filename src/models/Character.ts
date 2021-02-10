@@ -1,12 +1,14 @@
-import ItemBase from "./Item";
+import ItemBase from "./item";
 
 export default class Character extends ItemBase {
-    title: string;
+    elementType: string;
     isEventCharacter: boolean;
+    title: string;
 
-    constructor(name: string, stars: number, chance: number, title?: string, isEventCharacter?: boolean) {
+    constructor(name: string, stars: number, chance: number, title: string, elementType: string,  isEventCharacter?: boolean) {
         super(name, stars, chance);
-        this.title = title || '';
+        this.elementType = elementType;
         this.isEventCharacter = !!isEventCharacter;
+        this.title = title || '';
     }
 }

@@ -1,10 +1,11 @@
-import BANNERS, { BANNER_CODE } from "../constants/Banners";
-import CHARACTERS from "../constants/Characters";
-import InitialUserData, { UserData } from "../constants/UserData";
-import WEAPONS from "../constants/Weapons";
-import Character from "../models/Character";
-import { Item } from "../models/Item"
-import Weapon from "../models/Weapon";
+import BANNERS, { BANNER_CODE } from "../constants/banners";
+import CHANCES from "../constants/chances";
+import CHARACTERS from "../constants/characters";
+import InitialUserData, { UserData } from "../constants/user-data";
+import WEAPONS from "../constants/weapons";
+import Character from "../models/character";
+import { Item } from "../models/item"
+import Weapon from "../models/weapon";
 
 export default class WishService {
 
@@ -26,13 +27,6 @@ export default class WishService {
      * If 5 Star is not the advertised Character, the next 5 star will be the advertised Character.
      * If 4 Star is not the advertised Characters, the next 4 star will be one of the advertised Characters.
      */
-    CHANCES = {
-        FIVE_STAR: 0.003,
-        FOUR_STAR: 0.0255,
-        FIVE_STAR_EVENT_CHARACTER: 0.5,
-        FOUR_STAR_EVENT_CHARACTER: 0.5, //TODO: four-star event character needs tweaking
-        EVENT_WEAPON: 0.75
-    }
 
     constructor() {
         this.setUserData();
@@ -51,7 +45,7 @@ export default class WishService {
 
     randomFiveStar = (): Item => {
         const fiveStarLuck = Math.random();
-        const isEventCharacter = this.userData.banner !== BANNER_CODE.WANDERLUST && (fiveStarLuck >= this.CHANCES.FIVE_STAR_EVENT_CHARACTER || this.userData.eventFiveStarGuarantee);
+        const isEventCharacter = this.userData.banner !== BANNER_CODE.WANDERLUST && (fiveStarLuck >= CHANCES.FIVE_STAR_EVENT_CHARACTER || this.userData.eventFiveStarGuarantee);
 
         if (isEventCharacter) {
             this.userData.eventFiveStarCharacterPity = 0;
@@ -82,7 +76,7 @@ export default class WishService {
 
     randomFourStar = (): Item => {
         const fourStarLuck = Math.random();
-        const isEventCharacter = this.userData.banner !== BANNER_CODE.WANDERLUST && (fourStarLuck >= this.CHANCES.FOUR_STAR_EVENT_CHARACTER || this.userData.eventFourStarGuarantee);
+        const isEventCharacter = this.userData.banner !== BANNER_CODE.WANDERLUST && (fourStarLuck >= CHANCES.FOUR_STAR_EVENT_CHARACTER || this.userData.eventFourStarGuarantee);
         const currentBanner = BANNERS.find(b => b.code === this.userData.banner);
 
         if (isEventCharacter) {
@@ -126,10 +120,10 @@ export default class WishService {
         }
 
         const overall_luck = Math.random();
-        const isFiveStar = overall_luck <= this.CHANCES.FIVE_STAR * 2 || this.userData.eventFiveStarGuarantee || 
+        const isFiveStar = overall_luck <= CHANCES.FIVE_STAR * 2 || this.userData.eventFiveStarGuarantee || 
             (this.userData.banner === BANNER_CODE.WANDERLUST && this.userData.wanderlustFiveStarPity >= 90) || 
             (this.userData.banner !== BANNER_CODE.WANDERLUST && this.userData.eventFiveStarCharacterPity >= 90);
-        const isFourStar = (overall_luck <= this.CHANCES.FOUR_STAR * 2 && overall_luck > this.CHANCES.FIVE_STAR * 2) || 
+        const isFourStar = (overall_luck <= CHANCES.FOUR_STAR * 2 && overall_luck > CHANCES.FIVE_STAR * 2) || 
             (this.userData.banner === BANNER_CODE.WANDERLUST && this.userData.wanderlustFourStarPity >= 10) || 
             (this.userData.banner !== BANNER_CODE.WANDERLUST && this.userData.eventFourStarCharacterPity >= 10);
 

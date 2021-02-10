@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react';
+import HEXCODES from '../../../constants/hexcodes';
 
 interface FooterButtonProps {
     children?: React.ReactNode,
@@ -17,10 +18,10 @@ const FooterButton = (props: FooterButtonProps) => {
             width='135px' 
             padding='15px' 
             fontSize='18px' 
-            backgroundColor='#e2ded4' 
-            color='#343434'
-            _hover={{bg: '#e2ded4'}}
-            _active={{bg: '#e2ded4'}}>
+            backgroundColor={`${HEXCODES.SHOP_DETAIL_HISTORY}`}
+            color={`${HEXCODES.SHOP_DETAIL_HISTORY_TEXT}`}
+            _hover={{bg: `${HEXCODES.SHOP_DETAIL_HISTORY}`}}
+            _active={{bg: `${HEXCODES.SHOP_DETAIL_HISTORY}`}}>
             {children}
         </Button>
     )
