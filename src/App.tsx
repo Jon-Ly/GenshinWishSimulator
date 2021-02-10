@@ -4,7 +4,7 @@ import {
   theme,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import Wish from "./components/wish/Wish";
+import Wish from "./components/wish/wish";
 import BannerSelectMenu from "./components/banner-select-menu/banner-select-menu";
 import {
   BrowserRouter as Router,

@@ -5,8 +5,9 @@ import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
 import { useWishState } from '../../state-management/store';
 import './banner-detail.css';
+import DetailTables from './detail-tables/detail-tables';
 
-// TODO: Refactor this later, font weight = 500 for all sections
+// TODO: Refactor this later, font weight = 500 for all sections, increase font-size
 const BannerDetail = () => {
     const wishState = useWishState();
     const currentBanner = BANNERS.find(b => b.code === wishState.banner);
@@ -54,6 +55,8 @@ const BannerDetail = () => {
             </aside>
         </section>
     )
+
+    const EmptySpace = () => (<hr style={{marginTop: '75px'}}/>)
 
     const RulesSection = () => (
         <section>
@@ -105,7 +108,7 @@ const BannerDetail = () => {
 
     return (
         <Box backgroundColor={`${HEXCODES.DETAIL_BACKGROUND}`} color={`${HEXCODES.DETAIL_FONT_COLOR}`}>
-            <Container maxW='70em'>
+            <Container maxW='100em'>
                 <article>
                     <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
                 </article>
@@ -123,8 +126,10 @@ const BannerDetail = () => {
                 </article>
                 <article>
                     <h2>Items to wish for:</h2>
+                    <DetailTables/>
                 </article>
             </Container>
+            <EmptySpace/>
         </Box>
     )
 }

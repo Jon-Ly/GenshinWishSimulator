@@ -43,7 +43,7 @@ const EVENT_BANNERS = {
         title: 'Secretum Secretorum',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.ALBEDO,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.SUCROSE, CHARACTERS.PLAYABLE_CHARACTERS.BENNETT],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.ALBEDO, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ALBEDO}.jpg`,
         startDate: new Date(2020, 12, 23)
@@ -53,7 +53,7 @@ const EVENT_BANNERS = {
         title: 'Adrift in the Harbor',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.GANYU,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.NOELLE, CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI, CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.GANYU, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.GANYU}.jpg`,
         startDate: new Date(2021, 1, 12)
@@ -63,7 +63,7 @@ const EVENT_BANNERS = {
         title: 'Dance of Lanterns',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.KEQING,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.BENNETT, CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.KEQING, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KEQING}.jpg`,
         startDate: new Date(2021, 2, 17)
@@ -73,7 +73,7 @@ const EVENT_BANNERS = {
         title: 'Sparkling Steps',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.KLEE,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.SUCROSE, CHARACTERS.PLAYABLE_CHARACTERS.NOELLE, CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.KLEE, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KLEE}.jpg`,
         startDate: new Date(2020, 10, 20)
@@ -83,7 +83,7 @@ const EVENT_BANNERS = {
         title: 'Farewell of Snezhnaya',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA}.jpg`,
         startDate: new Date(2020, 11, 11)
@@ -93,7 +93,7 @@ const EVENT_BANNERS = {
         title: 'Ballad of Goblets',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.VENTI,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.VENTI, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.VENTI}.jpg`,
         startDate: new Date(2020, 9, 28)
@@ -103,7 +103,7 @@ const EVENT_BANNERS = {
         title: 'Invitation to Mundane Life',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.XIAO,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU, CHARACTERS.PLAYABLE_CHARACTERS.XINGYAN],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.XIAO, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.XIAO}.jpg`,
         startDate: new Date(2021, 2, 3)
@@ -113,7 +113,7 @@ const EVENT_BANNERS = {
         title: 'Gentry of Hermitage',
         eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.ZHONGLI,
         eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XINGYAN, CHARACTERS.PLAYABLE_CHARACTERS.CHONGYUN, CHARACTERS.PLAYABLE_CHARACTERS.RAZOR],
-        fiveStars: WANDERLUST_BANNER.fiveStars,
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.ZHONGLI, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ZHONGLI}.png`,
         startDate: new Date(2020, 12, 1)
@@ -121,51 +121,56 @@ const EVENT_BANNERS = {
 }
 
 const FilterOutFourStarEventCharacters = (banner: Banner) => {
-    const result = CHARACTERS.EVENT_FOUR_STAR_CHARACTERS.filter((event_character: Character) => {
-        banner.eventFourStars?.forEach((banner_character: Character) => {
-            if (event_character.name === banner_character.name) {
+    const result = CHARACTERS.EVENT_FOUR_STAR_CHARACTERS.filter((eventCharacter: Character) => {
+        const eventFourStarLength = banner.eventFourStars?.length || 0;
+        const eventFourStars = banner.eventFourStars || [];
+
+        for (let i = 0; i < eventFourStarLength; i++ ) {
+            if (eventCharacter.name === eventFourStars[i].name) {
                 return false;
             }
-        });
+        }
+
         return true;
     });
 
     return result;
 }
 
+// TODO: Event banners 
 const BANNERS = new Array<Banner>(
     WANDERLUST_BANNER,
     {
         ...EVENT_BANNERS.ALBEDO,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.ALBEDO)
+        fourStars: [...EVENT_BANNERS.ALBEDO.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.ALBEDO), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.GANYU,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.GANYU)
+        fourStars: [...EVENT_BANNERS.GANYU.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.GANYU), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.KEQING,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.KEQING)
+        fourStars: [...EVENT_BANNERS.KEQING.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.KEQING), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.KLEE,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.KLEE)
+        fourStars: [...EVENT_BANNERS.KLEE.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.KLEE), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.TARTAGLIA,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.TARTAGLIA)
+        fourStars: [...EVENT_BANNERS.TARTAGLIA.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.TARTAGLIA), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.VENTI,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.VENTI)
+        fourStars: [...EVENT_BANNERS.VENTI.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.VENTI), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.XIAO,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.XIAO)
+        fourStars: [...EVENT_BANNERS.XIAO.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.XIAO), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.ZHONGLI,
-        fourStars: FilterOutFourStarEventCharacters(EVENT_BANNERS.ZHONGLI)
+        fourStars: [...EVENT_BANNERS.ZHONGLI.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.ZHONGLI), ...WEAPONS.FOUR_STAR_WEAPONS]
     }
 );
 

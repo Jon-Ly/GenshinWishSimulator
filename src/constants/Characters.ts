@@ -84,7 +84,7 @@ const STARTING_CHARACTERS = {
 const FIVE_STAR_CHARACTERS = PLAYABLE_CHARACTERS_ARRAY.filter((c: Character) => c.stars === 5);
 const FOUR_STAR_CHARACTERS = PLAYABLE_CHARACTERS_ARRAY.filter((c: Character) => c.stars === 4);
 
-const PLAYABLE_CHARACTERS_TO_OBJ = (): {[index: string]: Character} => {
+const PLAYABLE_CHARACTERS_TO_OBJ = () => {
     const result: {[index: string]: Character} = {};
 
     PLAYABLE_CHARACTERS_ARRAY.forEach((c: Character) => {
