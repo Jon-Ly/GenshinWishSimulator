@@ -2,3 +2,11 @@ section {
     font-size: 24px;
     margin-bottom: 25px;
 }
+
+header {
+    background-color: #DBDBDB;
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 75px;
+    position: relative;
+}

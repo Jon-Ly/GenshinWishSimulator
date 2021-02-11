@@ -4,6 +4,7 @@ import BANNERS from '../../constants/banners';
 import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
 import { useWishState } from '../../state-management/store';
+import BannerDetailHeader from './banner-detail-header';
 import './banner-detail.css';
 import DetailTables from './detail-tables/detail-tables';
 
@@ -56,8 +57,6 @@ const BannerDetail = () => {
         </section>
     )
 
-    const EmptySpace = () => (<hr style={{marginTop: '75px'}}/>)
-
     const RulesSection = () => (
         <section>
             <p>5-Star Items</p>
@@ -92,7 +91,7 @@ const BannerDetail = () => {
 
     const WishDetailSection = () => (
         <section style={{fontSize: '24px'}}>
-            <p style={{backgroundColor: `${HEXCODES.LIMITED_TIME_BANNER}`, color: 'white', margin: '15px 0', padding: '0 7px', paddingBottom: '7px', paddingTop: '4px'}}>Limited-Time Event</p>
+            <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='white'/>
             <>
                 <p>
                     Event Wish {bannerTitle} is now available. During this event wish, the <ImportantText> event-exclusive </ImportantText>
@@ -108,9 +107,29 @@ const BannerDetail = () => {
 
     return (
         <Box backgroundColor={`${HEXCODES.DETAIL_BACKGROUND}`} color={`${HEXCODES.DETAIL_FONT_COLOR}`}>
+            <hr style={{marginBottom: '75px'}}/>
             <Container maxW='100em'>
+                {/* Header needs tweaking */}
+                <header> 
+                    <svg width="13" height="39" style={{display: 'inline'}}>
+                        <rect width='13' height='39' style={{display: 'absolute', fill: '#4D4D4D'}}/>
+                    </svg>
+                    <span style={{marginLeft: '50px'}}>
+                        Event Wish {bannerTitle}
+                    </span>
+                </header>
                 <article>
                     <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
+                    <section>
+                        <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
+                            Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
+                        </BannerDetailHeader>
+                        {eventFiveStarCharacter?.name}
+                        <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
+                            Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
+                        </BannerDetailHeader>
+                        {currentBanner?.eventFourStars?.map(c => c.name)}
+                    </section>
                 </article>
                 <article>
                     <h1 style={{color: '#575757'}}>Wish Details</h1>
@@ -129,7 +148,7 @@ const BannerDetail = () => {
                     <DetailTables/>
                 </article>
             </Container>
-            <EmptySpace/>
+            <hr style={{marginTop: '75px'}}/>
         </Box>
     )
 }
