@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image, Stack } from '@chakra-ui/react';
 import BANNERS from '../../../constants/banners';
 import HEXCODES from '../../../constants/hexcodes';
 import WEAPONS from '../../../constants/weapons';
@@ -6,12 +7,13 @@ import { Item } from '../../../models/item';
 import { useWishState } from '../../../state-management/store';
 import './item-table.css';
 import BannerDetailHeader from '../banner-detail-header';
+import PATHS from '../../../constants/paths';
 
 interface ItemTableProps {
     items: Array<Item>
 }
 
-const DetailTables = () => {
+const ItemsToWishForSection = () => {
     const wishState = useWishState();
     const currentBanner = BANNERS.find(b => b.code === wishState.banner) || BANNERS[0]; // TODO: need a way to enforce this or throw an error?
 
@@ -57,6 +59,12 @@ const DetailTables = () => {
 
     return (
         <section>
+            <Stack direction='row'>
+                <Image src={`${PATHS.ITEMS}/item_primogem.png`} width='35px' height='35px'/>
+                <h1 style={{color: '#A68458', lineHeight: '33px'}}>
+                    Items to wish for:
+                </h1>
+            </Stack>
             {/* TODO: Refactor toThreePrecision function to be reusable from BannerDetail */}
             <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
@@ -74,4 +82,4 @@ const DetailTables = () => {
     )
 }
 
-export default DetailTables;
+export default ItemsToWishForSection;

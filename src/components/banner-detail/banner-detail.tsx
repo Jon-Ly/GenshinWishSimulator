@@ -1,12 +1,13 @@
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, Image } from '@chakra-ui/react';
 import React from 'react';
 import BANNERS from '../../constants/banners';
 import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
+import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import BannerDetailHeader from './banner-detail-header';
 import './banner-detail.css';
-import DetailTables from './detail-tables/detail-tables';
+import ItemsToWishForSection from './items-to-wish-for-section/items-to-wish-for-section';
 
 // TODO: Refactor this later, font weight = 500 for all sections, increase font-size
 const BannerDetail = () => {
@@ -40,6 +41,7 @@ const BannerDetail = () => {
 
     const DuplicateCharactersSection = () => (
         <section>
+            <h2>〓Duplicate Characters〓</h2>
             <p>
                 On obtaining a 5-star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): 
                 The 2nd – 7th time you obtain the character, it will be converted into <PurpleText>that character's Stella Fortuna</PurpleText> ×1 
@@ -57,8 +59,27 @@ const BannerDetail = () => {
         </section>
     )
 
+    const IncreasedDropRateSection = () => (
+        <section>
+            <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
+            <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
+                Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
+            </BannerDetailHeader>
+            <Image src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.png`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
+            <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
+                Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
+            </BannerDetailHeader>
+            {
+                (currentBanner?.eventFourStars || []).map(c => 
+                    <Image style={{display: 'inline', marginRight: '30px'}} key={`detail-img-${c.name}`} src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.png`} alt={`${c.name.toLowerCase()}`}/>
+                )
+            }
+        </section>
+    )
+
     const RulesSection = () => (
         <section>
+            <h2>〓Rules〓</h2>
             <p>5-Star Items</p>
             <p>
                 For Event Wish {bannerTitle}: Base probability of winning 5-star character = <ImportantText>{toThreePrecision(CHANCES.FIVE_STAR * 200)}%</ImportantText>;
@@ -91,6 +112,7 @@ const BannerDetail = () => {
 
     const WishDetailSection = () => (
         <section style={{fontSize: '24px'}}>
+            <h1 style={{color: '#575757'}}>Wish Details</h1>
             <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='white'/>
             <>
                 <p>
@@ -119,33 +141,11 @@ const BannerDetail = () => {
                     </span>
                 </header>
                 <article>
-                    <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
-                    <section>
-                        <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
-                            Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
-                        </BannerDetailHeader>
-                        {eventFiveStarCharacter?.name}
-                        <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
-                            Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
-                        </BannerDetailHeader>
-                        {currentBanner?.eventFourStars?.map(c => c.name)}
-                    </section>
-                </article>
-                <article>
-                    <h1 style={{color: '#575757'}}>Wish Details</h1>
+                    <IncreasedDropRateSection/>
                     <WishDetailSection/>
-                </article>
-                <article>
-                    <h2>〓Rules〓</h2>
                     <RulesSection/>
-                </article>
-                <article>
-                    <h2>〓Duplicate Characters〓</h2>
                     <DuplicateCharactersSection/>
-                </article>
-                <article>
-                    <h2>Items to wish for:</h2>
-                    <DetailTables/>
+                    <ItemsToWishForSection/>
                 </article>
             </Container>
             <hr style={{marginTop: '75px'}}/>
