@@ -17,7 +17,7 @@ const BannerDetailHeader = (props: BannerDetailHeaderProps) => {
     const CustomStarIcon = () => <StarIcon color={HEXCODES.ITEM_BANNER_STAR} marginRight='5px'/>;
 
     return (
-        <header style={{backgroundColor: backgroundColor, color: color, margin: '35px 0', height: '50px', paddingLeft: '18px', paddingTop: '10px'}}>
+        <header style={{backgroundColor: backgroundColor, color: color, margin: '35px 0', minHeight: '50px', paddingLeft: '18px', paddingTop: '10px'}}>
             <Stack direction='row' lineHeight='20px'>
                 <Box minWidth='160px' fontSize='26px'>
                     <span style={{lineHeight: '25px'}}>{title}</span>

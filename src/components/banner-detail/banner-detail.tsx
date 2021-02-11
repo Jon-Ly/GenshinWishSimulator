@@ -1,5 +1,8 @@
 import { Box, Container, Image } from '@chakra-ui/react';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import BANNERS from '../../constants/banners';
 import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
@@ -71,10 +74,23 @@ const BannerDetail = () => {
             </BannerDetailHeader>
             {
                 (currentBanner?.eventFourStars || []).map(c => 
-                    <Image style={{display: 'inline', marginRight: '30px'}} key={`detail-img-${c.name}`} src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.png`} alt={`${c.name.toLowerCase()}`}/>
+                    <Image 
+                        style={{display: 'inline', margin: '0 30px 30px 0'}} 
+                        key={`detail-img-${c.name}`} 
+                        src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.png`} alt={`${c.name.toLowerCase()}`}/>
                 )
             }
         </section>
+    )
+
+    const DetailNavbar = () => (
+        <nav style={{height: '50px', width: '100%', backgroundColor: 'black'}}>
+            <Link to='/'>
+                <button style={{fontSize: '34px', marginLeft: '20px'}}>
+                    <FontAwesomeIcon icon={faReply}/>
+                </button>
+            </Link>
+        </nav>
     )
 
     const RulesSection = () => (
@@ -129,14 +145,15 @@ const BannerDetail = () => {
 
     return (
         <Box backgroundColor={`${HEXCODES.DETAIL_BACKGROUND}`} color={`${HEXCODES.DETAIL_FONT_COLOR}`}>
+            <DetailNavbar/>
             <hr style={{marginBottom: '75px'}}/>
             <Container maxW='100em'>
                 {/* Header needs tweaking */}
-                <header> 
-                    <svg width="13" height="39" style={{display: 'inline'}}>
-                        <rect width='13' height='39' style={{display: 'absolute', fill: '#4D4D4D'}}/>
+                <header style={{paddingBottom: '10px'}}> 
+                    <svg width="11" height="55" style={{display: 'inline'}}>
+                        <rect width='11' height='45' style={{fill: '#4D4D4D'}}/>
                     </svg>
-                    <span style={{marginLeft: '50px'}}>
+                    <span style={{marginLeft: '50px', fontSize: '46px'}}>
                         Event Wish {bannerTitle}
                     </span>
                 </header>
