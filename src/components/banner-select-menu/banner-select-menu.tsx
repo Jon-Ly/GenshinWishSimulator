@@ -1,5 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
+import PATHS from '../../constants/paths';
 import BannerCenter from './banner-center/banner-center';
 import BannerFooter from './banner-footer/banner-footer';
 import BannerHeader from './banner-header/banner-header';
@@ -25,7 +26,7 @@ const BannerSelectMenu = (props: BannerSelectMenuProps) => {
     const { setIsWishing } = props;
 
     return (
-        <Box textAlign='center' fontSize='xl'>
+        <Box textAlign='center' fontSize='xl' backgroundImage={`url("${PATHS.ASSETS}/wish_background.png")`} backgroundRepeat='no-repeat' backgroundSize='cover'>
             <Flex direction='column' justifyContent='space-between' height='100vh'>
                 <BannerHeader/>
                 <BannerCenter/>

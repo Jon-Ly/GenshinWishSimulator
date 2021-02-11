@@ -35,12 +35,14 @@ const BannerFooter = (props: BannerFooterProps) => {
     const WishButton = ({primogems}: WishButtonProps) => (
       <Box 
         onClick={primogems === 160 ? wishOne : wishTen} 
-        backgroundColor={`${HEXCODES.WISH_BUTTON}`}
         _hover={{cursor: 'pointer'}} 
-        width='225px'
-        borderRadius='25px'
-        color={`${HEXCODES.WISH_BUTTON_TEXT}`} 
-        border={`4px solid ${HEXCODES.WISH_BUTTON_BORDER}`}>
+        width='315px'
+        color={`${HEXCODES.WISH_BUTTON_TEXT}`}
+        backgroundImage={`url("${PATHS.ASSETS}/wish_button_background.png")`}
+        backgroundRepeat='no-repeat'
+        backgroundSize='contain'
+        paddingTop='5px'
+        >
         <p>Wish {primogems === 160 ? 1 : 10}</p>
         <Stack direction='row' justifyContent='center'>
           <Image src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> <span>x {primogems}</span>
@@ -55,11 +57,11 @@ const BannerFooter = (props: BannerFooterProps) => {
             <Stack direction='column'>
               <Stack direction='row'>
                 <Stack direction='row' minWidth='75px'>
-                  <Image src={`${PATHS.ITEMS}/item_starglitter.png`} height='25px' width='25px'/>
+                  <Image src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} height='32px' width='32px'/>
                   <Text key='starglitter_amount'>{wishState.starglitter}</Text>
                 </Stack>
                 <Stack direction='row' minWidth='75px'>
-                  <Image src={`${PATHS.ITEMS}/item_stardust.png`} height='25px' width='25px'/>
+                  <Image src={`${PATHS.ITEMS}/item_masterless_stardust.png`} height='32px' width='32px'/>
                   <Text key='stardust_amount'>{wishState.stardust}</Text>
                 </Stack>
               </Stack>
