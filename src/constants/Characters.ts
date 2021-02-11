@@ -19,7 +19,7 @@ const WANDERLUST_CHARACTERS = [
     'Ningguang',
     'Xingqui',
     'Barbara',
-    'Xingyan',
+    'Xinyan',
     'Bennett',
     'Xiangling',
     'Amber'
@@ -36,7 +36,7 @@ const EVENT_CHARACTERS = [
     'Ningguang',
     'Xingqui',
     'Barbara',
-    'Xingyan',
+    'Xinyan',
     'Bennett',
     'Xiangling'
 ]
@@ -67,7 +67,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Venti', 5, 0.5, 'Windborne Bard', ELEMENT.ANEMO, true),
     new Character('Xiangling', 4, 0.5, 'Exquisite Delicacy', ELEMENT.PYRO),
     new Character('Xingqui', 4, 0.5, 'Juvenile Galant', ELEMENT.HYDRO),
-    new Character('Xingyan', 4, 0.5, 'Blazing Riff', ELEMENT.PYRO),
+    new Character('Xinyan', 4, 0.5, 'Blazing Riff', ELEMENT.PYRO),
     new Character('Xiao', 5, 0.5, 'Vigilant Yaksha', ELEMENT.ANEMO),
     new Character('Zhongli', 5, 0.5, 'Vago Mundo', ELEMENT.GEO, true)
 ];
