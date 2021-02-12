@@ -18,7 +18,7 @@ export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
       <Router>
         <Switch>
