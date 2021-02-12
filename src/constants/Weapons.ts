@@ -35,19 +35,19 @@ const FOUR_STAR_WEAPONS = [
 ];
 
 const THREE_STAR_WEAPONS = [
-    new Weapon('Slingshot', 4, 0.75),
-    new Weapon('Sharpshooter\'s Oath', 4, 0.75),
-    new Weapon('Raven Bow', 4, 0.75),
-    new Weapon('Emerald Orb', 4, 0.75),
-    new Weapon('Thrilling Tales of Dragon Slayers', 4, 0.75),
-    new Weapon('Magic Guide', 4, 0.75),
-    new Weapon('Black Tassel', 4, 0.75),
-    new Weapon('Debate Club', 4, 0.75),
-    new Weapon('Bloodtainted Greatsword', 4, 0.75),
-    new Weapon('Ferrous Shadow', 4, 0.75),
-    new Weapon('Skyrider Sword', 4, 0.75),
-    new Weapon('Harbinger of Dawn', 4, 0.75),
-    new Weapon('Cool Steel', 4, 0.75)
+    new Weapon('Slingshot', 3, 0.75),
+    new Weapon('Sharpshooter\'s Oath', 3, 0.75),
+    new Weapon('Raven Bow', 3, 0.75),
+    new Weapon('Emerald Orb', 3, 0.75),
+    new Weapon('Thrilling Tales of Dragon Slayers', 3, 0.75),
+    new Weapon('Magic Guide', 3, 0.75),
+    new Weapon('Black Tassel', 3, 0.75),
+    new Weapon('Debate Club', 3, 0.75),
+    new Weapon('Bloodtainted Greatsword', 3, 0.75),
+    new Weapon('Ferrous Shadow', 3, 0.75),
+    new Weapon('Skyrider Sword', 3, 0.75),
+    new Weapon('Harbinger of Dawn', 3, 0.75),
+    new Weapon('Cool Steel', 3, 0.75)
 ]
 
 const WEAPONS = {

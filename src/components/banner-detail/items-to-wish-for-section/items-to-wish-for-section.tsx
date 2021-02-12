@@ -40,12 +40,12 @@ const ItemsToWishForSection = () => {
                 <tbody style={{color: HEXCODES.ITEM_BANNER_TEXT_COLOR}}>
                     {itemIndexes?.map((i) => (
                         <tr key={`${items[i].name}${i}`}>
-                            <td>{items[i].constructor.name}</td>
+                            <td>{items[i].chance === 0.5 ? 'Character' : 'Weapon'}</td>
                             <td>{items[i].name}</td>
                             {
                                 i + 1 < items.length ? (
                                     <>
-                                        <td>{items[i + 1].constructor.name}</td>
+                                        <td>{items[i + 1].chance === 0.5 ? 'Character' : 'Weapon'}</td>
                                         <td>{items[i + 1].name}</td>
                                     </>
                                 ) : null

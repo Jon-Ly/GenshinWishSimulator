@@ -1,4 +1,4 @@
-import { Image, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import React from 'react';
 import BANNERS, { BANNER_CODE } from '../../../constants/banners';
 import { useWishState } from '../../../state-management/store';
@@ -12,15 +12,14 @@ const BannerCenter = () => {
         const imagePath = currentBanner?.imagePath;
         const altText = `${currentBanner?.code}-banner`;
 
-        const baseStyle = {borderRadius: '8px', maxWidth: '100%'};
+        const baseStyle = {borderRadius: '8px', maxWidth: '100%', objectFit: 'contain'} as React.CSSProperties;
         const wanderlustStyle = {...baseStyle, maxHeight: '590px'};
 
-        return <Image
+        return <img
             alt={altText}
             style={wishState.banner !== BANNER_CODE.WANDERLUST ? baseStyle : wanderlustStyle} 
             className='banner'
-            src={imagePath}
-            objectFit='contain'/>
+            src={imagePath}/>
     }
 
     return (

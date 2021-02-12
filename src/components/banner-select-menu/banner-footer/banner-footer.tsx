@@ -1,4 +1,4 @@
-import { Flex, Stack, Text, Image, Box } from '@chakra-ui/react';
+import { Stack, Text, Image, Box } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HEXCODES from '../../../constants/hexcodes';
@@ -33,21 +33,21 @@ const BannerFooter = (props: BannerFooterProps) => {
     }
 
     const WishButton = ({primogems}: WishButtonProps) => (
-      <Box 
-        onClick={primogems === 160 ? wishOne : wishTen} 
-        _hover={{cursor: 'pointer'}} 
-        width='315px'
-        color={`${HEXCODES.WISH_BUTTON_TEXT}`}
-        backgroundImage={`url("${PATHS.ASSETS}/wish_button_background.png")`}
-        backgroundRepeat='no-repeat'
-        backgroundSize='contain'
-        paddingTop='5px'
-        >
-        <p>Wish {primogems === 160 ? 1 : 10}</p>
-        <Stack direction='row' justifyContent='center'>
-          <Image src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> <span>x {primogems}</span>
-        </Stack>
-      </Box>
+        <Box
+          onClick={primogems === 160 ? wishOne : wishTen} 
+          _hover={{cursor: 'pointer'}} 
+          width='315px'
+          color={`${HEXCODES.WISH_BUTTON_TEXT}`}
+          backgroundImage={`url("${PATHS.ASSETS}/wish_button_background.png")`}
+          backgroundRepeat='no-repeat'
+          backgroundSize='contain'
+          paddingTop='5px'
+          >
+          <p>Wish {primogems === 160 ? 1 : 10}</p>
+          <Stack direction='row' justifyContent='center'>
+            <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> <span>x {primogems}</span>
+          </Stack>
+        </Box>
     )
     
     return (
@@ -79,8 +79,8 @@ const BannerFooter = (props: BannerFooterProps) => {
               </Stack>
             </Stack>
             <Stack direction={['column', 'row']}>
-              <WishButton key='wish_160' primogems={160}/>
-              <WishButton key='wish_1600' primogems={1600}/>
+              <WishButton primogems={160}/>
+              <WishButton primogems={1600}/>
             </Stack>
         </Stack>
       </>
