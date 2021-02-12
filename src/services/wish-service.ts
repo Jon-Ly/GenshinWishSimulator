@@ -1,7 +1,7 @@
 import BANNERS, { BANNER_CODE } from "../constants/banners";
 import CHANCES from "../constants/chances";
 import CHARACTERS from "../constants/characters";
-import InitialUserData, { UserData } from "../constants/user-data";
+import InitialUserData, { ItemData, UserData } from "../constants/user-data";
 import WEAPONS from "../constants/weapons";
 import Character from "../models/character";
 import { Item } from "../models/item"
@@ -32,7 +32,7 @@ export default class WishService {
         this.initializeUserData();
     }
 
-    fetchUserData = (): UserData => {
+    getUserData = (): UserData => {
         let data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
 
         if (!data) {
@@ -42,6 +42,8 @@ export default class WishService {
 
         return JSON.parse(data) as UserData;
     }
+
+    getUserHistory = (): Array<ItemData> => this.userData.items;
 
     randomFiveStar = (): Item => {
         const fiveStarLuck = Math.random();
@@ -152,26 +154,14 @@ export default class WishService {
     }
 
     private addItemsToUserData = (results: Array<Item>): void => {
+        const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
         results.forEach((result: Item) => {
-            const itemsLength = this.userData.items.length;
-            let isMatchingItem = false;
-
-            for (let i = 0; i < itemsLength; i++) {
-                const item = this.userData.items[i];
-                if (item.name === result.name) {
-                    item.count += 1;
-                    isMatchingItem = true;
-                    break;
-                }
-            }
-
-            if (!isMatchingItem) {
-                this.userData.items.push({
-                    name: result.name,
-                    stars: result.stars,
-                    count: 1
-                });
-            }
+            this.userData.items.push({
+                name: result.name,
+                stars: result.stars,
+                timestamp: timestamp,
+                banner: this.userData.banner
+            })
         });
     }
 

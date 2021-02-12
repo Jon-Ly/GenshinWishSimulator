@@ -13,6 +13,7 @@ export enum BANNER_CODE {
     TARTAGLIA = 'tartaglia_banner',
     VENTI = 'venti_banner',
     WANDERLUST = 'wanderlust_banner',
+    WEAPON = 'weapon_banner',
     XIAO = 'xiao_banner',
     ZHONGLI = 'zhongli_banner'
 };

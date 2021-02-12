@@ -2,8 +2,9 @@ import { BANNER_CODE } from "./banners";
 
 export interface ItemData {
     name: string,
-    count: number,
-    stars: number
+    stars: number,
+    timestamp?: string,
+    banner?: BANNER_CODE
 }
 
 export interface UserData {
@@ -26,32 +27,26 @@ const InitialUserData: UserData = {
     items: [
         {
             name: 'Amber',
-            count: 1,
             stars: 4
         },
         {
             name: 'Barbara',
-            count: 1,
             stars: 4
         },
         {
             name: 'Kaeya',
-            count: 1,
             stars: 4
         },
         {
             name: 'Lisa',
-            count: 1,
             stars: 4
         },
         {
             name: 'Noelle',
-            count: 1,
             stars: 4
         },
         {
             name: 'Xiangling',
-            count: 1,
             stars: 4
         }
     ],
