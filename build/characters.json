@@ -1,0 +1,139 @@
+{
+    "characters": [
+        {
+            "name": "Albedo",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Amber",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Barbara",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Beidou",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Bennett",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Chongyun",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Diluc",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Diona",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Fishcl",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Ganyu",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Jean",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Kaeya",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Keqing",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Klee",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Lisa",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Mona",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Ningguang",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Noelle",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Qiqi",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Razor",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Sucrose",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Tartaglia",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Venti",
+            "stars": 5,
+            "chance": 0.5
+        },
+        {
+            "name": "Xiangling",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Xingqiu",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Xinyan",
+            "stars": 4,
+            "chance": 0.5
+        },
+        {
+            "name": "Zhongli",
+            "stars": 5,
+            "chance": 0.5
+        }
+    ]
+}
