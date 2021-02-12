@@ -1,4 +1,4 @@
-import { Button, Flex, Stack, Text, Image } from '@chakra-ui/react';
+import { Button, Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
 import BANNERS, { Banner } from '../../../constants/banners';
 import PATHS from '../../../constants/paths';
@@ -44,7 +44,7 @@ const BannerHeader = () => {
     }
     
     return (
-        <Flex flex={2} paddingLeft='70px' paddingRight='70px' justifyContent='space-between'>
+        <Stack direction='row' padding= '25px 70px 0 70px' minHeight='100px' justifyContent='space-between'>
             <Stack direction='row' marginTop={MARGIN}>
                 <Image src={`${PATHS.ASSETS}/star.png`} width='40px' height='40px'/>
                 <Text style={{fontWeight: 'bold', lineHeight: '35px', marginLeft: '40px'}}>Wish</Text>
@@ -68,7 +68,7 @@ const BannerHeader = () => {
                 <Image src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/>
                 <Text>{wishState.primogems}</Text>
             </Stack>
-        </Flex>
+        </Stack>
     );
 }
 

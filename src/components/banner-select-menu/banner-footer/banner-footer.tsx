@@ -53,7 +53,7 @@ const BannerFooter = (props: BannerFooterProps) => {
     return (
       <>
         <ResetAlert isOpen={isResetConfirmationOpen} setIsOpen={setIsOpen}/>
-        <Flex flex={1} justifyContent='space-between' padding='70px'>
+        <Stack direction='row' justifyContent='space-between' padding='70px'>
             <Stack direction='column'>
               <Stack direction='row'>
                 <Stack direction='row' minWidth='75px'>
@@ -65,7 +65,7 @@ const BannerFooter = (props: BannerFooterProps) => {
                   <Text key='stardust_amount'>{wishState.stardust}</Text>
                 </Stack>
               </Stack>
-              <Stack direction='row'>
+              <Stack direction={['column', 'row']}>
                 <Link to='/shop'>
                   <FooterButton>Shop</FooterButton>
                 </Link>
@@ -78,11 +78,11 @@ const BannerFooter = (props: BannerFooterProps) => {
                 <FooterButton onClick={() => setIsOpen(true)}>Reset</FooterButton>
               </Stack>
             </Stack>
-            <Stack direction='row'>
+            <Stack direction={['column', 'row']}>
               <WishButton key='wish_160' primogems={160}/>
               <WishButton key='wish_1600' primogems={1600}/>
             </Stack>
-        </Flex>
+        </Stack>
       </>
     );
 }

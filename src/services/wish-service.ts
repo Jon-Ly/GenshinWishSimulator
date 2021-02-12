@@ -5,7 +5,7 @@ import InitialUserData, { UserData } from "../constants/user-data";
 import WEAPONS from "../constants/weapons";
 import Character from "../models/character";
 import { Item } from "../models/item"
-import Weapon from "../models/weapon";
+import { WishState } from "../state-management/store";
 
 export default class WishService {
 
@@ -29,14 +29,14 @@ export default class WishService {
      */
 
     constructor() {
-        this.setUserData();
+        this.initializeUserData();
     }
 
     fetchUserData = (): UserData => {
         let data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
 
         if (!data) {
-            this.setUserData();
+            this.initializeUserData();
             data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
         }
 
@@ -58,10 +58,7 @@ export default class WishService {
                 fiveStars = [...fiveStars, ...WEAPONS.WANDERLUST_FIVE_STAR_WEAPONS];
             }
 
-            let fiveStarIndex = Math.floor(Math.random() * (fiveStars.length + 1));
-            while (fiveStarIndex === fiveStars.length) {
-                fiveStarIndex = Math.floor(Math.random() * (fiveStars.length + 1));
-            }
+            const fiveStarIndex = Math.floor(Math.random() * (fiveStars.length));
 
             if (this.userData.banner !== BANNER_CODE.WANDERLUST) {
                 this.userData.eventFiveStarCharacterPity = 0;
@@ -82,10 +79,7 @@ export default class WishService {
         if (isEventCharacter) {
             const eventFourStarCharacters = currentBanner?.eventFourStars || [];
             
-            let fourStarIndex = Math.floor(Math.random() * (eventFourStarCharacters.length + 1));
-            while (fourStarIndex === eventFourStarCharacters.length) {
-                fourStarIndex = Math.floor(Math.random() * (eventFourStarCharacters.length + 1));
-            }
+            const fourStarIndex = Math.floor(Math.random() * (eventFourStarCharacters.length));
 
             this.userData.eventFourStarCharacterPity = 0;
             this.userData.eventFourStarGuarantee = false;
@@ -94,10 +88,7 @@ export default class WishService {
         } else {
             const fourStarCharacters = currentBanner?.fourStars || [];
 
-            let fourStarIndex = Math.floor(Math.random() * (fourStarCharacters.length + 1));
-            while (fourStarIndex === fourStarCharacters.length) {
-                fourStarIndex = Math.floor(Math.random() * (fourStarCharacters.length + 1));
-            }
+            const fourStarIndex = Math.floor(Math.random() * (fourStarCharacters.length));
 
             if (this.userData.banner !== BANNER_CODE.WANDERLUST) {
                 this.userData.eventFourStarCharacterPity = 0;
@@ -127,51 +118,54 @@ export default class WishService {
             (this.userData.banner === BANNER_CODE.WANDERLUST && this.userData.wanderlustFourStarPity >= 10) || 
             (this.userData.banner !== BANNER_CODE.WANDERLUST && this.userData.eventFourStarCharacterPity >= 10);
 
+        const threeStarIndex = Math.floor(Math.random() * WEAPONS.THREE_STAR_WEAPONS.length);
+
+        this.userData.primogems -= 160;
+
         return isFiveStar ? this.randomFiveStar() :
             isFourStar ? this.randomFourStar() :
-            new Weapon('3 star weapon', 3, 0);
+            WEAPONS.THREE_STAR_WEAPONS[threeStarIndex];
     }
 
     reset = (): UserData => {
-        const resetResult = {...InitialUserData, banner: this.userData.banner};
-        localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(resetResult));
-        this.userData = resetResult;
-        return resetResult;
+        this.userData = {...InitialUserData, banner: this.userData.banner};
+        this.saveUserDataToLocal();
+        return this.userData;
     }
 
     setBanner = (newBanner: BANNER_CODE) => {
         this.userData.banner = newBanner;
-        this.saveUserData();
+        this.saveUserDataToLocal();
     }
 
-    wish = (wishes: number): Array<Item> => {
+    wish = (wishes: number): WishState => {
         const results = new Array<Item>();
 
         for (let i = 0; i < wishes; i++) {
             results.push(this.randomize());
         }
 
-        this.addItemsToUser(results);
-        this.saveUserData();
+        this.addItemsToUserData(results);
+        this.saveUserDataToLocal();
 
-        return results;
+        return {...this.userData, results: results};
     }
 
-    private addItemsToUser = (results: Array<Item>): void => {
+    private addItemsToUserData = (results: Array<Item>): void => {
         results.forEach((result: Item) => {
             const itemsLength = this.userData.items.length;
-            let isMatching = false;
+            let isMatchingItem = false;
 
             for (let i = 0; i < itemsLength; i++) {
                 const item = this.userData.items[i];
                 if (item.name === result.name) {
                     item.count += 1;
-                    isMatching = true;
+                    isMatchingItem = true;
                     break;
                 }
             }
 
-            if (!isMatching) {
+            if (!isMatchingItem) {
                 this.userData.items.push({
                     name: result.name,
                     stars: result.stars,
@@ -181,9 +175,7 @@ export default class WishService {
         });
     }
 
-    private saveUserData = (): void => localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.userData));
-
-    private setUserData = (): void => {
+    private initializeUserData = (): void => {
         const data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
 
         if (!data) {
@@ -192,4 +184,6 @@ export default class WishService {
 
         this.userData = data ? JSON.parse(data) : InitialUserData;
     }
+
+    private saveUserDataToLocal = (): void => localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.userData));
 }

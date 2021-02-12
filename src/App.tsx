@@ -4,14 +4,14 @@ import {
   theme,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import Wish from "./components/wish/wish";
-import BannerSelectMenu from "./components/banner-select-menu/banner-select-menu";
+import Wish from "./pages/wish/wish";
+import BannerSelectMenu from "./pages/banner-select/banner-select";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import BannerDetail from "./components/banner-detail/banner-detail";
+import BannerDetail from "./pages/banner-detail/banner-detail";
 import './App.css';
 
 export const App = () => {

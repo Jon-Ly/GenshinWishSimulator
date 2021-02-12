@@ -8,9 +8,9 @@ import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
 import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
-import BannerDetailHeader from './banner-detail-header';
+import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
 import './banner-detail.css';
-import ItemsToWishForSection from './items-to-wish-for-section/items-to-wish-for-section';
+import ItemsToWishForSection from '../../components/banner-detail/items-to-wish-for-section/items-to-wish-for-section';
 
 // TODO: Refactor this later, font weight = 500 for all sections, increase font-size
 const BannerDetail = () => {
@@ -40,6 +40,16 @@ const BannerDetail = () => {
                 )
             })}
         </>
+    )
+
+    const DetailNavbar = () => (
+        <nav style={{height: '50px', width: '100%', backgroundColor: 'black'}}>
+            <Link to='/'>
+                <button style={{fontSize: '34px', marginLeft: '35px'}}>
+                    <FontAwesomeIcon icon={faReply}/>
+                </button>
+            </Link>
+        </nav>
     )
 
     const DuplicateCharactersSection = () => (
@@ -83,16 +93,6 @@ const BannerDetail = () => {
         </section>
     )
 
-    const DetailNavbar = () => (
-        <nav style={{height: '50px', width: '100%', backgroundColor: 'black'}}>
-            <Link to='/'>
-                <button style={{fontSize: '34px', marginLeft: '20px'}}>
-                    <FontAwesomeIcon icon={faReply}/>
-                </button>
-            </Link>
-        </nav>
-    )
-
     const RulesSection = () => (
         <section>
             <h2>〓Rules〓</h2>
@@ -129,17 +129,15 @@ const BannerDetail = () => {
     const WishDetailSection = () => (
         <section style={{fontSize: '24px'}}>
             <h1 style={{color: '#575757'}}>Wish Details</h1>
-            <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='white'/>
-            <>
-                <p>
-                    Event Wish {bannerTitle} is now available. During this event wish, the <ImportantText> event-exclusive </ImportantText>
-                    5-star character <CharacterText character={eventFiveStarCharacter}/> as well as 4-star characters 
-                    <FourStarText/> will get a <ImportantText> huge drop-rate boost</ImportantText>!
-                </p>
-                <aside>
-                    <ImportantText>※ Of the above characters, the event-exclusive character will not be available in the standard wish "Wanderlust Invocation".</ImportantText>
-                </aside>
-            </>
+            <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='#FFFFFF'/>
+            <p>
+                Event Wish {bannerTitle} is now available. During this event wish, the <ImportantText> event-exclusive </ImportantText>
+                5-star character <CharacterText character={eventFiveStarCharacter}/> as well as 4-star characters 
+                <FourStarText/> will get a <ImportantText> huge drop-rate boost</ImportantText>!
+            </p>
+            <aside>
+                <ImportantText>※ Of the above characters, the event-exclusive character will not be available in the standard wish "Wanderlust Invocation".</ImportantText>
+            </aside>
         </section>
     );
 
@@ -148,7 +146,6 @@ const BannerDetail = () => {
             <DetailNavbar/>
             <hr style={{marginBottom: '75px'}}/>
             <Container maxW='100em'>
-                {/* Header needs tweaking */}
                 <header style={{paddingBottom: '10px'}}> 
                     <svg width="11" height="55" style={{display: 'inline'}}>
                         <rect width='11' height='45' style={{fill: '#4D4D4D'}}/>

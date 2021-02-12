@@ -137,7 +137,6 @@ const FilterOutFourStarEventCharacters = (banner: Banner) => {
     return result;
 }
 
-// TODO: Event banners 
 const BANNERS = new Array<Banner>(
     WANDERLUST_BANNER,
     {

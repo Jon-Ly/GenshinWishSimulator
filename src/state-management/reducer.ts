@@ -29,10 +29,9 @@ const reducer = (state: WishState, action: WishAction): WishState => {
             return {...result, results: []};
         case ACTION_TYPE.WISH:
             const wishes = action.payload as number;
-            state.results = wishService.wish(action.payload as number);
-            state.primogems -= wishes === 1 ? 160 : 1600;
+            const wishResult = wishService.wish(wishes);
             
-            return {...state}
+            return {...wishResult}
         default:
             return state;
     }
