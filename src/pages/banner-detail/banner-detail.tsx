@@ -10,7 +10,8 @@ import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
 import './banner-detail.css';
-import ItemsToWishForSection from '../../components/banner-detail/items-to-wish-for-section/items-to-wish-for-section';
+import ItemsToWishForSection from '../../components/items-to-wish-for-section/items-to-wish-for-section';
+import Information from '../../components/information/information';
 
 // TODO: Refactor this later, font weight = 500 for all sections, increase font-size
 const BannerDetail = () => {
@@ -40,16 +41,6 @@ const BannerDetail = () => {
                 )
             })}
         </>
-    )
-
-    const DetailNavbar = () => (
-        <nav style={{height: '50px', width: '100%', backgroundColor: 'black'}}>
-            <Link to='/'>
-                <button style={{fontSize: '34px', marginLeft: '35px'}}>
-                    <FontAwesomeIcon icon={faReply}/>
-                </button>
-            </Link>
-        </nav>
     )
 
     const DuplicateCharactersSection = () => (
@@ -127,7 +118,7 @@ const BannerDetail = () => {
     )
 
     const WishDetailSection = () => (
-        <section style={{fontSize: '24px'}}>
+        <section>
             <h1 style={{color: '#575757'}}>Wish Details</h1>
             <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='#FFFFFF'/>
             <p>
@@ -142,28 +133,23 @@ const BannerDetail = () => {
     );
 
     return (
-        <Box backgroundColor={`${HEXCODES.DETAIL_BACKGROUND}`} color={`${HEXCODES.DETAIL_FONT_COLOR}`}>
-            <DetailNavbar/>
-            <hr style={{marginBottom: '75px'}}/>
-            <Container maxW='100em'>
-                <header style={{paddingBottom: '10px'}}> 
-                    <svg width="11" height="55" style={{display: 'inline'}}>
-                        <rect width='11' height='45' style={{fill: '#4D4D4D'}}/>
-                    </svg>
-                    <span style={{marginLeft: '50px', fontSize: '46px'}}>
-                        Event Wish {bannerTitle}
-                    </span>
-                </header>
-                <article>
-                    <IncreasedDropRateSection/>
-                    <WishDetailSection/>
-                    <RulesSection/>
-                    <DuplicateCharactersSection/>
-                    <ItemsToWishForSection/>
-                </article>
-            </Container>
-            <hr style={{marginTop: '75px'}}/>
-        </Box>
+        <Information>
+            <header style={{paddingBottom: '10px'}}> 
+                <svg width="11" height="55" style={{display: 'inline'}}>
+                    <rect width='11' height='45' style={{fill: '#4D4D4D'}}/>
+                </svg>
+                <span style={{marginLeft: '50px', fontSize: '46px'}}>
+                    Event Wish {bannerTitle}
+                </span>
+            </header>
+            <article>
+                <IncreasedDropRateSection/>
+                <WishDetailSection/>
+                <RulesSection/>
+                <DuplicateCharactersSection/>
+                <ItemsToWishForSection/>
+            </article>
+        </Information>
     )
 }
 
