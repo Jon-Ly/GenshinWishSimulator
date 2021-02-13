@@ -12,6 +12,7 @@ import {
   Route
 } from "react-router-dom";
 import BannerDetail from "./pages/banner-detail/banner-detail";
+import BannerHistory from "./pages/banner-history/banner-history";
 import './App.css';
 
 export const App = () => {
@@ -22,11 +23,14 @@ export const App = () => {
       {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
       <Router>
         <Switch>
+          <Route exact path='/'>
+            {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelectMenu setIsWishing={setIsWishing}/>}
+          </Route>
           <Route path='/details'>
             <BannerDetail/>
           </Route>
-          <Route path='/'>
-            {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelectMenu setIsWishing={setIsWishing}/>}
+          <Route path='/history'>
+            <BannerHistory/>
           </Route>
         </Switch>
       </Router>

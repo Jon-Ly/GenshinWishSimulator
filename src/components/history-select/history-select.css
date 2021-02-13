@@ -1,0 +1,9 @@
+select { 
+    display: inline;
+    width: 35%;
+    font-size: 24px;
+    padding: 15px;
+    border: 2px solid #B6B3AF;
+    border-radius: 5px;
+    background-color: '#DBD7D3';
+}

@@ -160,7 +160,8 @@ export default class WishService {
                 name: result.name,
                 stars: result.stars,
                 timestamp: timestamp,
-                banner: this.userData.banner
+                banner: this.userData.banner,
+                type: result.chance === 0.5 ? 'CHARACTER' : 'WEAPON'
             })
         });
     }

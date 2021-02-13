@@ -1,13 +1,13 @@
 import React from 'react';
 import { Image, Stack } from '@chakra-ui/react';
-import BANNERS from '../../../constants/banners';
-import HEXCODES from '../../../constants/hexcodes';
-import WEAPONS from '../../../constants/weapons';
-import { Item } from '../../../models/item';
-import { useWishState } from '../../../state-management/store';
-import './item-table.css';
-import BannerDetailHeader from '../banner-detail-header';
-import PATHS from '../../../constants/paths';
+import BANNERS from '../../constants/banners';
+import HEXCODES from '../../constants/hexcodes';
+import WEAPONS from '../../constants/weapons';
+import { Item } from '../../models/item';
+import { useWishState } from '../../state-management/store';
+import '../../styles/item-table.css';
+import BannerDetailHeader from '../banner-detail/banner-detail-header';
+import PATHS from '../../constants/paths';
 
 interface ItemTableProps {
     items: Array<Item>
