@@ -1,9 +1,8 @@
-import { Box } from '@chakra-ui/react';
 import React from 'react';
-import PATHS from '../../constants/paths';
 import BannerCenter from '../../components/banner-select-menu/banner-center/banner-center';
 import BannerFooter from '../../components/banner-select-menu/banner-footer/banner-footer';
 import BannerHeader from '../../components/banner-select-menu/banner-header/banner-header';
+import './banner-select.css';
 
 interface BannerSelectProps {
     setIsWishing: (isWishing: boolean) => void
@@ -20,11 +19,11 @@ const BannerSelect = (props: BannerSelectProps) => {
     const { setIsWishing } = props;
 
     return (
-        <Box textAlign='center' fontSize='xl' backgroundImage={`url("${PATHS.ASSETS}/wish_background.png")`} backgroundRepeat='no-repeat' backgroundSize='auto' minHeight='100vh'>
+        <div className='select-menu'>
             <BannerHeader/>
             <BannerCenter/>
             <BannerFooter setIsWishing={setIsWishing}/>
-        </Box>
+        </div>
     );
 };
 

@@ -1,11 +1,10 @@
-import { Stack, Text, Image, Box } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HEXCODES from '../../../constants/hexcodes';
 import PATHS from '../../../constants/paths';
 import { ACTION_TYPE } from '../../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../../state-management/store';
-import FooterButton from './footer-button';
+import FooterButton from './footer-button/footer-button';
 import ResetAlert from './reset-alert';
 
 interface BannerFooterProps {
@@ -33,39 +32,36 @@ const BannerFooter = (props: BannerFooterProps) => {
     }
 
     const WishButton = ({primogems}: WishButtonProps) => (
-        <Box
-          onClick={primogems === 160 ? wishOne : wishTen} 
-          _hover={{cursor: 'pointer'}} 
-          width='315px'
-          color={`${HEXCODES.WISH_BUTTON_TEXT}`}
-          backgroundImage={`url("${PATHS.ASSETS}/wish_button_background.png")`}
-          backgroundRepeat='no-repeat'
-          backgroundSize='contain'
-          paddingTop='5px'
-          >
+        <div
+          className='wish-button'
+          onClick={primogems === 160 ? wishOne : wishTen}
+          style={{
+            color: `${HEXCODES.WISH_BUTTON_TEXT}`,
+            backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.png")`
+          }}>
           <p>Wish {primogems === 160 ? 1 : 10}</p>
-          <Stack direction='row' justifyContent='center'>
+          <div className='flex-row' style={{ justifyContent: 'center' }}>
             <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> <span>x {primogems}</span>
-          </Stack>
-        </Box>
+          </div>
+        </div>
     )
     
     return (
       <>
         <ResetAlert isOpen={isResetConfirmationOpen} setIsOpen={setIsOpen}/>
-        <Stack direction='row' justifyContent='space-between' padding='70px'>
-            <Stack direction='column'>
-              <Stack direction='row'>
-                <Stack direction='row' minWidth='75px'>
-                  <Image src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} height='32px' width='32px'/>
-                  <Text key='starglitter_amount'>{wishState.starglitter}</Text>
-                </Stack>
-                <Stack direction='row' minWidth='75px'>
-                  <Image src={`${PATHS.ITEMS}/item_masterless_stardust.png`} height='32px' width='32px'/>
-                  <Text key='stardust_amount'>{wishState.stardust}</Text>
-                </Stack>
-              </Stack>
-              <Stack direction={['column', 'row']}>
+        <div className='flex-row' style={{justifyContent:'space-between', padding:'70px'}}>
+            <div className='flex-column'>
+              <div className='flex-row'>
+                <div className='flex-row' style={{minWidth: '75px'}}>
+                  <img src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} style={{height: '32px', width: '32px'}}/>
+                  <p key='starglitter_amount'>{wishState.starglitter}</p>
+                </div>
+                <div className='flex-row' style={{minWidth: '75px'}}>
+                  <img src={`${PATHS.ITEMS}/item_masterless_stardust.png`} style={{height: '32px', width: '32px'}}/>
+                  <p key='stardust_amount'>{wishState.stardust}</p>
+                </div>
+              </div>
+              <div className='flex-row'>
                 <Link to='/shop'>
                   <FooterButton>Shop</FooterButton>
                 </Link>
@@ -76,13 +72,13 @@ const BannerFooter = (props: BannerFooterProps) => {
                   <FooterButton>History</FooterButton>
                 </Link>
                 <FooterButton onClick={() => setIsOpen(true)}>Reset</FooterButton>
-              </Stack>
-            </Stack>
-            <Stack direction={['column', 'row']}>
+              </div>
+            </div>
+            <div className='flex-row'>
               <WishButton primogems={160}/>
               <WishButton primogems={1600}/>
-            </Stack>
-        </Stack>
+            </div>
+        </div>
       </>
     );
 }

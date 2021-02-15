@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image, Stack } from '@chakra-ui/react';
 import BANNERS from '../../constants/banners';
 import HEXCODES from '../../constants/hexcodes';
 import WEAPONS from '../../constants/weapons';
@@ -59,12 +58,12 @@ const ItemsToWishForSection = () => {
 
     return (
         <section>
-            <Stack direction='row'>
-                <Image src={`${PATHS.ITEMS}/item_primogem.png`} width='35px' height='35px'/>
+            <div className='flex-row'>
+                <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{width:'35px', height:'35px'}}/>
                 <h1 style={{color: '#A68458', lineHeight: '33px'}}>
                     Items to wish for:
                 </h1>
-            </Stack>
+            </div>
             {/* TODO: Refactor toThreePrecision function to be reusable from BannerDetail */}
             <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)

@@ -1,4 +1,3 @@
-import { Stack } from '@chakra-ui/react';
 import React from 'react';
 import BANNERS, { BANNER_CODE } from '../../../constants/banners';
 import { useWishState } from '../../../state-management/store';
@@ -23,9 +22,9 @@ const BannerCenter = () => {
     }
 
     return (
-        <Stack direction='row' justifyContent='center' marginTop='30px' minHeight='600px'>
+        <div className='flex-row' style={{justifyContent: 'center', marginTop: '30px', minHeight: '600px'}}>
             <BannerImage/>
-        </Stack>
+        </div>
     );
 }
 

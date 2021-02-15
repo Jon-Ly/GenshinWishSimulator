@@ -1,4 +1,10 @@
-h1 {
+html, 
+body {
+    margin: 0;
+    color: white;
+}
+
+/* h1 {
     font-size: 28px !important;
     font-weight: 700 !important;
 }
@@ -26,4 +32,19 @@ h5 {
 h6 {
     font-size: 8px !important;
     font-weight: 400 !important;
+} */
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
 }

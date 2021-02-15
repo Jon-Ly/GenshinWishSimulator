@@ -4,7 +4,7 @@ import './history-select.css';
 
 const HistorySelect = () => {
     return (
-        <div style={{display: 'flex', flexDirection: 'row'}}>
+        <div className='flex-row'>
             <h1>Select Wish Type:</h1>
             <select>
                 <option value={BANNER_CODE.WANDERLUST}>Permanent Wish</option>

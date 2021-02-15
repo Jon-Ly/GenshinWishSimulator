@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-import {
-  ChakraProvider,
-  theme,
-} from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import Wish from "./pages/wish/wish";
 import BannerSelectMenu from "./pages/banner-select/banner-select";
 import {
@@ -19,8 +14,6 @@ export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
 
   return (
-    <ChakraProvider>
-      {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -34,6 +27,5 @@ export const App = () => {
           </Route>
         </Switch>
       </Router>
-    </ChakraProvider>
   );
 }

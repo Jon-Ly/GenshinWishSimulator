@@ -1,4 +1,4 @@
-import { ColorModeScript } from "@chakra-ui/react";
+
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./App";
@@ -11,7 +11,6 @@ localStorage.setItem('chakra-ui-color-mode', 'dark')
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
-      <ColorModeScript/>
       <App/>
     </StoreProvider>
   </React.StrictMode>,

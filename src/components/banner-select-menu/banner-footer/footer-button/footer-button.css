@@ -1,0 +1,12 @@
+.footer-button {
+    border-radius: 50px;
+    height: 35px;
+    width: 135px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.footer-button:hover, 
+.footer-button:active {
+    background-color: '#E2DED4';
+}

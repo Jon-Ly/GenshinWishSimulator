@@ -1,8 +1,4 @@
-import { Box, Container, Image } from '@chakra-ui/react';
-import { faReply } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import BANNERS from '../../constants/banners';
 import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
@@ -69,13 +65,13 @@ const BannerDetail = () => {
             <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
             </BannerDetailHeader>
-            <Image src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.png`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
+            <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.png`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
             <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
             </BannerDetailHeader>
             {
                 (currentBanner?.eventFourStars || []).map(c => 
-                    <Image 
+                    <img 
                         style={{display: 'inline', margin: '0 30px 30px 0'}} 
                         key={`detail-img-${c.name}`} 
                         src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.png`} alt={`${c.name.toLowerCase()}`}/>
