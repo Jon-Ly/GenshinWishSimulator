@@ -1,4 +1,3 @@
-import { Button, Image } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import PATHS from '../../constants/paths';
 import { Item } from '../../models/item';
@@ -11,6 +10,7 @@ interface WishProps {
 
 const Wish = (props: WishProps) => {
     const [hasVideoEnded, setHasVideoEnded] = useState(false);
+    const [itemIndex, setItemIndex] = useState(0);
     const state = useWishState();
     const { setIsWishing } = props;
 
@@ -30,8 +30,13 @@ const Wish = (props: WishProps) => {
         return `${PATHS.VIDEOS}/three_star.mp4`;
     }
 
+    const incrementItemIndex = () => setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
+
+    const Image = () => <img className='item-img' src={getImageSource(state.results[itemIndex].name)} alt={`IMAGE-${state.results[itemIndex].name}`}/>
+
     return (
-        <div style={{overflowY: 'hidden'}}>
+        <div onClick={incrementItemIndex}>
+            {itemIndex}
             {
                 !hasVideoEnded ?
                 (
@@ -41,16 +46,15 @@ const Wish = (props: WishProps) => {
                 ) : null
             }
             {
-                hasVideoEnded ? state.results.map((result, index) => {
-                    return (
-                        <div key={result.name + index}>
-                            <h1>{result.name}</h1>
-                            <Image src={getImageSource(result.name)} alt={`IMAGE-${result.name}`}/>
-                        </div>
-                    )
-                }) : null
+                itemIndex < state.results.length ? (
+                    <div>
+                        <h1>{state.results[itemIndex].name}</h1>
+                        <Image/>
+                    </div>
+                ) : (
+                    state.results.map(i => <p>{i.name}</p>)
+                )
             }
-            <Button onClick={() => setIsWishing(false)}>Go Back</Button>
         </div>
     );
 }
