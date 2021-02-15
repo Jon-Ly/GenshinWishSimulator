@@ -1,7 +1,7 @@
 import React from 'react';
-import BannerCenter from '../../components/banner-select-menu/banner-center/banner-center';
-import BannerFooter from '../../components/banner-select-menu/banner-footer/banner-footer';
-import BannerHeader from '../../components/banner-select-menu/banner-header/banner-header';
+import BannerCenter from '../../components/banner-center/banner-center';
+import BannerFooter from '../../components/banner-footer/banner-footer';
+import BannerHeader from '../../components/banner-header/banner-header';
 import PATHS from '../../constants/paths';
 import './banner-select.css';
 

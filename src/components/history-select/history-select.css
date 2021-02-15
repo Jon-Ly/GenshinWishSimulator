@@ -1,9 +1,15 @@
-select { 
+label {
+    font-size: 36px;
+    line-height: 65px;
+}
+
+.history-select { 
     display: inline;
     width: 35%;
-    font-size: 24px;
-    padding: 15px;
-    border: 2px solid #B6B3AF;
+    font-size: 26px;
+    padding: 15px !important;
+    border: 3px solid #B6B3AF;
     border-radius: 5px;
-    background-color: '#DBD7D3';
+    background-color: #DBD7D3;
+    margin-left: 35px;
 }

@@ -4,7 +4,7 @@ body {
     color: white;
 }
 
-/* h1 {
+h1 {
     font-size: 28px !important;
     font-weight: 700 !important;
 }
@@ -32,7 +32,7 @@ h5 {
 h6 {
     font-size: 8px !important;
     font-weight: 400 !important;
-} */
+}
 
 .container {
     width: 80%;

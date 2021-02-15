@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import HEXCODES from '../../../constants/hexcodes';
-import PATHS from '../../../constants/paths';
-import { ACTION_TYPE } from '../../../state-management/reducer';
-import { useWishDispatch, useWishState } from '../../../state-management/store';
-import FooterButton from './footer-button/footer-button';
+import HEXCODES from '../../constants/hexcodes'
+import PATHS from '../../constants/paths'
+import { ACTION_TYPE } from '../../state-management/reducer'
+import { useWishDispatch, useWishState } from '../../state-management/store'
 import ResetAlert from './reset-alert';
 import './banner-footer.css';
+import FooterButton from '../footer-button/footer-button';
 
 interface BannerFooterProps {
     setIsWishing: (isWishing: boolean) => void

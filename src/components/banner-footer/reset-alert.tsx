@@ -1,7 +1,7 @@
 import { AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogBody, AlertDialogFooter, Button } from '@chakra-ui/react';
 import React from 'react';
-import { ACTION_TYPE } from '../../../state-management/reducer';
-import { useWishDispatch } from '../../../state-management/store';
+import { ACTION_TYPE } from '../../state-management/reducer';
+import { useWishDispatch } from '../../state-management/store';
 
 export enum DIALOG_OPTON {
     CANCEL = 'CANCEL',

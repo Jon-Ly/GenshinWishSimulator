@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import PATHS from '../../constants/paths';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
+import './wish.css';
 
 interface WishProps {
     setIsWishing: (isWishing: boolean) => void

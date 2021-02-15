@@ -154,14 +154,15 @@ export default class WishService {
     }
 
     private addItemsToUserData = (results: Array<Item>): void => {
-        const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+        var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 19).replace('T', ' ');
         results.forEach((result: Item) => {
-            this.userData.items.push({
+            this.userData.items.unshift({
                 name: result.name,
                 stars: result.stars,
-                timestamp: timestamp,
+                timestamp: localISOTime,
                 banner: this.userData.banner,
-                type: result.chance === 0.5 ? 'CHARACTER' : 'WEAPON'
+                type: result.chance === 0.5 ? 'Character' : 'Weapon'
             })
         });
     }

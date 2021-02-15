@@ -1,0 +1,25 @@
+#page {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#pagination {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination-button {
+    background-color: #C3A280;
+    color: #D7CBBD;
+    font-size: 28px;
+    margin: 0 25px;
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+}

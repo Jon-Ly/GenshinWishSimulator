@@ -1,5 +1,5 @@
 import React from 'react';
-import HEXCODES from '../../../../constants/hexcodes';
+import HEXCODES from '../../constants/hexcodes';
 import './footer-button.css';
 
 interface FooterButtonProps {

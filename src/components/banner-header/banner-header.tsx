@@ -1,10 +1,10 @@
 import { Button, Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
-import BANNERS, { Banner } from '../../../constants/banners';
-import PATHS from '../../../constants/paths';
-import { ACTION_TYPE } from '../../../state-management/reducer';
-import { useWishDispatch, useWishState } from '../../../state-management/store';
-import HEXCODES from '../../../constants/hexcodes';
+import BANNERS, { Banner } from '../../constants/banners';
+import PATHS from '../../constants/paths';
+import { ACTION_TYPE } from '../../state-management/reducer';
+import { useWishDispatch, useWishState } from '../../state-management/store';
+import HEXCODES from '../../constants/hexcodes';
 
 interface BannerButtonProps {
     banner: Banner
@@ -47,13 +47,11 @@ const BannerHeader = () => {
         <Stack direction='row' padding= '25px 70px 0 70px' minHeight='100px' justifyContent='space-between'>
             <Stack direction='row' marginTop={MARGIN}>
                 <Image src={`${PATHS.ASSETS}/star.png`} width='40px' height='40px'/>
-                <Text style={{fontWeight: 'bold', lineHeight: '35px', marginLeft: '40px'}}>Wish</Text>
+                <Text style={{fontWeight: 'bold', lineHeight: '35px', marginLeft: '40px', textShadow: '#121212 0 0 4px'}}>Wish</Text>
             </Stack>
             <Stack direction='row' marginTop={MARGIN}>
                 {
-                    BANNERS_DATE_ASCENDING.map(banner => {
-                        return <BannerButton key={banner.code} banner={banner}/>
-                    })
+                    BANNERS_DATE_ASCENDING.map(banner => <BannerButton key={banner.code} banner={banner}/>)
                 }
             </Stack>
             <Stack 

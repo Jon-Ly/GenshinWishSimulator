@@ -5,7 +5,7 @@ export interface ItemData {
     stars: number,
     timestamp?: string,
     banner?: BANNER_CODE,
-    type: 'CHARACTER' | 'WEAPON'
+    type: 'Character' | 'Weapon'
 }
 
 export interface UserData {
@@ -29,32 +29,32 @@ const InitialUserData: UserData = {
         {
             name: 'Amber',
             stars: 4,
-            type: 'CHARACTER'
+            type: 'Character'
         },
         {
             name: 'Barbara',
             stars: 4,
-            type: 'CHARACTER'
+            type: 'Character'
         },
         {
             name: 'Kaeya',
             stars: 4,
-            type: 'CHARACTER'
+            type: 'Character'
         },
         {
             name: 'Lisa',
             stars: 4,
-            type: 'CHARACTER'
+            type: 'Character'
         },
         {
             name: 'Noelle',
             stars: 4,
-            type: 'CHARACTER'
+            type: 'Character'
         },
         {
             name: 'Xiangling',
             stars: 4,
-            type: 'CHARACTER'
+            type: 'Character'
         }
     ],
     crystals: 0,

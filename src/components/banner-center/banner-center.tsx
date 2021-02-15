@@ -1,6 +1,6 @@
 import React from 'react';
-import BANNERS, { BANNER_CODE } from '../../../constants/banners';
-import { useWishState } from '../../../state-management/store';
+import BANNERS, { BANNER_CODE } from '../../constants/banners';
+import { useWishState } from '../../state-management/store';
 import './banner-center.css';
 
 const BannerCenter = () => {
