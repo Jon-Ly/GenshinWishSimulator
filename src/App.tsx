@@ -9,11 +9,13 @@ import {
 import BannerDetail from "./pages/banner-detail/banner-detail";
 import BannerHistory from "./pages/banner-history/banner-history";
 import './App.css';
+import { ChakraProvider } from "@chakra-ui/react";
 
 export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
 
   return (
+    <ChakraProvider>
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -27,5 +29,6 @@ export const App = () => {
           </Route>
         </Switch>
       </Router>
+    </ChakraProvider>
   );
 }
