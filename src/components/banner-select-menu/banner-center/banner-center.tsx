@@ -16,7 +16,7 @@ const BannerCenter = () => {
 
         return <img
             alt={altText}
-            style={wishState.banner !== BANNER_CODE.WANDERLUST ? baseStyle : wanderlustStyle} 
+            style={wishState.banner !== BANNER_CODE.WANDERLUST ? baseStyle : wanderlustStyle}
             className='banner'
             src={imagePath}/>
     }

@@ -6,6 +6,7 @@ import { ACTION_TYPE } from '../../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../../state-management/store';
 import FooterButton from './footer-button/footer-button';
 import ResetAlert from './reset-alert';
+import './banner-footer.css';
 
 interface BannerFooterProps {
     setIsWishing: (isWishing: boolean) => void
@@ -31,27 +32,32 @@ const BannerFooter = (props: BannerFooterProps) => {
       setIsWishing(true);
     }
 
-    const WishButton = ({primogems}: WishButtonProps) => (
-        <div
-          className='wish-button'
-          onClick={primogems === 160 ? wishOne : wishTen}
-          style={{
-            color: `${HEXCODES.WISH_BUTTON_TEXT}`,
-            backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.png")`
-          }}>
-          <p>Wish {primogems === 160 ? 1 : 10}</p>
-          <div className='flex-row' style={{ justifyContent: 'center' }}>
-            <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> <span>x {primogems}</span>
-          </div>
-        </div>
-    )
+    const WishButton = ({primogems}: WishButtonProps) => {
+      const currentPrimogems = wishState.primogems;
+      const primoFontColor = currentPrimogems >= 1600 || (currentPrimogems >= 160 && primogems === 160) ? `${HEXCODES.WISH_BUTTON_TEXT}` : `${HEXCODES.ERROR}`
+      return (
+          <button
+            className='wish-button'
+            onClick={primogems === 160 ? wishOne : wishTen}
+            style={{
+              color: `${HEXCODES.WISH_BUTTON_TEXT}`,
+              backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.png")`
+            }}>
+            <p>Wish {primogems === 160 ? 1 : 10}</p>
+            <div className='flex-row' style={{ justifyContent: 'center' }}>
+              <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> 
+              <span style={{color: primoFontColor}}>x {primogems}</span>
+            </div>
+          </button>
+      )
+    }
     
     return (
       <>
         <ResetAlert isOpen={isResetConfirmationOpen} setIsOpen={setIsOpen}/>
         <div className='flex-row' style={{justifyContent:'space-between', padding:'70px'}}>
             <div className='flex-column'>
-              <div className='flex-row'>
+              <div className='flex-row' style={{marginBottom: '10px'}}>
                 <div className='flex-row' style={{minWidth: '75px'}}>
                   <img src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} style={{height: '32px', width: '32px'}}/>
                   <p key='starglitter_amount'>{wishState.starglitter}</p>

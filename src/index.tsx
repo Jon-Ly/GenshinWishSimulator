@@ -6,8 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import { StoreProvider } from "./state-management/store";
 
-localStorage.setItem('chakra-ui-color-mode', 'dark')
-
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>
