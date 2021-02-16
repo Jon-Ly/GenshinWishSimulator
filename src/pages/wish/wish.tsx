@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PATHS from '../../constants/paths';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
@@ -13,6 +13,10 @@ const Wish = (props: WishProps) => {
     const [itemIndex, setItemIndex] = useState(0);
     const state = useWishState();
     const { setIsWishing } = props;
+
+    useEffect(() => {
+        document.getElementsByTagName('body')[0].className = 'overflow-hidden';
+    })
 
     const getImageSource = (name: string): string => `${PATHS.CHARACTER_WISH_IMAGES}/character_${name.toLowerCase()}.png`;
 
@@ -31,9 +35,12 @@ const Wish = (props: WishProps) => {
     }
 
     const incrementItemIndex = () => {
-        setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
-        if (itemIndex === state.results.length) {
-            setIsWishing(false);
+        if (hasVideoEnded) {
+            document.getElementsByTagName('body')[0].className = '';
+            setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
+            if (itemIndex === state.results.length || state.results.length === 1) {
+                setIsWishing(false);
+            }
         }
     }
 
@@ -49,7 +56,7 @@ const Wish = (props: WishProps) => {
                         <source src={getVideoPath()}/>
                     </video>
                 ) : 
-                itemIndex < state.results.length ? <Image/> : 
+                itemIndex < state.results.length ? <Image/> :
                 (
                     state.results.map((item, index) => <p key={`${item.name}${index}`}>{item.name}</p>)
                 )
