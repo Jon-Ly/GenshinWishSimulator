@@ -7,7 +7,7 @@ const BannerCenter = () => {
     const wishState = useWishState();
     const currentBanner = BANNERS.find(b => b.code === wishState.banner);
 
-    const BannerImage = () => {
+    function BannerImage() {
         const imagePath = currentBanner?.imagePath;
         const altText = `${currentBanner?.code}-banner`;
 

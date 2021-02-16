@@ -1,6 +1,6 @@
 import { Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
-import BANNERS, { Banner} from '../../constants/banners';
+import BANNERS, { Banner, BANNER_CODE} from '../../constants/banners';
 import PATHS from '../../constants/paths';
 import { ACTION_TYPE } from '../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../state-management/store';
@@ -25,6 +25,12 @@ const BannerHeader = () => {
         return 0;
     });
 
+    const setBanner = (bannerCode: BANNER_CODE) => {
+        if (wishState.banner !== bannerCode) {
+            wishDispatch({type: ACTION_TYPE.SET_BANNER, payload: bannerCode});
+        }
+    }
+
     function BannerButton(props: BannerButtonProps) {
         const { banner } = props;
 
@@ -37,7 +43,7 @@ const BannerHeader = () => {
             <button
                 className='banner-tab'
                 style={banner.code ===  wishState.banner ? active : inactive}
-                onClick={() => wishDispatch({type: ACTION_TYPE.SET_BANNER, payload: banner.code})}>
+                onClick={() => setBanner(banner.code)}>
                 {name}
             </button>
         )

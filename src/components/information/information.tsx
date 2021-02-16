@@ -13,7 +13,7 @@ const Information = ({children}: InformationProps) => {
     const InformationNavbar = () => (
         <nav style={{height: '50px', width: '100%', backgroundColor: 'black'}}>
             <Link to='/' style={{fontSize: '34px', marginLeft: '35px'}}>
-                <button>
+                <button className='back-button'>
                     <FontAwesomeIcon icon={faReply}/>
                 </button>
             </Link>
