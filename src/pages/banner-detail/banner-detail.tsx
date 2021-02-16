@@ -5,11 +5,10 @@ import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
 import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
-import './banner-detail.css';
 import ItemsToWishForSection from '../../components/items-to-wish-for-section/items-to-wish-for-section';
 import Information from '../../components/information/information';
+import './banner-detail.css';
 
-// TODO: Refactor this later, font weight = 500 for all sections, increase font-size
 const BannerDetail = () => {
     const wishState = useWishState();
     const currentBanner = BANNERS.find(b => b.code === wishState.banner);
@@ -40,7 +39,7 @@ const BannerDetail = () => {
     )
 
     const DuplicateCharactersSection = () => (
-        <section>
+        <section className='detail-section'>
             <h2>〓Duplicate Characters〓</h2>
             <p>
                 On obtaining a 5-star character that you already own (whether obtained in a wish, redeemed at the shop, or awarded by the game): 
@@ -60,7 +59,7 @@ const BannerDetail = () => {
     )
 
     const IncreasedDropRateSection = () => (
-        <section>
+        <section className='detail-section'>
             <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
             <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
@@ -81,7 +80,7 @@ const BannerDetail = () => {
     )
 
     const RulesSection = () => (
-        <section>
+        <section className='detail-section'>
             <h2>〓Rules〓</h2>
             <p>5-Star Items</p>
             <p>
@@ -114,7 +113,7 @@ const BannerDetail = () => {
     )
 
     const WishDetailSection = () => (
-        <section>
+        <section className='detail-section'>
             <h1 style={{color: '#575757'}}>Wish Details</h1>
             <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='#FFFFFF'/>
             <p>
@@ -130,7 +129,7 @@ const BannerDetail = () => {
 
     return (
         <Information>
-            <header style={{paddingBottom: '10px'}}> 
+            <header className='banner-detail-header'> 
                 <svg width="11" height="55" style={{display: 'inline'}}>
                     <rect width='11' height='45' style={{fill: '#4D4D4D'}}/>
                 </svg>

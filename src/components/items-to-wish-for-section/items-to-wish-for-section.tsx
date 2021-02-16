@@ -4,9 +4,9 @@ import HEXCODES from '../../constants/hexcodes';
 import WEAPONS from '../../constants/weapons';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
-import '../../styles/item-table.css';
 import BannerDetailHeader from '../banner-detail/banner-detail-header';
 import PATHS from '../../constants/paths';
+import '../../styles/item-table.css';
 
 interface ItemTableProps {
     items: Array<Item>
@@ -57,7 +57,7 @@ const ItemsToWishForSection = () => {
     }
 
     return (
-        <section>
+        <section className='detail-section'>
             <div className='flex-row'>
                 <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{width:'35px', height:'35px'}}/>
                 <h1 style={{color: '#A68458', lineHeight: '33px'}}>

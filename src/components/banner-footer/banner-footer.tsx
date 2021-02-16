@@ -6,11 +6,15 @@ import { ACTION_TYPE } from '../../state-management/reducer'
 import { useWishDispatch, useWishState } from '../../state-management/store'
 import ResetAlert from './reset-alert';
 import './banner-footer.css';
-import FooterButton from '../footer-button/footer-button';
 
 interface BannerFooterProps {
   isWishing: boolean;
   setIsWishing: (isWishing: boolean) => void
+}
+
+interface FooterButtonProps {
+    children?: React.ReactNode,
+    onClick?: () => void
 }
 
 interface WishButtonProps {
@@ -22,6 +26,12 @@ const BannerFooter = (props: BannerFooterProps) => {
     const wishState = useWishState();
     const wishDispatch = useWishDispatch();
     const { isWishing, setIsWishing } = props;
+
+    const FooterButton = ({children, onClick}: FooterButtonProps) => (
+      <button onClick={onClick} className='footer-button' style={{backgroundColor: `${HEXCODES.SHOP_DETAIL_HISTORY}`, color: `${HEXCODES.SHOP_DETAIL_HISTORY_TEXT}`}}>
+          {children}
+      </button>
+    )
     
     const wishOne = () => {
       if (!isWishing) {

@@ -1,12 +1,13 @@
-section {
+.detail-section {
     font-size: 24px;
     margin-bottom: 25px;
 }
 
-header {
+.banner-detail-header {
     background-color: #DBDBDB;
     font-size: 36px;
     font-weight: 500;
     margin-bottom: 75px;
     position: relative;
+    padding-bottom: 10px;
 }

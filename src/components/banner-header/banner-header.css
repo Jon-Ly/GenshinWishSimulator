@@ -1,0 +1,21 @@
+.header-container {
+    padding: 25px 70px 0 70px;
+    min-height: 100px;
+    justify-content: space-between;
+}
+
+.banner-tab {
+    border-radius: 4px;
+    padding: 5px 25px;
+    max-height: 50px;
+    margin: 0 5px;
+}
+
+.primogems {
+    min-width: 75px;
+    text-align: right;
+    background-color: rgba(15, 15, 15, 0.35);
+    padding: 0 20px 0 5px;
+    height: 31px;
+    border-radius: 50px;
+}

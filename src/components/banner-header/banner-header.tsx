@@ -1,10 +1,11 @@
-import { Button, Stack, Text, Image } from '@chakra-ui/react';
+import { Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
 import BANNERS, { Banner} from '../../constants/banners';
 import PATHS from '../../constants/paths';
 import { ACTION_TYPE } from '../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../state-management/store';
 import HEXCODES from '../../constants/hexcodes';
+import './banner-header.css';
 
 interface BannerButtonProps {
     banner: Banner
@@ -29,42 +30,35 @@ const BannerHeader = () => {
 
         const name = banner.eventFiveStar?.name || 'Wanderlust';
 
-        const enlarge = {backgroundColor: `${HEXCODES.BANNER_TAB_ACTIVE}`, color: '#000000'};
+        const inactive = {backgroundColor: `${HEXCODES.BANNER_TAB_INACTIVE}`};
+        const active = {backgroundColor: `${HEXCODES.BANNER_TAB_ACTIVE}`, color: '#000000'};
 
         return (
-            <Button 
-                backgroundColor={`${HEXCODES.BANNER_TAB_INACTIVE}`}
-                style={banner.code ===  wishState.banner ? enlarge : {}}
+            <button
+                className='banner-tab'
+                style={banner.code ===  wishState.banner ? active : inactive}
                 onClick={() => wishDispatch({type: ACTION_TYPE.SET_BANNER, payload: banner.code})}>
                 {name}
-            </Button>
+            </button>
         )
     }
     
     return (
-        <Stack direction='row' padding= '25px 70px 0 70px' minHeight='100px' justifyContent='space-between'>
-            <Stack direction='row' marginTop={MARGIN}>
-                <Image src={`${PATHS.ASSETS}/star.png`} width='40px' height='40px'/>
-                <Text style={{fontWeight: 'bold', lineHeight: '35px', marginLeft: '40px', textShadow: '#121212 0 0 4px'}}>Wish</Text>
-            </Stack>
-            <Stack direction='row' marginTop={MARGIN}>
+        <header className='flex-row header-container'>
+            <div className='flex-row' style={{marginTop: `${MARGIN}`}}>
+                <img src={`${PATHS.ASSETS}/star.png`} style={{height: '40px', width: '40px'}}/>
+                <p className='wish-text'>Wish</p>
+            </div>
+            <div className='flex-row' style={{marginTop: `${MARGIN}`}}>
                 {
                     BANNERS_DATE_ASCENDING.map(banner => <BannerButton key={banner.code} banner={banner}/>)
                 }
-            </Stack>
-            <Stack 
-                direction='row'
-                marginTop={MARGIN} 
-                minWidth='75px' 
-                textAlign='right' 
-                backgroundColor='rgba(15, 15, 15, 0.35)'
-                padding='0 20px 0 5px'
-                height='31px' 
-                borderRadius='50px'>
-                <Image src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/>
-                <Text>{wishState.primogems}</Text>
-            </Stack>
-        </Stack>
+            </div>
+            <div className='flex-row primogems' style={{marginTop: `${MARGIN}`}}>
+                <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}}/>
+                <p>{wishState.primogems}</p>
+            </div>
+        </header>
     );
 }
 
