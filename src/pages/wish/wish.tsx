@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PATHS from '../../constants/paths';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
@@ -13,10 +13,6 @@ const Wish = (props: WishProps) => {
     const [itemIndex, setItemIndex] = useState(0);
     const state = useWishState();
     const { setIsWishing } = props;
-
-    useEffect(() => {
-        document.getElementsByTagName('body')[0].className = 'overflow-hidden';
-    })
 
     const getImageSource = (name: string): string => `${PATHS.CHARACTER_WISH_IMAGES}/character_${name.toLowerCase()}.png`;
 
@@ -44,15 +40,24 @@ const Wish = (props: WishProps) => {
         }
     }
 
-    const Image = () => <img className='item-img' src={getImageSource(state.results[itemIndex].name)} alt={`IMAGE-${state.results[itemIndex].name}`}/>
+    const Image = () => {
+        const resultItem = state.results[itemIndex];
+        return <img className='item-img' src={getImageSource(resultItem.name)} alt={`IMAGE-${resultItem.name}`}/>
+    }
 
     return (
         <div onClick={incrementItemIndex}>
-            {hasVideoEnded}
+            {
+                !hasVideoEnded ? (
+                    <button className='skip-button'>
+                        SKIP
+                    </button>
+                 ) : null
+            }
             {
                 !hasVideoEnded ?
                 (
-                    <video autoPlay={true} onEnded={() => setHasVideoEnded(true)}>
+                    <video className='wish-video' autoPlay={true} onEnded={() => setHasVideoEnded(true)}>
                         <source src={getVideoPath()}/>
                     </video>
                 ) : 
