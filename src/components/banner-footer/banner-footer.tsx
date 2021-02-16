@@ -9,7 +9,8 @@ import './banner-footer.css';
 import FooterButton from '../footer-button/footer-button';
 
 interface BannerFooterProps {
-    setIsWishing: (isWishing: boolean) => void
+  isWishing: boolean;
+  setIsWishing: (isWishing: boolean) => void
 }
 
 interface WishButtonProps {
@@ -20,16 +21,20 @@ const BannerFooter = (props: BannerFooterProps) => {
     const [isResetConfirmationOpen, setIsOpen] = useState(false);
     const wishState = useWishState();
     const wishDispatch = useWishDispatch();
-    const { setIsWishing } = props;
+    const { isWishing, setIsWishing } = props;
     
     const wishOne = () => {
-      wishDispatch({type: ACTION_TYPE.WISH, payload: 1});
-      setIsWishing(true);
+      if (!isWishing) {
+        wishDispatch({type: ACTION_TYPE.WISH, payload: 1});
+        setIsWishing(true);
+      }
     }
   
     const wishTen = () => {
-      wishDispatch({type: ACTION_TYPE.WISH, payload: 10});
-      setIsWishing(true);
+      if (!isWishing) {
+        wishDispatch({type: ACTION_TYPE.WISH, payload: 10});
+        setIsWishing(true);
+      }
     }
 
     const WishButton = ({primogems}: WishButtonProps) => {

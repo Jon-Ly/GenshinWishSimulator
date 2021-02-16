@@ -6,6 +6,7 @@ import PATHS from '../../constants/paths';
 import './banner-select.css';
 
 interface BannerSelectProps {
+    isWishing: boolean,
     setIsWishing: (isWishing: boolean) => void
 }
 
@@ -17,13 +18,13 @@ interface BannerSelectProps {
  * Crystal to Primogems Dialog
  */
 const BannerSelect = (props: BannerSelectProps) => {
-    const { setIsWishing } = props;
+    const { isWishing, setIsWishing } = props;
 
     return (
         <div className='select-menu' style={{backgroundImage: `url("${PATHS.ASSETS}/wish_background.png")`, color: '#FFFFFF'}}>
             <BannerHeader/>
             <BannerCenter/>
-            <BannerFooter setIsWishing={setIsWishing}/>
+            <BannerFooter setIsWishing={setIsWishing} isWishing={isWishing}/>
         </div>
     );
 };

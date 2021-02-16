@@ -30,13 +30,17 @@ const Wish = (props: WishProps) => {
         return `${PATHS.VIDEOS}/three_star.mp4`;
     }
 
-    const incrementItemIndex = () => setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
+    const incrementItemIndex = () => {
+        setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
+        if (itemIndex === state.results.length) {
+            setIsWishing(false);
+        }
+    }
 
     const Image = () => <img className='item-img' src={getImageSource(state.results[itemIndex].name)} alt={`IMAGE-${state.results[itemIndex].name}`}/>
 
     return (
         <div onClick={incrementItemIndex}>
-            {itemIndex}
             {
                 !hasVideoEnded ?
                 (
@@ -46,12 +50,8 @@ const Wish = (props: WishProps) => {
                 ) : null
             }
             {
-                itemIndex < state.results.length ? (
-                    <div>
-                        <h1>{state.results[itemIndex].name}</h1>
-                        <Image/>
-                    </div>
-                ) : (
+                itemIndex < state.results.length ? <Image/> : 
+                (
                     state.results.map(i => <p>{i.name}</p>)
                 )
             }

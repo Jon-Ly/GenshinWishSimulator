@@ -19,7 +19,7 @@ export const App = () => {
       <Router>
         <Switch>
           <Route exact path='/'>
-            {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelectMenu setIsWishing={setIsWishing}/>}
+            {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelectMenu setIsWishing={setIsWishing} isWishing={isWishing}/>}
           </Route>
           <Route path='/details'>
             <BannerDetail/>
