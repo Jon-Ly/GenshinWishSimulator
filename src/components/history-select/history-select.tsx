@@ -1,14 +1,20 @@
 import React from 'react';
-import { BANNER_CODE } from '../../constants/banners';
+import HISTORY_TYPE from '../../constants/history-type';
+import HistoryType from '../../constants/history-type';
 import './history-select.css';
 
-const HistorySelect = () => {
+interface HistorySelectProps {
+    value: HistoryType,
+    onChange: (banner: HISTORY_TYPE) => void
+}
+
+const HistorySelect = ({value, onChange}: HistorySelectProps) => {
     return (
         <div className='flex-row'>
             <label>Select Wish Type:</label>
-            <select className='history-select'>
-                <option value={BANNER_CODE.WANDERLUST}>Permanent Wish</option>
-                <option value={BANNER_CODE.ALBEDO}>Character Event Wish</option>
+            <select className='history-select' value={value} onChange={e => onChange(e.target.value as HISTORY_TYPE)}>
+                <option value={HISTORY_TYPE.WANDERLUST}>Permanent Wish</option>
+                <option value={HISTORY_TYPE.CHARACTER_EVENT}>Character Event Wish</option>
             </select>
         </div>
     )

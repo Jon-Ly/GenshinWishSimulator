@@ -52,7 +52,7 @@ const Wish = (props: WishProps) => {
             {
                 itemIndex < state.results.length ? <Image/> : 
                 (
-                    state.results.map(i => <p>{i.name}</p>)
+                    state.results.map((item, index) => <p key={`${item.name}${index}`}>{item.name}</p>)
                 )
             }
         </div>

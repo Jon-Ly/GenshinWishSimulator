@@ -1,6 +1,8 @@
 import BANNERS, { BANNER_CODE } from "../constants/banners";
 import CHANCES from "../constants/chances";
 import CHARACTERS from "../constants/characters";
+import HISTORY_TYPE from "../constants/history-type";
+import LOCAL_STORAGE_KEY from "../constants/local-storage-keys";
 import InitialUserData, { ItemData, UserData } from "../constants/user-data";
 import WEAPONS from "../constants/weapons";
 import Character from "../models/character";
@@ -10,7 +12,6 @@ import { WishState } from "../state-management/store";
 export default class WishService {
 
     userData!: UserData;
-    LOCAL_STORAGE_KEY = 'p2w'
 
     /**
      * 
@@ -33,11 +34,11 @@ export default class WishService {
     }
 
     getUserData = (): UserData => {
-        let data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
+        let data = localStorage.getItem(LOCAL_STORAGE_KEY.UserData) || '';
 
         if (!data) {
             this.initializeUserData();
-            data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
+            data = localStorage.getItem(LOCAL_STORAGE_KEY.UserData) || '';
         }
 
         return JSON.parse(data) as UserData;
@@ -137,6 +138,7 @@ export default class WishService {
 
     setBanner = (newBanner: BANNER_CODE) => {
         this.userData.banner = newBanner;
+        localStorage.setItem(LOCAL_STORAGE_KEY.HistoryType, newBanner === BANNER_CODE.WANDERLUST ? HISTORY_TYPE.WANDERLUST : HISTORY_TYPE.CHARACTER_EVENT);
         this.saveUserDataToLocal();
     }
 
@@ -168,14 +170,14 @@ export default class WishService {
     }
 
     private initializeUserData = (): void => {
-        const data = localStorage.getItem(this.LOCAL_STORAGE_KEY) || '';
+        const data = localStorage.getItem(LOCAL_STORAGE_KEY.UserData) || '';
 
         if (!data) {
-            localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(InitialUserData));
+            localStorage.setItem(LOCAL_STORAGE_KEY.UserData, JSON.stringify(InitialUserData));
         }
 
         this.userData = data ? JSON.parse(data) : InitialUserData;
     }
 
-    private saveUserDataToLocal = (): void => localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(this.userData));
+    private saveUserDataToLocal = (): void => localStorage.setItem(LOCAL_STORAGE_KEY.UserData, JSON.stringify(this.userData));
 }

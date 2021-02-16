@@ -1,6 +1,6 @@
 import { Button, Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
-import BANNERS, { Banner } from '../../constants/banners';
+import BANNERS, { Banner} from '../../constants/banners';
 import PATHS from '../../constants/paths';
 import { ACTION_TYPE } from '../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../state-management/store';
@@ -13,7 +13,7 @@ interface BannerButtonProps {
 const BannerHeader = () => {
     const wishState = useWishState();
     const wishDispatch = useWishDispatch();
-
+    const MARGIN = '15px';
     const BANNERS_DATE_ASCENDING = BANNERS.sort((banner1: Banner, banner2: Banner) => {
         if (banner1.startDate < banner2.startDate) {
             return -1;
@@ -23,8 +23,6 @@ const BannerHeader = () => {
 
         return 0;
     });
-
-    const MARGIN = '15px';
 
     function BannerButton(props: BannerButtonProps) {
         const { banner } = props;
