@@ -6,7 +6,7 @@ import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
 import ItemsToWishForSection from '../../components/items-to-wish-for-section/items-to-wish-for-section';
-import Information from '../../components/information/information';
+import InformationContainer from '../../components/information-container/information-container';
 import './banner-detail.css';
 
 const BannerDetail = () => {
@@ -128,7 +128,7 @@ const BannerDetail = () => {
     );
 
     return (
-        <Information>
+        <InformationContainer>
             <header className='banner-detail-header'> 
                 <svg width="11" height="55" style={{display: 'inline'}}>
                     <rect width='11' height='45' style={{fill: '#4D4D4D'}}/>
@@ -144,7 +144,7 @@ const BannerDetail = () => {
                 <DuplicateCharactersSection/>
                 <ItemsToWishForSection/>
             </article>
-        </Information>
+        </InformationContainer>
     )
 }
 

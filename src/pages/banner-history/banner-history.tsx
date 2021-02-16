@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import HistorySelect from '../../components/history-select/history-select';
 import HistoryTable from '../../components/history-table/history-table';
-import Information from '../../components/information/information';
+import InformationContainer from '../../components/information-container/information-container';
 import HEXCODES from '../../constants/hexcodes';
 import HISTORY_TYPE from '../../constants/history-type';
 import LOCAL_STORAGE_KEY from '../../constants/local-storage-keys';
@@ -10,7 +10,7 @@ const BannerHistory = () => {
     const [historyType, setHistoryType] = useState<HISTORY_TYPE>(localStorage.getItem(LOCAL_STORAGE_KEY.HistoryType) as HISTORY_TYPE);
 
     return (
-        <Information>
+        <InformationContainer>
             <HistorySelect value={historyType} onChange={setHistoryType}/>
             <hr style={{margin: '10px 0'}}/>
             <article style={{backgroundColor: `${HEXCODES.DETAIL_BACKGROUND}`, color: `${HEXCODES.DETAIL_FONT_COLOR}`}}>
@@ -19,7 +19,7 @@ const BannerHistory = () => {
                 </section>
                 <HistoryTable historyType={historyType}/>
             </article>
-        </Information>
+        </InformationContainer>
     )
 }
 

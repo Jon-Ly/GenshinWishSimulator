@@ -13,6 +13,7 @@ const Wish = (props: WishProps) => {
     const [itemIndex, setItemIndex] = useState(0);
     const state = useWishState();
     const { setIsWishing } = props;
+    const videoRef = React.createRef<HTMLVideoElement>();
 
     const getImageSource = (name: string): string => `${PATHS.CHARACTER_WISH_IMAGES}/character_${name.toLowerCase()}.png`;
 
@@ -45,11 +46,17 @@ const Wish = (props: WishProps) => {
         return <img className='item-img' src={getImageSource(resultItem.name)} alt={`IMAGE-${resultItem.name}`}/>
     }
 
+    const skipVideo = () => {
+        if (videoRef && videoRef.current) {
+            videoRef.current.currentTime = videoRef.current.currentTime + 10;
+        }
+    }
+
     return (
         <div onClick={incrementItemIndex}>
             {
                 !hasVideoEnded ? (
-                    <button className='skip-button'>
+                    <button className='skip-button' onClick={skipVideo}>
                         SKIP
                     </button>
                  ) : null
@@ -57,7 +64,7 @@ const Wish = (props: WishProps) => {
             {
                 !hasVideoEnded ?
                 (
-                    <video className='wish-video' autoPlay={true} onEnded={() => setHasVideoEnded(true)}>
+                    <video ref={videoRef} className='wish-video' autoPlay={true} onEnded={() => setHasVideoEnded(true)}>
                         <source src={getVideoPath()}/>
                     </video>
                 ) : 
