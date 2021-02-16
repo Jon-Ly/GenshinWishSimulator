@@ -41,15 +41,14 @@ const Wish = (props: WishProps) => {
 
     return (
         <div onClick={incrementItemIndex}>
+            {hasVideoEnded}
             {
                 !hasVideoEnded ?
                 (
                     <video autoPlay={true} onEnded={() => setHasVideoEnded(true)}>
                         <source src={getVideoPath()}/>
                     </video>
-                ) : null
-            }
-            {
+                ) : 
                 itemIndex < state.results.length ? <Image/> : 
                 (
                     state.results.map((item, index) => <p key={`${item.name}${index}`}>{item.name}</p>)
