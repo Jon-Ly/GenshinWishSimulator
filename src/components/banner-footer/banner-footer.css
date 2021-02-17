@@ -19,12 +19,16 @@
     box-shadow: 0 0 0px 2px rgba(175, 175, 175, 0.15) inset;
 }
 
+.footer-container {
+    justify-content: space-between;
+    padding: 70px;
+}
 
 .wish-button {
-    min-width: 355px;
+    width: 355px;
     background-repeat: no-repeat;
     background-size: contain;
-    min-height: 88px;
+    height: 88px;
 }
 
 .wish-text {
@@ -32,4 +36,15 @@
     line-height: 35px;
     margin-left: 40px;
     text-shadow: #121212 0 0 4px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .footer-button {
+        margin: 5px 0;
+    }
+
+    .footer-container {
+        justify-content: start;
+        padding: 5px;
+    }
 }

@@ -43,14 +43,26 @@ h6 {
     color: white;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;
 }
 
-.flex-column {
+.flex-row-responsive {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 1000px) {
+    .flex-row-responsive {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
 }
 
 .overflow-hidden {

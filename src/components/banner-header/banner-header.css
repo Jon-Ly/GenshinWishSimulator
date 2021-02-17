@@ -1,8 +1,14 @@
+.banner-select {
+    color: #000000;
+    width: 75%;
+}
+
 .banner-tab {
     border-radius: 4px;
     padding: 5px 25px;
     max-height: 50px;
     margin: 0 5px;
+    min-width: 150px;
 }
 
 .header-container {
@@ -18,4 +24,5 @@
     padding: 0 20px 0 5px;
     height: 31px;
     border-radius: 50px;
+    max-width: 150px;
 }

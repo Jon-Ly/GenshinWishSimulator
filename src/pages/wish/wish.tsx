@@ -3,6 +3,7 @@ import PATHS from '../../constants/paths';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
 import './wish.css';
+import '../../styles/select.css';
 
 interface WishProps {
     setIsWishing: (isWishing: boolean) => void
@@ -53,7 +54,7 @@ const Wish = (props: WishProps) => {
     }
 
     return (
-        <div onClick={incrementItemIndex}>
+        <div onClick={incrementItemIndex} style={{minHeight: '100vh'}}>
             {
                 !hasVideoEnded ? (
                     <button className='skip-button' onClick={skipVideo}>

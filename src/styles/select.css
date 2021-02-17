@@ -3,13 +3,12 @@ label {
     line-height: 65px;
 }
 
-.history-select { 
+select.f2pselect{ 
     display: inline;
-    width: 35%;
+    width: 100%;
     font-size: 26px;
     padding: 15px !important;
     border: 3px solid #B6B3AF;
     border-radius: 5px;
     background-color: #DBD7D3;
-    margin-left: 35px;
 }

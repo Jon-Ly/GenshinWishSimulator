@@ -70,7 +70,7 @@ const BannerFooter = (props: BannerFooterProps) => {
     return (
       <>
         <ResetAlert isOpen={isResetConfirmationOpen} setIsOpen={setIsOpen}/>
-        <div className='flex-row' style={{justifyContent:'space-between', padding:'70px'}}>
+        <div className='flex-row-responsive footer-container'>
             <div className='flex-column'>
               <div className='flex-row' style={{marginBottom: '10px'}}>
                 <div className='flex-row' style={{minWidth: '75px'}}>
@@ -82,7 +82,7 @@ const BannerFooter = (props: BannerFooterProps) => {
                   <p key='stardust_amount'>{wishState.stardust}</p>
                 </div>
               </div>
-              <div className='flex-row'>
+              <div className='flex-row-responsive'>
                 <Link to='/shop'>
                   <FooterButton>Shop</FooterButton>
                 </Link>
@@ -95,7 +95,7 @@ const BannerFooter = (props: BannerFooterProps) => {
                 <FooterButton onClick={() => setIsOpen(true)}>Reset</FooterButton>
               </div>
             </div>
-            <div className='flex-row'>
+            <div className='flex-row-responsive'>
               <WishButton primogems={160}/>
               <WishButton primogems={1600}/>
             </div>
