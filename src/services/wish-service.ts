@@ -44,8 +44,6 @@ export default class WishService {
         return JSON.parse(data) as UserData;
     }
 
-    getUserHistory = (): Array<ItemData> => this.userData.items;
-
     randomFiveStar = (): Item => {
         const fiveStarLuck = Math.random();
         const isEventCharacter = this.userData.banner !== BANNER_CODE.WANDERLUST && (fiveStarLuck >= CHANCES.FIVE_STAR_EVENT_CHARACTER || this.userData.eventFiveStarGuarantee);

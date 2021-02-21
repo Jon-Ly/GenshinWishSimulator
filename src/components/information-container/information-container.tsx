@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import HEXCODES from '../../constants/hexcodes';
 
 interface InformationProps {
-    children?: React.ReactNode
+    children?: React.ReactNode,
+    style?: React.CSSProperties,
+    className?: string
 }
 
-const Information = ({children}: InformationProps) => {
+const InformationContainer = ({children, style, className}: InformationProps) => {
     
     const InformationNavbar = () => (
         <nav style={{height: '50px', width: '100%', backgroundColor: 'black'}}>
@@ -21,10 +23,10 @@ const Information = ({children}: InformationProps) => {
     );
 
     return (
-        <div style={{backgroundColor: `${HEXCODES.DETAIL_BACKGROUND}`, color: `${HEXCODES.DETAIL_FONT_COLOR}`}}>
+        <div style={{backgroundColor: '#EBEBEB', color: '#727272'}}>
             <InformationNavbar/>
             <hr style={{marginBottom: '75px'}}/>
-            <div className='container'>
+            <div className={`container ${className}`} style={style}>
                 {children}
             </div>
             <hr style={{marginTop: '75px'}}/>
@@ -32,4 +34,4 @@ const Information = ({children}: InformationProps) => {
     )
 }
 
-export default Information;
+export default InformationContainer;

@@ -10,6 +10,7 @@ import BannerDetail from "./pages/banner-detail/banner-detail";
 import BannerHistory from "./pages/banner-history/banner-history";
 import './App.css';
 import { ChakraProvider } from "@chakra-ui/react";
+import Inventory from "./pages/inventory/inventory";
 
 export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
@@ -26,6 +27,9 @@ export const App = () => {
           </Route>
           <Route path='/history'>
             <BannerHistory/>
+          </Route>
+          <Route path='/inventory'>
+            <Inventory/>
           </Route>
         </Switch>
       </Router>

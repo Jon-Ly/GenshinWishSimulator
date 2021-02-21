@@ -28,7 +28,7 @@ const BannerFooter = (props: BannerFooterProps) => {
     const { isWishing, setIsWishing } = props;
 
     const FooterButton = ({children, onClick}: FooterButtonProps) => (
-      <button onClick={onClick} className='footer-button' style={{backgroundColor: `${HEXCODES.SHOP_DETAIL_HISTORY}`, color: `${HEXCODES.SHOP_DETAIL_HISTORY_TEXT}`}}>
+      <button onClick={onClick} className='footer-button' style={{backgroundColor: '#E2DED4', color: '#343434'}}>
           {children}
       </button>
     )

@@ -36,7 +36,7 @@ const ItemsToWishForSection = () => {
                         <th style={{width: '25%'}}>Item Name</th>
                     </tr>
                 </thead>
-                <tbody style={{color: HEXCODES.ITEM_BANNER_TEXT_COLOR}}>
+                <tbody style={{color: '#AD8E67'}}>
                     {itemIndexes?.map((i) => (
                         <tr key={`${items[i].name}${i}`}>
                             <td>{items[i].chance === 0.5 ? 'Character' : 'Weapon'}</td>
@@ -73,7 +73,7 @@ const ItemsToWishForSection = () => {
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
             </BannerDetailHeader>
             <ItemTable items={currentBanner?.fourStars}/>
-            <BannerDetailHeader backgroundColor={HEXCODES.THREE_STAR_CHANCE_BANNER} stars={3}>
+            <BannerDetailHeader backgroundColor='#A5BACC' stars={3}>
                 Base Probability for 3-Star Item Drops: 94.300% (Incl. guarantee: 85.400%)
             </BannerDetailHeader>
             <ItemTable items={WEAPONS.THREE_STAR_WEAPONS}/>

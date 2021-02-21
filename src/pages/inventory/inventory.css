@@ -1,0 +1,26 @@
+.counter {
+    background-color: #6ddaf5;
+    height: 40px;
+    width: 40px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    margin: 0 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.inventory-container {
+    --gap: 12px;
+    margin: 0 calc(-1 * var(--gap)) calc(-1 * var(--gap)) 0;
+    width: calc(100% + var(--gap));
+    font-size: 24px;
+}
+
+.inventory-item {
+    margin: 0 var(--gap) var(--gap) 0;
+    background-color: rgba(125, 125, 125, 0.25);
+    width: calc(33% - var(--gap));
+    min-height: 100px;
+    justify-content: center;
+}

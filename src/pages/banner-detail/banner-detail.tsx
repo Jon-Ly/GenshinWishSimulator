@@ -18,8 +18,8 @@ const BannerDetail = () => {
     const toThreePrecision = (num: number) => num.toFixed(3);
 
     const CharacterText = ({character}: any) => <span style={{color: GetElementColor(character.elementType || '') }}>"{character.title}" {character.name} ({character.elementType})</span>;
-    const ImportantText = ({children}: any) => <span style={{color: `${HEXCODES.IMPORTANT}`}}>{children}</span>;
-    const MasterlessStardustText = () => <span style={{color: `${HEXCODES.STARGLITTER_TEXT}`}}>Masterless Starglitter</span>;
+    const ImportantText = ({children}: any) => <span style={{color: '#CD5239'}}>{children}</span>;
+    const MasterlessStardustText = () => <span style={{color: '#C27746'}}>Masterless Starglitter</span>;
     const PurpleText = ({children}: any) => <span style={{color: `${HEXCODES.PURPLE}`}}>{children}</span>
 
     const FourStarText = () => (
@@ -115,7 +115,7 @@ const BannerDetail = () => {
     const WishDetailSection = () => (
         <section className='detail-section'>
             <h1 style={{color: '#575757'}}>Wish Details</h1>
-            <BannerDetailHeader backgroundColor={HEXCODES.LIMITED_TIME_BANNER} title='Limited-Time Event' color='#FFFFFF'/>
+            <BannerDetailHeader backgroundColor='#A38052' title='Limited-Time Event' color='#FFFFFF'/>
             <p>
                 Event Wish {bannerTitle} is now available. During this event wish, the <ImportantText> event-exclusive </ImportantText>
                 5-star character <CharacterText character={eventFiveStarCharacter}/> as well as 4-star characters 

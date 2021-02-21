@@ -14,7 +14,7 @@ interface BannerDetailHeaderProps {
 const BannerDetailHeader = (props: BannerDetailHeaderProps) => {
     const {backgroundColor, color, stars, children, title} = props;
 
-    const CustomStarIcon = () => <FontAwesomeIcon color={HEXCODES.ITEM_BANNER_STAR} style={{marginRight: '5px'}} icon={faStar}/>;
+    const CustomStarIcon = () => <FontAwesomeIcon color='#FFCC33' style={{marginRight: '5px'}} icon={faStar}/>;
 
     return (
         <header style={{backgroundColor: backgroundColor, color: color, margin: '35px 0', minHeight: '50px', paddingLeft: '18px', paddingTop: '10px'}}>

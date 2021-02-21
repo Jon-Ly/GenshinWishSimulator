@@ -43,13 +43,11 @@ const BannerHeader = () => {
 
         const name = banner.eventFiveStar?.name || 'Wanderlust';
 
-        const inactive = {backgroundColor: `${HEXCODES.BANNER_TAB_INACTIVE}`};
-        const active = {backgroundColor: `${HEXCODES.BANNER_TAB_ACTIVE}`, color: '#000000'};
+        const background = banner.code ===  wishState.banner ? 'tab-active' : 'tab-inactive';
 
         return (
             <button
-                className='banner-tab'
-                style={banner.code ===  wishState.banner ? active : inactive}
+                className={`${background} banner-tab`}
                 onClick={() => setBanner(banner.code)}>
                 {name}
             </button>

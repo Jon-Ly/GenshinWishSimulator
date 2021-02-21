@@ -7,8 +7,16 @@
     border-radius: 4px;
     padding: 5px 25px;
     max-height: 50px;
-    margin: 0 5px;
     min-width: 150px;
+}
+
+.tab-active {
+    background-color: #F7F3D8;
+    color: black;
+}
+
+.tab-inactive {
+    background-color: #4D6D96;
 }
 
 .header-container {
