@@ -64,7 +64,7 @@ const BannerDetail = () => {
             <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
             </BannerDetailHeader>
-            <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.png`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
+            <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.webp`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
             <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
             </BannerDetailHeader>
@@ -73,7 +73,7 @@ const BannerDetail = () => {
                     <img 
                         style={{display: 'inline', margin: '0 30px 30px 0'}} 
                         key={`detail-img-${c.name}`} 
-                        src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.png`} alt={`${c.name.toLowerCase()}`}/>
+                        src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.webp`} alt={`${c.name.toLowerCase()}`}/>
                 )
             }
         </section>
