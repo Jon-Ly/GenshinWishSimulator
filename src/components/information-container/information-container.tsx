@@ -22,7 +22,7 @@ const InformationContainer = ({children, style, className}: InformationProps) =>
     );
 
     return (
-        <div style={{backgroundColor: '#EBEBEB', color: '#727272'}}>
+        <div style={{backgroundColor: '#EBEBEB', color: '#727272', minHeight: '100vh'}}>
             <InformationNavbar/>
             <hr style={{marginBottom: '75px'}}/>
             <div className={`container ${className}`} style={style}>

@@ -1,3 +1,11 @@
+#info {
+    width: 225px;
+}
+
+#info > a {
+    font-size: 24px;
+}
+
 .banner-select {
     color: #000000;
     width: 75%;
@@ -23,6 +31,12 @@
     padding: 25px 70px 0 70px;
     min-height: 100px;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 1000px) {
+    .header-container > * {
+        margin-top: 20px;
+    }
 }
 
 .primogems {

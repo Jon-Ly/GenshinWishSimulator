@@ -39,7 +39,7 @@
 
 .scroll-items::-webkit-scrollbar {
     width: 5px;
-    height: 8px;
+    height: 10px;
 }
 
 .scroll-items::-webkit-scrollbar-track {

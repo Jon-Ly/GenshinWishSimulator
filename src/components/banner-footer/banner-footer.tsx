@@ -70,7 +70,7 @@ const BannerFooter = (props: BannerFooterProps) => {
     return (
       <>
         <ResetAlert isOpen={isResetConfirmationOpen} setIsOpen={setIsOpen}/>
-        <div className='flex-row-responsive footer-container'>
+        <div className='flex-row flex-wrap footer-container'>
             <div className='flex-column'>
               <div className='flex-row' style={{marginBottom: '10px'}}>
                 <div className='flex-row' style={{minWidth: '75px'}}>

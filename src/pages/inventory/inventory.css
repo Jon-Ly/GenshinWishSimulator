@@ -20,6 +20,7 @@
     /* margin: 0 calc(-1 * var(--gap)) calc(-1 * var(--gap)) 0;
     width: calc(100% + var(--gap)); */
     font-size: 24px;
+    justify-content: center;
 }
 
 .inventory-item {
@@ -28,6 +29,21 @@
     width: calc(33% - var(--gap));
     min-height: 100px;
     align-items: center;
+}
+
+@media only screen and (max-width: 1240px) {
+    .inventory-item {
+        width: 55%;
+    }
+    .inventory-item-container {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .inventory-item {
+        width: 100%;
+    }
 }
 
 .item-name {

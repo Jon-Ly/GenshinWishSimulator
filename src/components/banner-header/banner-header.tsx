@@ -6,6 +6,9 @@ import { useWishDispatch, useWishState } from '../../state-management/store';
 import './banner-header.css';
 import ScrollContainer from '../scroll-container/scroll-container';
 import { useLayoutEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { faBriefcase, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 interface BannerButtonProps {
     banner: Banner
@@ -54,13 +57,13 @@ const BannerHeader = () => {
     
     return (
         <header className='flex-row-responsive header-container'>
-            <div className='flex-row' style={{marginTop: `${MARGIN}`}}>
+            <div className='flex-row'>
                 <img src={`${PATHS.ASSETS}/star.png`} style={{height: '40px', width: '40px'}}/>
                 <p className='wish-text'>Wish</p>
             </div>
             {
                 windowSize[0] >= 650 ? (
-                    <ScrollContainer className='flex-row' style={{marginTop: `${MARGIN}`}}>
+                    <ScrollContainer className='flex-row'>
                         {
                             BANNERS_DATE_ASCENDING.map(banner => <BannerButton key={banner.code} banner={banner}/>)
                         }
@@ -78,9 +81,17 @@ const BannerHeader = () => {
                     </select>
                 )
             }
-            <div className='flex-row primogems' style={{marginTop: `${MARGIN}`}}>
-                <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}}/>
-                <p>{wishState.primogems}</p>
+            <div id='info' className='flex-row' style={{justifyContent: 'space-between'}}>
+                <div className='flex-row primogems'>
+                    <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}}/>
+                    <p>{wishState.primogems}</p>
+                </div>
+                <Link to='/inventory'>
+                    <FontAwesomeIcon icon={faBriefcase}/>
+                </Link>
+                <Link to='/inventory'>
+                    <FontAwesomeIcon icon={faQuestionCircle}/>
+                </Link>
             </div>
         </header>
     );

@@ -33,6 +33,15 @@ const Inventory = () => {
         </div>
     )
 
+    const GetSortedItems = (items: Array<ItemDataWithCount>) => {
+        return items.sort((item1, item2) => {
+                return item1.name > item2.name ? -1 : item1.name < item2.name ? 1 : 0;
+            })
+            .sort((item1, item2) => {
+                return item1.type === 'Character' ? -1 : item1.type === 'Weapon' ? 1 : 0;
+            });
+    }
+
     useEffect(() => {
         const itemsGrouped = new Array<ItemDataWithCount>();
 
@@ -46,19 +55,22 @@ const Inventory = () => {
             }
         }
 
-        setFiveStarItems(itemsGrouped.filter(i => i.stars === 5));
-        setFourStarItems(itemsGrouped.filter(i => i.stars === 4));
+        const fiveStars = GetSortedItems(itemsGrouped.filter(i => i.stars === 5));
+        const fourStars = GetSortedItems(itemsGrouped.filter(i => i.stars === 4));
+
+        setFiveStarItems(fiveStars);
+        setFourStarItems(fourStars);
         setThreeStarItems(itemsGrouped.filter(i => i.stars === 3));
     }, [])
 
     const InventoryItemContainer = ({children}: any) => (
-        <div className='flex-row flex-wrap'>
+        <div className='flex-row flex-wrap inventory-item-container'>
             {children}
         </div>
     )
 
     return (
-        <InformationContainer className='flex-column flex-wrap inventory-container' style={{justifyContent: 'center'}}>
+        <InformationContainer className='flex-column flex-wrap inventory-container'>
             <h1>Inventory</h1>
             <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
             <InventoryItemContainer>
