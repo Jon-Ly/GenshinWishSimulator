@@ -4,9 +4,9 @@ import HEXCODES from '../../constants/hexcodes';
 import WEAPONS from '../../constants/weapons';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
-import BannerDetailHeader from '../banner-detail/banner-detail-header';
 import PATHS from '../../constants/paths';
 import '../../styles/item-table.css';
+import BannerDetailSubHeader from '../banner-detail-sub-header/banner-detail-sub-header';
 
 interface ItemTableProps {
     items: Array<Item>
@@ -65,17 +65,17 @@ const ItemsToWishForSection = () => {
                 </h1>
             </div>
             {/* TODO: Refactor toThreePrecision function to be reusable from BannerDetail */}
-            <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
+            <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
-            </BannerDetailHeader>
+            </BannerDetailSubHeader>
             <ItemTable items={currentBanner?.fiveStars}/>
-            <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
+            <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
-            </BannerDetailHeader>
+            </BannerDetailSubHeader>
             <ItemTable items={currentBanner?.fourStars}/>
-            <BannerDetailHeader backgroundColor='#A5BACC' stars={3}>
+            <BannerDetailSubHeader backgroundColor='#A5BACC' stars={3}>
                 Base Probability for 3-Star Item Drops: 94.300% (Incl. guarantee: 85.400%)
-            </BannerDetailHeader>
+            </BannerDetailSubHeader>
             <ItemTable items={WEAPONS.THREE_STAR_WEAPONS}/>
         </section>
     )

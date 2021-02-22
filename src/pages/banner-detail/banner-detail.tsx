@@ -4,10 +4,10 @@ import CHANCES from '../../constants/chances';
 import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
 import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
-import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
+import BannerDetailSubHeader from '../../components/banner-detail-sub-header/banner-detail-sub-header';
 import ItemsToWishForSection from '../../components/items-to-wish-for-section/items-to-wish-for-section';
 import InformationContainer from '../../components/information-container/information-container';
-import './banner-detail.css';
+import '../../styles/banner-detail.css';
 
 const BannerDetail = () => {
     const wishState = useWishState();
@@ -61,13 +61,13 @@ const BannerDetail = () => {
     const IncreasedDropRateSection = () => (
         <section className='detail-section'>
             <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
-            <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
+            <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
-            </BannerDetailHeader>
+            </BannerDetailSubHeader>
             <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.webp`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
-            <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
+            <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
-            </BannerDetailHeader>
+            </BannerDetailSubHeader>
             {
                 (currentBanner?.eventFourStars || []).map(c => 
                     <img 
@@ -115,7 +115,7 @@ const BannerDetail = () => {
     const WishDetailSection = () => (
         <section className='detail-section'>
             <h1 style={{color: '#575757'}}>Wish Details</h1>
-            <BannerDetailHeader backgroundColor='#A38052' title='Limited-Time Event' color='#FFFFFF'/>
+            <BannerDetailSubHeader backgroundColor='#A38052' title='Limited-Time Event' color='#FFFFFF'/>
             <p>
                 Event Wish {bannerTitle} is now available. During this event wish, the <ImportantText> event-exclusive </ImportantText>
                 5-star character <CharacterText character={eventFiveStarCharacter}/> as well as 4-star characters 

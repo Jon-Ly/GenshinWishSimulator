@@ -10,7 +10,6 @@ export interface ItemData {
 
 export interface UserData {
     items: Array<ItemData>,
-    crystals: number,
     eventFiveStarGuarantee: boolean,
     eventFourStarGuarantee: boolean,
     eventFiveStarCharacterPity: number,
@@ -21,7 +20,8 @@ export interface UserData {
     primogems: number,
     stardust: number,
     starglitter: number,
-    banner: BANNER_CODE
+    banner: BANNER_CODE,
+    firstTimeBonus: Array<boolean>
 }
 
 const InitialUserData: UserData = {
@@ -57,7 +57,6 @@ const InitialUserData: UserData = {
             type: 'Character'
         }
     ],
-    crystals: 0,
     eventFiveStarGuarantee: false,
     eventFourStarGuarantee: false,
     eventFiveStarCharacterPity: 0,
@@ -68,7 +67,8 @@ const InitialUserData: UserData = {
     primogems: 0,
     stardust: 0,
     starglitter: 0,
-    banner: BANNER_CODE.VENTI
+    banner: BANNER_CODE.VENTI,
+    firstTimeBonus: [true, true, true, true, true, true]
 };
 
 export default InitialUserData;

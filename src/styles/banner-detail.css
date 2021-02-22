@@ -1,0 +1,30 @@
+.detail-section {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.banner-detail-header {
+    background-color: #DBDBDB;
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 75px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.banner-detail-sub-header {
+    margin: 35px 0;
+    min-height: 50px;
+    padding: 10px 0 0 18px;
+}
+
+.sub-header-stars {
+    min-width: 160px;
+    font-size: 25px;
+}
+
+.sub-header-text {
+    font-size: 22px;
+    margin-left: 25px;
+    line-height: 30px;
+}

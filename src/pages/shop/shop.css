@@ -1,0 +1,7 @@
+.top-up-option {
+    --gap: 12px;
+    min-width: 200px;
+    min-height: 200px;
+    border: 2px solid #FFFFFF;
+    margin: 0 var(--gap) var(--gap) 0;
+}

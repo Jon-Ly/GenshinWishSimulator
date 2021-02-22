@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import HistorySelect from '../../components/history-select/history-select';
 import HistoryTable from '../../components/history-table/history-table';
 import InformationContainer from '../../components/information-container/information-container';
-import HEXCODES from '../../constants/hexcodes';
 import HISTORY_TYPE from '../../constants/history-type';
 import LOCAL_STORAGE_KEY from '../../constants/local-storage-keys';
 

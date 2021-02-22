@@ -1,6 +1,7 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import '../../styles/banner-detail.css';
 
 interface BannerDetailHeaderProps {
     backgroundColor?: string;
@@ -10,15 +11,15 @@ interface BannerDetailHeaderProps {
     children?: React.ReactNode;
 }
 
-const BannerDetailHeader = (props: BannerDetailHeaderProps) => {
+const BannerDetailSubHeader = (props: BannerDetailHeaderProps) => {
     const {backgroundColor, color, stars, children, title} = props;
 
     const CustomStarIcon = () => <FontAwesomeIcon color='#FFCC33' style={{marginRight: '5px'}} icon={faStar}/>;
 
     return (
-        <header style={{backgroundColor: backgroundColor, color: color, margin: '35px 0', minHeight: '50px', paddingLeft: '18px', paddingTop: '10px'}}>
+        <header className='banner-detail-sub-header' style={{backgroundColor: backgroundColor, color: color}}>
             <div className='flex-row' style={{lineHeight: '20px'}}>
-                <div style={{minWidth: '160px', fontSize: '25px'}}>
+                <div className='sub-header-stars'>
                     <span style={{lineHeight: '25px'}}>{title}</span>
                     {
                         stars && stars >= 3 ? (
@@ -36,10 +37,10 @@ const BannerDetailHeader = (props: BannerDetailHeaderProps) => {
                         stars && stars === 5 ? <CustomStarIcon/> : null
                     }
                 </div>
-                <span style={{fontSize: '22px', marginLeft: '25px', lineHeight: '30px'}}>{children}</span>
+                <span className='sub-header-text'>{children}</span>
             </div>
         </header>
     )
 }
 
-export default BannerDetailHeader;
+export default BannerDetailSubHeader;

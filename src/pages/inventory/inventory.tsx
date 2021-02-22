@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
+import BannerDetailSubHeader from '../../components/banner-detail-sub-header/banner-detail-sub-header';
 import InformationContainer from '../../components/information-container/information-container';
 import HEXCODES from '../../constants/hexcodes';
 import PATHS from '../../constants/paths';
@@ -72,19 +72,19 @@ const Inventory = () => {
     return (
         <InformationContainer className='flex-column flex-wrap inventory-container'>
             <h1>Inventory</h1>
-            <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
+            <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
             <InventoryItemContainer>
                 {
                     fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
                 }
             </InventoryItemContainer>
-            <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}/>
+            <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}/>
             <InventoryItemContainer>
                 {
                     fourStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
                 }
             </InventoryItemContainer>
-            <BannerDetailHeader backgroundColor='#A5BACC' stars={3}/>
+            <BannerDetailSubHeader backgroundColor='#A5BACC' stars={3}/>
             <InventoryItemContainer>
                 {
                     threeStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
