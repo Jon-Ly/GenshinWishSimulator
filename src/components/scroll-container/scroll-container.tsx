@@ -7,14 +7,20 @@ interface ScrollContainerProps {
     style?: React.CSSProperties,
 }
 
-type Direction = 'RIGHT' | 'LEFT';
-
 const ScrollContainer = ({children, className, style}: ScrollContainerProps) => {
 
     const scrollItemsRef = React.createRef<HTMLDivElement>();
 
     useEffect(() => {
-        console.log(scrollItemsRef);
+        const children = Array.from(scrollItemsRef.current ? scrollItemsRef.current.children : []);
+
+        if (children) {
+            children.map(c => {
+                if (c.classList.contains('tab-active')) {
+                    c.scrollIntoView();
+                }
+            });
+        }
     }, [])
 
     return (

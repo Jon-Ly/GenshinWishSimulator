@@ -1,7 +1,6 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import HEXCODES from '../../constants/hexcodes';
 
 interface BannerDetailHeaderProps {
     backgroundColor?: string;
