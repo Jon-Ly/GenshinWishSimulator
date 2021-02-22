@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import BannerDetailHeader from '../../components/banner-detail/banner-detail-header';
 import InformationContainer from '../../components/information-container/information-container';
+import HEXCODES from '../../constants/hexcodes';
+import PATHS from '../../constants/paths';
 import { ItemData } from '../../constants/user-data';
 import { useWishState } from '../../state-management/store';
 import './inventory.css'
@@ -10,15 +13,25 @@ interface ItemDataWithCount extends ItemData {
 
 const Inventory = () => {
     const wishState = useWishState();
-    const [inventoryItems, setInventoryItems] = useState<Array<ItemDataWithCount>>([]);
+    const [fiveStarItems, setFiveStarItems] = useState<Array<ItemDataWithCount>>([]);
+    const [fourStarItems, setFourStarItems] = useState<Array<ItemDataWithCount>>([]);
+    const [threeStarItems, setThreeStarItems] = useState<Array<ItemDataWithCount>>([]);
 
-    const orderItemsByRating = (items: Array<ItemDataWithCount>): Array<ItemDataWithCount> => {
-        const sortedItems = items.sort((item1, item2) => {
-            return item1.stars > item2.stars ? -1 : item1.stars < item2.stars ? 1 : 0;
-        });
-
-        return sortedItems;
+    const CharacterImage = ({name}: any) =>{
+        return (
+            <img className='character-image' src={`${PATHS.CHARACTER_THUMBNAILS}/${name}.png`}/>
+        )
     }
+
+    const InventoryItem = ({item}: any) => (
+        <div className='inventory-item flex-row'>
+            <CharacterImage name={item.name}/>
+            <p className='item-name'>{item.name}</p>
+            <div className='counter'>
+                {item.count}
+            </div>
+        </div>
+    )
 
     useEffect(() => {
         const itemsGrouped = new Array<ItemDataWithCount>();
@@ -33,25 +46,38 @@ const Inventory = () => {
             }
         }
 
-        orderItemsByRating(itemsGrouped);
-
-        setInventoryItems(itemsGrouped);
+        setFiveStarItems(itemsGrouped.filter(i => i.stars === 5));
+        setFourStarItems(itemsGrouped.filter(i => i.stars === 4));
+        setThreeStarItems(itemsGrouped.filter(i => i.stars === 3));
     }, [])
 
+    const InventoryItemContainer = ({children}: any) => (
+        <div className='flex-row flex-wrap'>
+            {children}
+        </div>
+    )
+
     return (
-        <InformationContainer className='flex-row flex-wrap inventory-container' style={{justifyContent: 'center'}}>
-            {
-                inventoryItems.map((item: ItemDataWithCount) => {
-                    return (
-                        <div className='inventory-item flex-row'>
-                            <p>{item.name}</p>
-                            <div className='counter'>
-                                {item.count}
-                            </div>
-                        </div>
-                    )
-                })
-            }
+        <InformationContainer className='flex-column flex-wrap inventory-container' style={{justifyContent: 'center'}}>
+            <h1>Inventory</h1>
+            <BannerDetailHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
+            <InventoryItemContainer>
+                {
+                    fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
+                }
+            </InventoryItemContainer>
+            <BannerDetailHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}/>
+            <InventoryItemContainer>
+                {
+                    fourStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
+                }
+            </InventoryItemContainer>
+            <BannerDetailHeader backgroundColor='#A5BACC' stars={3}/>
+            <InventoryItemContainer>
+                {
+                    threeStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
+                }
+            </InventoryItemContainer>
         </InformationContainer>
     )
 }

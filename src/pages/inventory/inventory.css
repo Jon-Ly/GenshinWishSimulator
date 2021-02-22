@@ -1,7 +1,12 @@
+.character-image {
+    height: 80px;
+    width: 80px;
+}
+
 .counter {
     background-color: #6ddaf5;
-    height: 40px;
-    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
     display: grid;
     align-items: center;
     text-align: center;
@@ -12,8 +17,8 @@
 
 .inventory-container {
     --gap: 12px;
-    margin: 0 calc(-1 * var(--gap)) calc(-1 * var(--gap)) 0;
-    width: calc(100% + var(--gap));
+    /* margin: 0 calc(-1 * var(--gap)) calc(-1 * var(--gap)) 0;
+    width: calc(100% + var(--gap)); */
     font-size: 24px;
 }
 
@@ -22,5 +27,10 @@
     background-color: rgba(125, 125, 125, 0.25);
     width: calc(33% - var(--gap));
     min-height: 100px;
-    justify-content: center;
+    align-items: center;
+}
+
+.item-name {
+    width: 65%;
+    text-align: center;
 }
