@@ -1,0 +1,9 @@
+.dialog-button {
+    width: 135px !important;
+    height: 55px !important;
+}
+
+.dialog-footer {
+    width: 100%;
+    justify-content: center !important;
+}

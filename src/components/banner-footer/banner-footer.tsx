@@ -4,7 +4,7 @@ import HEXCODES from '../../constants/hexcodes'
 import PATHS from '../../constants/paths'
 import { ACTION_TYPE } from '../../state-management/reducer'
 import { useWishDispatch, useWishState } from '../../state-management/store'
-import ResetAlert from '../alerts/reset-alert';
+import ResetAlert from '../dialogs/reset-alert';
 import './banner-footer.css';
 
 interface BannerFooterProps {

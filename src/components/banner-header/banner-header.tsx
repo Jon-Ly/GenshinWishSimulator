@@ -82,7 +82,7 @@ const BannerHeader = () => {
                 )
             }
             <div id='info' className='flex-row' style={{justifyContent: 'space-between'}}>
-                <div className='flex-row primogems'>
+                <div className='flex-row banner-header-primogems'>
                     <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}}/>
                     <p>{wishState.primogems}</p>
                 </div>

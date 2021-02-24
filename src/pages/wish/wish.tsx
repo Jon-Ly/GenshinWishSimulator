@@ -53,6 +53,8 @@ const Wish = (props: WishProps) => {
         }
     }
 
+    const setVideoEnded = () => setHasVideoEnded(true);
+
     return (
         <div onClick={incrementItemIndex} style={{minHeight: '100vh'}}>
             {
@@ -65,7 +67,7 @@ const Wish = (props: WishProps) => {
             {
                 !hasVideoEnded ?
                 (
-                    <video ref={videoRef} className='wish-video' autoPlay={true} onEnded={() => setHasVideoEnded(true)}>
+                    <video ref={videoRef} className='wish-video' autoPlay={true} onEnded={setVideoEnded}>
                         <source src={getVideoPath()}/>
                     </video>
                 ) : 

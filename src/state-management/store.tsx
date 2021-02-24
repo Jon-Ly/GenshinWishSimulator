@@ -2,13 +2,13 @@ import React from 'react';
 import { UserData } from '../constants/user-data';
 import { Item } from '../models/item';
 import WishService from '../services/wish-service';
-import reducer, { WishAction } from './reducer';
+import reducer, { Action } from './reducer';
 
 export interface WishState extends UserData{
     results: Array<Item>
 }
 
-type Dispatch = (action: WishAction) => void;
+type Dispatch = (action: Action) => void;
 
 const wishService = new WishService();
 
