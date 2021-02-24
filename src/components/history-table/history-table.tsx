@@ -23,18 +23,6 @@ const HistoryTable = ({historyType}: HistoryTableProps) => {
     const wishState = useWishState();
     const [validItems, setValidItems] = useState<Array<ItemData>>([]);
 
-    useEffect(() => {
-        if (page === 1) {
-            updateTableData();
-        } else {
-            setPage(1);
-        }
-    }, [historyType]);
-
-    useEffect(() => {
-        updateTableData();
-    }, [page])
-
     const updateTableData = () => {
         const start = (page - 1) * 6;
         const end = (page) * 6;
@@ -50,6 +38,16 @@ const HistoryTable = ({historyType}: HistoryTableProps) => {
             return items;
         });
     }
+
+    useEffect(updateTableData, [page]);
+
+    useEffect(() => {
+        if (page === 1) {
+            updateTableData();
+        } else {
+            setPage(1);
+        }
+    }, [historyType]);
 
     const decrementPage = () => setPage(page === 1 ? page : page - 1);
 

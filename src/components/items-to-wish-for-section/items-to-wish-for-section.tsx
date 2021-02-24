@@ -59,7 +59,7 @@ const ItemsToWishForSection = () => {
     return (
         <section className='detail-section'>
             <div className='flex-row'>
-                <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{width:'35px', height:'35px'}}/>
+                <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{width:'35px', height:'35px'}} alt='Primogem'/>
                 <h1 style={{color: '#A68458', lineHeight: '33px'}}>
                     Items to wish for:
                 </h1>

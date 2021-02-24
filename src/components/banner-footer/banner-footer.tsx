@@ -60,7 +60,7 @@ const BannerFooter = (props: BannerFooterProps) => {
             }}>
             <p>Wish {primogems === 160 ? 1 : 10}</p>
             <div className='flex-row' style={{ justifyContent: 'center' }}>
-              <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px'/> 
+              <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px' alt='Wish Button Primogem'/> 
               <span style={{color: primoFontColor}}>x {primogems}</span>
             </div>
           </button>
@@ -74,11 +74,11 @@ const BannerFooter = (props: BannerFooterProps) => {
             <div className='flex-column'>
               <div className='flex-row' style={{marginBottom: '10px'}}>
                 <div className='flex-row' style={{minWidth: '75px'}}>
-                  <img src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} style={{height: '32px', width: '32px'}}/>
+                  <img src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} style={{height: '32px', width: '32px'}} alt='Starglitter'/>
                   <p key='starglitter_amount'>{wishState.starglitter}</p>
                 </div>
                 <div className='flex-row' style={{minWidth: '75px'}}>
-                  <img src={`${PATHS.ITEMS}/item_masterless_stardust.png`} style={{height: '32px', width: '32px'}}/>
+                  <img src={`${PATHS.ITEMS}/item_masterless_stardust.png`} style={{height: '32px', width: '32px'}} alt='Stardust'/>
                   <p key='stardust_amount'>{wishState.stardust}</p>
                 </div>
               </div>

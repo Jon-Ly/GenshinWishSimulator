@@ -18,7 +18,6 @@ const BannerHeader = () => {
     const [windowSize, setWindowSize] = useState([0, 0]); // [width, height]
     const wishState = useWishState();
     const wishDispatch = useWishDispatch();
-    const MARGIN = '15px';
     const BANNERS_DATE_ASCENDING = BANNERS.sort((banner1: Banner, banner2: Banner) => {
         if (banner1.startDate < banner2.startDate) {
             return -1;
@@ -58,7 +57,7 @@ const BannerHeader = () => {
     return (
         <header className='flex-row-responsive header-container'>
             <div className='flex-row'>
-                <img src={`${PATHS.ASSETS}/star.png`} style={{height: '40px', width: '40px'}}/>
+                <img src={`${PATHS.ASSETS}/star.png`} style={{height: '40px', width: '40px'}} alt='Star'/>
                 <p className='wish-text'>Wish</p>
             </div>
             {
@@ -83,7 +82,7 @@ const BannerHeader = () => {
             }
             <div id='info' className='flex-row' style={{justifyContent: 'space-between'}}>
                 <div className='flex-row banner-header-primogems'>
-                    <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}}/>
+                    <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}} alt='Primogem'/>
                     <p>{wishState.primogems}</p>
                 </div>
                 <Link to='/inventory'>

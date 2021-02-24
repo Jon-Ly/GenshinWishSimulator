@@ -15,13 +15,13 @@ const ScrollContainer = ({children, className, style}: ScrollContainerProps) => 
         const children = Array.from(scrollItemsRef.current ? scrollItemsRef.current.children : []);
 
         if (children) {
-            children.map(c => {
+            children.forEach(c => {
                 if (c.classList.contains('tab-active')) {
                     c.scrollIntoView();
                 }
             });
         }
-    }, [])
+    }, [scrollItemsRef])
 
     return (
         <div className={`${className} scroll-container`} style={style}>

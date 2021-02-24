@@ -44,7 +44,7 @@ const Wish = (props: WishProps) => {
 
     const Image = () => {
         const resultItem = state.results[itemIndex];
-        return <img className='item-img' src={getImageSource(resultItem.name)} alt={`IMAGE-${resultItem.name}`}/>
+        return <img className='item-img' src={getImageSource(resultItem.name)} alt={`${resultItem.name}`}/>
     }
 
     const skipVideo = () => {

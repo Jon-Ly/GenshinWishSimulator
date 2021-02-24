@@ -19,7 +19,7 @@ const Inventory = () => {
 
     const CharacterImage = ({name}: any) =>{
         return (
-            <img className='character-image' src={`${PATHS.CHARACTER_THUMBNAILS}/${name}.png`}/>
+            <img className='character-image' src={`${PATHS.CHARACTER_THUMBNAILS}/${name}.png`} alt={`${name}`}/>
         )
     }
 
@@ -61,7 +61,7 @@ const Inventory = () => {
         setFiveStarItems(fiveStars);
         setFourStarItems(fourStars);
         setThreeStarItems(itemsGrouped.filter(i => i.stars === 3));
-    }, [])
+    }, [wishState.items])
 
     const InventoryItemContainer = ({children}: any) => (
         <div className='flex-row flex-wrap inventory-item-container'>

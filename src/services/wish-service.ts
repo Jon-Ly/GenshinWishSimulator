@@ -4,7 +4,7 @@ import CHARACTERS from "../constants/characters";
 import HISTORY_TYPE from "../constants/history-type";
 import LOCAL_STORAGE_KEY from "../constants/local-storage-keys";
 import { IPrimoTopUp } from "../constants/primo-top-ups";
-import InitialUserData, { ItemData, UserData } from "../constants/user-data";
+import InitialUserData, { UserData } from "../constants/user-data";
 import WEAPONS from "../constants/weapons";
 import Character from "../models/character";
 import { Item } from "../models/item"

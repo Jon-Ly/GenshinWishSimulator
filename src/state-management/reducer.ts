@@ -33,7 +33,6 @@ const reducer = (state: WishState, action: Action): WishState => {
     switch (action.type) {
         case ACTION_TYPE.PAY:
             if (action.payload) {
-                const topUp = action.payload as IPrimoTopUp;
                 const userData = wishService.pay(action.payload as IPrimoTopUp);
                 state.primogems = userData.primogems;
                 state.firstTimeBonus = userData.firstTimeBonus;
