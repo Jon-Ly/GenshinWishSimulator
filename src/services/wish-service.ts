@@ -70,6 +70,8 @@ export default class WishService {
             this.userData.primogems += topUpOption.primogems + topUpOption.bonus;
         }
 
+        this.userData.moneySpent += topUpOption.cost;
+
         this.saveUserDataToLocal();
 
         return this.userData;

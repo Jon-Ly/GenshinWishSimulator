@@ -20,6 +20,18 @@
     justify-content: center;
 }
 
+.inventory-currency {
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 5px;
+    justify-content: space-around;
+}
+
+.inventory-currency img {
+    width: 32px;
+    height: 32px;
+}
+
 .inventory-item {
     --gap: 12px;
     margin: 0 var(--gap) var(--gap) 0;
@@ -28,6 +40,7 @@
     min-height: 100px;
     align-items: center;
 }
+
 
 @media only screen and (max-width: 1240px) {
     .inventory-item {

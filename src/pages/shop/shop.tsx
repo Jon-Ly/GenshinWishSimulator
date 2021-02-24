@@ -47,7 +47,13 @@ const Shop = () => {
         <>
             <PayDialog topUp={topUpSelected} setIsOpen={setPayDialogOpen} isOpen={isPayDialogOpen}/>
             <InformationContainer className='flex-row flex-wrap'>
-                <p>Primogems: {wishState.primogems}</p>
+                <div className='flex-row shop-currency'>
+                    <div className='flex-row'>
+                        <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{width: '32px', height: '32px'}} alt='Primogems'/>
+                        <p>{wishState.primogems}</p>
+                    </div>
+                    <p>Spent: ${wishState.moneySpent.toFixed(2)}</p>
+                </div>
                 <h1 id='shop-title'>Primogem Top Ups</h1>
                 {PrimoTopUp.map((ptu, index) => <TopUpOption key={ptu.primogems} topUp={ptu} index={index}/>)}
             </InformationContainer>

@@ -36,6 +36,7 @@ const reducer = (state: WishState, action: Action): WishState => {
                 const userData = wishService.pay(action.payload as IPrimoTopUp);
                 state.primogems = userData.primogems;
                 state.firstTimeBonus = userData.firstTimeBonus;
+                state.moneySpent = userData.moneySpent;
             }
 
             return {...state};
