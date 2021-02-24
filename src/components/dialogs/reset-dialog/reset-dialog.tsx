@@ -1,9 +1,9 @@
 import { AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogFooter, Button, AlertDialogHeader } from '@chakra-ui/react';
 import React from 'react';
-import { ACTION_TYPE } from '../../state-management/reducer';
-import { useWishDispatch } from '../../state-management/store';
-import '../../styles/dialog.css';
-import { DefaultActive, DefaultDialogProps, DefaultFocus, DefaultHover, DIALOG_OPTON } from './dialog-options';
+import { ACTION_TYPE } from '../../../state-management/reducer';
+import { useWishDispatch } from '../../../state-management/store';
+import '../../../styles/dialog.css';
+import { DefaultActive, DefaultDialogProps, DefaultFocus, DefaultHover, DIALOG_OPTON } from '../dialog-options';
 
 const ResetAlert = (props: DefaultDialogProps) => {
     const { isOpen, setIsOpen } = props;

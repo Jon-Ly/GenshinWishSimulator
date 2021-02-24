@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import HEXCODES from '../../constants/hexcodes'
-import PATHS from '../../constants/paths'
-import { ACTION_TYPE } from '../../state-management/reducer'
-import { useWishDispatch, useWishState } from '../../state-management/store'
-import ResetAlert from '../dialogs/reset-alert';
-import './banner-footer.css';
+import HEXCODES from '../../constants/hexcodes';
+import PATHS from '../../constants/paths';
+import { useWishState } from '../../state-management/store';
+import './banner-select-footer.css';
 
 interface BannerFooterProps {
   isWishing: boolean;
-  setIsWishing: (isWishing: boolean) => void
+  setIsWishing: (isWishing: boolean) => void,
+  wishOne: () => void;
+  wishTen: () => void;
+  setResetDialogOpen: () => void;
 }
 
 interface FooterButtonProps {
@@ -22,30 +23,14 @@ interface WishButtonProps {
 }
 
 const BannerFooter = (props: BannerFooterProps) => {
-    const [isResetConfirmationOpen, setIsOpen] = useState(false);
     const wishState = useWishState();
-    const wishDispatch = useWishDispatch();
-    const { isWishing, setIsWishing } = props;
+    const { wishOne, wishTen, setResetDialogOpen } = props;
 
     const FooterButton = ({children, onClick}: FooterButtonProps) => (
       <button onClick={onClick} className='footer-button' style={{backgroundColor: '#E2DED4', color: '#343434'}}>
           {children}
       </button>
     )
-    
-    const wishOne = () => {
-      if (!isWishing) {
-        wishDispatch({type: ACTION_TYPE.WISH, payload: 1});
-        setIsWishing(true);
-      }
-    }
-  
-    const wishTen = () => {
-      if (!isWishing) {
-        wishDispatch({type: ACTION_TYPE.WISH, payload: 10});
-        setIsWishing(true);
-      }
-    }
 
     const WishButton = ({primogems}: WishButtonProps) => {
       const currentPrimogems = wishState.primogems;
@@ -69,7 +54,6 @@ const BannerFooter = (props: BannerFooterProps) => {
     
     return (
       <>
-        <ResetAlert isOpen={isResetConfirmationOpen} setIsOpen={setIsOpen}/>
         <div className='flex-row flex-wrap footer-container'>
             <div className='flex-column'>
               <div className='flex-row' style={{marginBottom: '10px'}}>
@@ -92,7 +76,7 @@ const BannerFooter = (props: BannerFooterProps) => {
                 <Link to='/history'>
                   <FooterButton>History</FooterButton>
                 </Link>
-                <FooterButton onClick={() => setIsOpen(true)}>Reset</FooterButton>
+                <FooterButton onClick={setResetDialogOpen}>Reset</FooterButton>
               </div>
             </div>
             <div className='flex-row-responsive'>

@@ -3,7 +3,7 @@ import BANNERS, { Banner, BANNER_CODE} from '../../constants/banners';
 import PATHS from '../../constants/paths';
 import { ACTION_TYPE } from '../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../state-management/store';
-import './banner-header.css';
+import './banner-select-header.css';
 import ScrollContainer from '../scroll-container/scroll-container';
 import { useLayoutEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

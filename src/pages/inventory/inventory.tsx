@@ -1,5 +1,3 @@
-import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import BannerDetailSubHeader from '../../components/banner-detail-sub-header/banner-detail-sub-header';
 import InformationContainer from '../../components/information-container/information-container';
@@ -19,11 +17,9 @@ const Inventory = () => {
     const [fourStarItems, setFourStarItems] = useState<Array<ItemDataWithCount>>([]);
     const [threeStarItems, setThreeStarItems] = useState<Array<ItemDataWithCount>>([]);
 
-    const CharacterImage = ({name}: any) =>{
-        return (
-            <img className='character-image' src={`${PATHS.CHARACTER_THUMBNAILS}/${name}.png`} alt={`${name}`}/>
-        )
-    }
+    const CharacterImage = ({name}: any) => (
+        <img className='character-image' src={`${PATHS.CHARACTER_THUMBNAILS}/${name}.png`} alt={`${name}`}/>
+    )
 
     const InventoryItem = ({item}: any) => (
         <div className='inventory-item flex-row'>
