@@ -56,7 +56,7 @@ const Wish = (props: WishProps) => {
     const setVideoEnded = () => setHasVideoEnded(true);
 
     return (
-        <div onClick={incrementItemIndex} style={{minHeight: '100vh'}}>
+        <div onClick={incrementItemIndex} className='wish-container'>
             {
                 !hasVideoEnded ? (
                     <button className='skip-button' onClick={skipVideo}>

@@ -67,25 +67,29 @@ const Inventory = () => {
         </div>
     )
 
+    const InventoryCurrencyContainer = () => (
+        <div className='flex-row flex-wrap inventory-currency'>
+            <div className='flex-row'>
+                <img src={`${PATHS.ITEMS}/item_primogem.png`} alt='Primogems'/>
+                <p>{wishState.primogems}</p>
+            </div>
+            <div className='flex-row'>
+                <img src={`${PATHS.ITEMS}/item_masterless_stardust.png`} alt='Stardust'/>
+                <p>{wishState.stardust}</p>
+            </div>
+            <div className='flex-row'>
+                <img src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} alt='Starglitter'/>
+                <p>{wishState.starglitter}</p>
+            </div>
+            <div className='flex-row'>
+                <p>Spent: ${wishState.moneySpent.toFixed(2)}</p>
+            </div>
+        </div>
+    )
+
     return (
         <InformationContainer className='flex-column flex-wrap inventory-container'>
-            <div className='flex-row flex-wrap inventory-currency'>
-                <div className='flex-row'>
-                    <img src={`${PATHS.ITEMS}/item_primogem.png`} alt='Primogems'/>
-                    <p>{wishState.primogems}</p>
-                </div>
-                <div className='flex-row'>
-                    <img src={`${PATHS.ITEMS}/item_masterless_stardust.png`} alt='Stardust'/>
-                    <p>{wishState.stardust}</p>
-                </div>
-                <div className='flex-row'>
-                    <img src={`${PATHS.ITEMS}/item_masterless_starglitter.png`} alt='Starglitter'/>
-                    <p>{wishState.starglitter}</p>
-                </div>
-                <div className='flex-row'>
-                    <p>Spent: ${wishState.moneySpent.toFixed(2)}</p>
-                </div>
-            </div>
+            <InventoryCurrencyContainer/>
             <h1>Inventory</h1>
             <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
             <InventoryItemContainer>
