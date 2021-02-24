@@ -106,6 +106,7 @@ export default class WishService {
         var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
         var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 19).replace('T', ' ');
         results.forEach((result: Item) => {
+            this.addSpecialCurrencyBasedOnItem(result);
             this.userData.items.unshift({
                 name: result.name,
                 stars: result.stars,
@@ -114,6 +115,38 @@ export default class WishService {
                 type: result.chance === 0.5 ? 'Character' : 'Weapon'
             })
         });
+    }
+
+    private addSpecialCurrencyBasedOnItem = (item: Item) => {
+        if (item.stars > 3) {
+            const items = this.userData.items;
+            const itemType = item.chance === 0.5 ? 'Character' : 'Weapon';
+            const duplicateItems = items.filter(userItem => userItem.name === item.name);
+
+            if (duplicateItems.length > 0 && itemType === 'Character') {
+                if (duplicateItems.length > 7) {
+                    if (item.stars === 5) {
+                        this.userData.starglitter += 25;
+                    } else {
+                        this.userData.starglitter += 5;
+                    }
+                } else {
+                    if (item.stars === 5) {
+                        this.userData.starglitter += 10;
+                    } else {
+                        this.userData.starglitter += 2;
+                    }
+                }
+            } else if (itemType === 'Weapon') {
+                if (item.stars === 5) {
+                    this.userData.starglitter += 10;
+                } else {
+                    this.userData.starglitter += 2;
+                }
+            }
+        } else {
+            this.userData.stardust += 15;
+        }
     }
 
     private initializeUserData = (): void => {
