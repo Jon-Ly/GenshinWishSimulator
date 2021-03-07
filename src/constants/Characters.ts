@@ -52,6 +52,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Diona', 4, 0.5, 'Kätzlein Cocktail', ELEMENT.CRYO),
     new Character('Fischl', 4, 0.5, 'Prinzessin der Veruteilung!', ELEMENT.ELECTRO),
     new Character('Ganyu', 5, 0.5, 'Plenilune Gaze', ELEMENT.CRYO, true),
+    new Character('Hu Tao', 5, 0.5, 'Fragrance in Thaw', ELEMENT.PYRO, true),
     new Character('Jean', 5, 0.5, 'Dandelion Knight', ELEMENT.ANEMO),
     new Character('Kaeya', 4, 0.5, 'Frostwind Swordsman', ELEMENT.CRYO),
     new Character('Keqing', 5, 0.5, 'Driving Thunder', ELEMENT.ELECTRO),
@@ -88,7 +89,7 @@ const PLAYABLE_CHARACTERS_TO_OBJ = () => {
     const result: {[index: string]: Character} = {};
 
     PLAYABLE_CHARACTERS_ARRAY.forEach((c: Character) => {
-        result[c.name.toUpperCase()] = c;
+        result[c.name.replaceAll(' ', '_').toUpperCase()] = c;
     });
     return result;
 }

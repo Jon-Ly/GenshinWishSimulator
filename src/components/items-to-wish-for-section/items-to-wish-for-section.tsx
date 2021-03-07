@@ -7,6 +7,9 @@ import { useWishState } from '../../state-management/store';
 import PATHS from '../../constants/paths';
 import '../../styles/item-table.css';
 import BannerDetailSubHeader from '../banner-detail-sub-header/banner-detail-sub-header';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import Character from '../../models/character';
 
 interface ItemTableProps {
     items: Array<Item>
@@ -14,7 +17,8 @@ interface ItemTableProps {
 
 const ItemsToWishForSection = () => {
     const wishState = useWishState();
-    const currentBanner = BANNERS.find(b => b.code === wishState.banner) || BANNERS[0]; // TODO: need a way to enforce this or throw an error?
+    const currentBanner = BANNERS.find(b => b.code === wishState.banner) || BANNERS[0];
+    const UpArrow = () => <FontAwesomeIcon icon={faArrowUp} color='#99cc00'/>
 
     const ItemTable = ({items}: ItemTableProps) => {
         const itemIndexes = [];
@@ -24,6 +28,10 @@ const ItemsToWishForSection = () => {
             if (i % 2 === 0) {
                 itemIndexes.push(i);
             }
+        }
+
+        const isUpItem = (item: Item): boolean => {
+            return currentBanner.eventFiveStar?.name === item.name || currentBanner.eventFourStars.some((c: Character) => c.name === item.name);
         }
 
         return (
@@ -40,12 +48,18 @@ const ItemsToWishForSection = () => {
                     {itemIndexes?.map((i) => (
                         <tr key={`${items[i].name}${i}`}>
                             <td>{items[i].chance === 0.5 ? 'Character' : 'Weapon'}</td>
-                            <td>{items[i].name}</td>
+                            <td>
+                                {isUpItem(items[i]) && <UpArrow/>}
+                                {items[i].name}
+                            </td>
                             {
                                 i + 1 < items.length ? (
                                     <>
                                         <td>{items[i + 1].chance === 0.5 ? 'Character' : 'Weapon'}</td>
-                                        <td>{items[i + 1].name}</td>
+                                        <td>
+                                            {isUpItem(items[i + 1]) && <UpArrow/>}
+                                            {items[i + 1].name}
+                                        </td>
                                     </>
                                 ) : null
                             }
@@ -64,7 +78,6 @@ const ItemsToWishForSection = () => {
                     Items to wish for:
                 </h1>
             </div>
-            {/* TODO: Refactor toThreePrecision function to be reusable from BannerDetail */}
             <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
             </BannerDetailSubHeader>

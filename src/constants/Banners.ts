@@ -8,6 +8,7 @@ export enum BANNER_CODE {
     NONE = 'none',
     ALBEDO = 'albedo_banner',
     GANYU = 'ganyu_banner',
+    HU_TAO = 'hu_tao_banner',
     KEQING = 'keqing_banner',
     KLEE = 'klee_banner',
     TARTAGLIA = 'tartaglia_banner',
@@ -22,7 +23,7 @@ export interface Banner {
     code: BANNER_CODE,
     title: string,
     eventFiveStar?: Character,
-    eventFourStars?: Array<Character>,
+    eventFourStars: Array<Character>,
     fiveStars: Array<Character | Weapon>,
     fourStars: Array<Character | Weapon>,
     imagePath: string,
@@ -34,6 +35,7 @@ const WANDERLUST_BANNER: Banner = {
     title: 'Wanderlust Invocation',
     fiveStars: [...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS, ...WEAPONS.WANDERLUST_FIVE_STAR_WEAPONS],
     fourStars: [...CHARACTERS.WANDERLUST_FOUR_STAR_CHARACTERS, ...WEAPONS.FOUR_STAR_WEAPONS],
+    eventFourStars: [],
     imagePath: `${PATHS.CHARACTER_BANNERS}/wanderlust_banner.webp`,
     startDate: new Date(9999, 12, 31)
 }
@@ -58,6 +60,16 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.GANYU}.webp`,
         startDate: new Date(2021, 1, 12)
+    },
+    HU_TAO: {
+        code: BANNER_CODE.HU_TAO,
+        title: 'Moment of Bloom',
+        eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.HU_TAO,
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI, CHARACTERS.PLAYABLE_CHARACTERS.XIANGLING, CHARACTERS.PLAYABLE_CHARACTERS.CHONGYUN],
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.HU_TAO, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
+        fourStars: [],
+        imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.HU_TAO}.webp`,
+        startDate: new Date(2021, 3, 2)
     },
     KEQING: {
         code: BANNER_CODE.KEQING,
@@ -147,6 +159,10 @@ const BANNERS = new Array<Banner>(
     {
         ...EVENT_BANNERS.GANYU,
         fourStars: [...EVENT_BANNERS.GANYU.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.GANYU), ...WEAPONS.FOUR_STAR_WEAPONS]
+    },
+    {
+        ...EVENT_BANNERS.HU_TAO,
+        fourStars: [...EVENT_BANNERS.HU_TAO.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.HU_TAO), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.KEQING,

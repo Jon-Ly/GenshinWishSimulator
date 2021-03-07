@@ -94,7 +94,7 @@ const Inventory = () => {
             <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
             <InventoryItemContainer>
                 {
-                    fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
+                    fiveStarItems.length > 0 ? fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>) : <p>No 5 Stars</p>
                 }
             </InventoryItemContainer>
             <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}/>
@@ -106,7 +106,7 @@ const Inventory = () => {
             <BannerDetailSubHeader backgroundColor='#A5BACC' stars={3}/>
             <InventoryItemContainer>
                 {
-                    threeStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
+                    threeStarItems.length > 0 ? threeStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>) : <p>No 3 Stars</p>
                 }
             </InventoryItemContainer>
         </InformationContainer>

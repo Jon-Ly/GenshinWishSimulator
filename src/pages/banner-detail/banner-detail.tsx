@@ -26,9 +26,9 @@ const BannerDetail = () => {
     const FourStarText = () => (
         // Creates: "Title" CharacterName (Type), "Title" CharacterName (Type), and "Title" CharacterName (Type) 
         <>
-            {currentBanner?.eventFourStars?.map((c, index) => {
+            {currentBanner?.eventFourStars.map((c, index) => {
                 const textColor = GetElementColor(c.elementType);
-                const andText = index + 1 >= (currentBanner?.eventFourStars?.length || 999 )? ' and ' : '';
+                const andText = index + 1 >= (currentBanner?.eventFourStars.length || 999 )? ' and ' : '';
 
                 return (
                     <span key={`${c.name + index}`}>
@@ -71,16 +71,17 @@ const BannerDetail = () => {
             <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
             </BannerDetailSubHeader>
-            <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.toLowerCase()}.webp`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
+            <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.replaceAll(' ', '_').toLowerCase()}.webp`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
             <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
             </BannerDetailSubHeader>
             {
-                (currentBanner?.eventFourStars || []).map(c => 
-                    <img 
-                        style={{display: 'inline', margin: '0 30px 30px 0'}} 
-                        key={`detail-img-${c.name}`} 
-                        src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.toLowerCase()}.webp`} alt={`${c.name.toLowerCase()}`}/>
+                (
+                    currentBanner?.eventFourStars || []).map(c =>
+                        <img 
+                            style={{display: 'inline', margin: '0 30px 30px 0'}} 
+                            key={`detail-img-${c.name}`}
+                            src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${c.name.replaceAll(' ', '_').toLowerCase()}.webp`} alt={`${c.name.toLowerCase()}`}/>
                 )
             }
         </section>
