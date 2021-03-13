@@ -27,7 +27,9 @@ export interface Banner {
     fiveStars: Array<Character | Weapon>,
     fourStars: Array<Character | Weapon>,
     imagePath: string,
-    startDate: Date
+    startDate: Date,
+    occurrence: number,
+    label: string
 }
 
 const WANDERLUST_BANNER: Banner = {
@@ -37,7 +39,9 @@ const WANDERLUST_BANNER: Banner = {
     fourStars: [...CHARACTERS.WANDERLUST_FOUR_STAR_CHARACTERS, ...WEAPONS.FOUR_STAR_WEAPONS],
     eventFourStars: [],
     imagePath: `${PATHS.CHARACTER_BANNERS}/wanderlust_banner.webp`,
-    startDate: new Date(9999, 12, 31)
+    startDate: new Date(9999, 12, 31),
+    occurrence: 1,
+    label: 'Wanderlust'
 }
 
 const EVENT_BANNERS = {
@@ -49,7 +53,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.ALBEDO, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ALBEDO}.webp`,
-        startDate: new Date(2020, 12, 23)
+        startDate: new Date(2020, 12, 23),
+        occurrence: 1,
+        label: 'Albedo'
     },
     GANYU: {
         code: BANNER_CODE.GANYU,
@@ -59,7 +65,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.GANYU, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.GANYU}.webp`,
-        startDate: new Date(2021, 1, 12)
+        startDate: new Date(2021, 1, 12),
+        occurrence: 1,
+        label: 'Ganyu'
     },
     HU_TAO: {
         code: BANNER_CODE.HU_TAO,
@@ -69,7 +77,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.HU_TAO, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.HU_TAO}.webp`,
-        startDate: new Date(2021, 3, 2)
+        startDate: new Date(2021, 3, 2),
+        occurrence: 1,
+        label: 'Hu Tao'
     },
     KEQING: {
         code: BANNER_CODE.KEQING,
@@ -79,7 +89,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.KEQING, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KEQING}.webp`,
-        startDate: new Date(2021, 2, 17)
+        startDate: new Date(2021, 2, 17),
+        occurrence: 1,
+        label: 'Keqing'
     },
     KLEE: {
         code: BANNER_CODE.KLEE,
@@ -89,7 +101,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.KLEE, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KLEE}.webp`,
-        startDate: new Date(2020, 10, 20)
+        startDate: new Date(2020, 10, 20),
+        occurrence: 1,
+        label: 'Klee'
     },
     TARTAGLIA: {
         code: BANNER_CODE.TARTAGLIA,
@@ -99,7 +113,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA}.webp`,
-        startDate: new Date(2020, 11, 11)
+        startDate: new Date(2020, 11, 11),
+        occurrence: 1,
+        label: 'Tartaglia'
     },
     VENTI: {
         code: BANNER_CODE.VENTI,
@@ -109,7 +125,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.VENTI, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.VENTI}.webp`,
-        startDate: new Date(2020, 9, 28)
+        startDate: new Date(2020, 9, 28),
+        occurrence: 1,
+        label: 'Venti'
     },
     XIAO: {
         code: BANNER_CODE.XIAO,
@@ -119,7 +137,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.XIAO, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.XIAO}.webp`,
-        startDate: new Date(2021, 2, 3)
+        startDate: new Date(2021, 2, 3),
+        occurrence: 1,
+        label: 'Xiao'
     },
     ZHONGLI: {
         code: BANNER_CODE.ZHONGLI,
@@ -129,7 +149,9 @@ const EVENT_BANNERS = {
         fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.ZHONGLI, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ZHONGLI}.webp`,
-        startDate: new Date(2020, 12, 1)
+        startDate: new Date(2020, 12, 1),
+        occurrence: 1,
+        label: 'Zhongli'
     },
 }
 

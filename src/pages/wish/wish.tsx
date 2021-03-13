@@ -3,7 +3,6 @@ import PATHS from '../../constants/paths';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
 import './wish.css';
-import '../../styles/select.css';
 
 interface WishProps {
     setIsWishing: (isWishing: boolean) => void
@@ -56,7 +55,7 @@ const Wish = (props: WishProps) => {
     const setVideoEnded = () => setHasVideoEnded(true);
 
     return (
-        <div onClick={incrementItemIndex} className='wish-container'>
+        <div onClick={incrementItemIndex} className='wish-container' style={{backgroundImage: `url("${PATHS.ASSETS}/item_showcase_background.webp")`}}>
             {
                 !hasVideoEnded ? (
                     <button className='skip-button' onClick={skipVideo}>
