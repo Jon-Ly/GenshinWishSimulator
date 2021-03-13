@@ -9,7 +9,11 @@ import { Link } from 'react-router-dom';
 import { faBriefcase, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from '../select/select';
 
-const BannerHeader = () => {
+interface BannerHeaderProps {
+    setAppInformationOpen: (bool: boolean) => void;
+}
+
+const BannerHeader = ({setAppInformationOpen}: BannerHeaderProps) => {
     const wishState = useWishState();
     const wishDispatch = useWishDispatch();
     const BANNERS_DATE_ASCENDING = BANNERS.sort((banner1: Banner, banner2: Banner) => {
@@ -46,12 +50,7 @@ const BannerHeader = () => {
                     <img src={`${PATHS.ITEMS}/item_primogem.png`} style={{height: '32px', width: '32px'}} alt='Primogem'/>
                     <p>{wishState.primogems}</p>
                 </div>
-                <Link to='/inventory'>
-                    <FontAwesomeIcon icon={faBriefcase}/>
-                </Link>
-                <Link to='/inventory'>
-                    <FontAwesomeIcon icon={faQuestionCircle}/>
-                </Link>
+                <FontAwesomeIcon onClick={() => setAppInformationOpen(true)} icon={faQuestionCircle}/>
             </div>
         </header>
     );

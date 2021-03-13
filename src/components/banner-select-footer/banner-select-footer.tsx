@@ -76,6 +76,9 @@ const BannerFooter = (props: BannerFooterProps) => {
                 <Link to='/history'>
                   <FooterButton>History</FooterButton>
                 </Link>
+                <Link to='/inventory'>
+                  <FooterButton>Inventory</FooterButton>
+                </Link>
                 <FooterButton onClick={setResetDialogOpen}>Reset</FooterButton>
               </div>
             </div>

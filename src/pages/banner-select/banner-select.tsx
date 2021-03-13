@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BannerSelectCenter from '../../components/banner-select-center/banner-select-center';
 import BannerSelectFooter from '../../components/banner-select-footer/banner-select-footer';
 import BannerSelectHeader from '../../components/banner-select-header/banner-select-header';
+import AppInformaiton from '../../components/dialogs/app-information/app-information';
 import InsufficientPrimogemsDialog from '../../components/dialogs/insufficient-primogems-dialog/insufficient-primogems-dialog';
 import ResetAlert from '../../components/dialogs/reset-dialog/reset-dialog';
 import PATHS from '../../constants/paths';
@@ -17,6 +18,7 @@ interface BannerSelectProps {
 const BannerSelect = (props: BannerSelectProps) => {
     const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
     const [isInsufficientDialogOpen, setIsInsufficientDialogOpen] = useState(false);
+    const [isAppInformationOpen, setIsAppInformationOpen] = useState(false);
     const { isWishing, setIsWishing } = props;
     const wishDispatch = useWishDispatch();
     const wishState = useWishState();
@@ -45,7 +47,8 @@ const BannerSelect = (props: BannerSelectProps) => {
         <div className='select-menu' style={{backgroundImage: `url("${PATHS.ASSETS}/wish_background.webp")`}}>
             <ResetAlert isOpen={isResetDialogOpen} setIsOpen={setIsResetDialogOpen}/>
             <InsufficientPrimogemsDialog isOpen={isInsufficientDialogOpen} setIsOpen={setIsInsufficientDialogOpen}/>
-            <BannerSelectHeader/>
+            <AppInformaiton isOpen={isAppInformationOpen} setIsOpen={setIsAppInformationOpen}/>
+            <BannerSelectHeader setAppInformationOpen={setIsAppInformationOpen}/>
             <BannerSelectCenter/>
             <BannerSelectFooter
               isWishing={isWishing}

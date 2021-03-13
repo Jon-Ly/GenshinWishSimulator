@@ -2,7 +2,7 @@
     width: 225px;
 }
 
-#info > a {
+#info > a, #info > svg {
     font-size: 24px;
 }
 
