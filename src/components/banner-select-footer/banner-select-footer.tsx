@@ -41,7 +41,7 @@ const BannerFooter = (props: BannerFooterProps) => {
             onClick={primogems === 160 ? wishOne : wishTen}
             style={{
               color: `${HEXCODES.WISH_BUTTON_TEXT}`,
-              backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.png")`
+              backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.webp")`
             }}>
             <p>Wish {primogems === 160 ? 1 : 10}</p>
             <div className='flex-row' style={{ justifyContent: 'center' }}>

@@ -24,7 +24,7 @@ const PayDialog = (props: PayDialogProps) => {
                 wishDispatch({type: ACTION_TYPE.PAY, payload: topUp});
                 setIsOpen(false);
                 setIsProcessing(false);
-            }, 1000);
+            }, 600);
         } else {
             setIsOpen(false);
         }

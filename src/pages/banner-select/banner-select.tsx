@@ -42,7 +42,7 @@ const BannerSelect = (props: BannerSelectProps) => {
     }
 
     return (
-        <div className='select-menu' style={{backgroundImage: `url("${PATHS.ASSETS}/wish_background.png")`}}>
+        <div className='select-menu' style={{backgroundImage: `url("${PATHS.ASSETS}/wish_background.webp")`}}>
             <ResetAlert isOpen={isResetDialogOpen} setIsOpen={setIsResetDialogOpen}/>
             <InsufficientPrimogemsDialog isOpen={isInsufficientDialogOpen} setIsOpen={setIsInsufficientDialogOpen}/>
             <BannerSelectHeader/>
