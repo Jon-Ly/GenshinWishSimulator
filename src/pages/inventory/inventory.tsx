@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BannerDetailSubHeader from '../../components/banner-detail-sub-header/banner-detail-sub-header';
 import InformationContainer from '../../components/information-container/information-container';
-import HEXCODES from '../../constants/hexcodes';
+import COLORS from '../../constants/colors';
 import PATHS from '../../constants/paths';
 import { ItemData } from '../../constants/user-data';
 import { useWishState } from '../../state-management/store';
@@ -91,13 +91,13 @@ const Inventory = () => {
         <InformationContainer className='flex-column flex-wrap inventory-container'>
             <InventoryCurrencyContainer/>
             <h1>Inventory</h1>
-            <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}/>
+            <BannerDetailSubHeader backgroundColor={COLORS.FIVE_STAR_CHANCE_BANNER} stars={5}/>
             <InventoryItemContainer>
                 {
                     fiveStarItems.length > 0 ? fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>) : <p>No 5 Stars</p>
                 }
             </InventoryItemContainer>
-            <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}/>
+            <BannerDetailSubHeader backgroundColor={COLORS.FOUR_STAR_CHANCE_BANNER} stars={4}/>
             <InventoryItemContainer>
                 {
                     fourStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)

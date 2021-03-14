@@ -1,7 +1,7 @@
 import React from 'react';
 import BANNERS, { BANNER_CODE } from '../../constants/banners';
 import CHANCES from '../../constants/chances';
-import HEXCODES, { GetElementColor } from '../../constants/hexcodes';
+import COLORS, { GetElementColor } from '../../constants/colors';
 import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import BannerDetailSubHeader from '../../components/banner-detail-sub-header/banner-detail-sub-header';
@@ -21,7 +21,7 @@ const BannerDetail = () => {
     const CharacterText = ({character}: any) => <span style={{color: GetElementColor(character.elementType || '') }}>"{character.title}" {character.name} ({character.elementType})</span>;
     const ImportantText = ({children}: any) => <span style={{color: '#CD5239'}}>{children}</span>;
     const MasterlessStarglitterText = () => <span style={{color: '#C27746'}}>Masterless Starglitter</span>;
-    const PurpleText = ({children}: any) => <span style={{color: `${HEXCODES.PURPLE}`}}>{children}</span>
+    const PurpleText = ({children}: any) => <span style={{color: '#A257E1'}}>{children}</span>
 
     const FourStarText = () => (
         // Creates: "Title" CharacterName (Type), "Title" CharacterName (Type), and "Title" CharacterName (Type) 
@@ -68,11 +68,11 @@ const BannerDetail = () => {
     const IncreasedDropRateSection = () => (
         <section className='detail-section'>
             <h1 style={{color: '#575757'}}>Increased Drop Rates!</h1>
-            <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
+            <BannerDetailSubHeader backgroundColor={COLORS.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
             </BannerDetailSubHeader>
             <img src={`${PATHS.CHARACTER_THUMBNAIL_WITH_BACKGROUND}/${eventFiveStarCharacter?.name.replaceAll(' ', '_').toLowerCase()}.webp`} alt={`${eventFiveStarCharacter?.name.toLowerCase()}`}/>
-            <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
+            <BannerDetailSubHeader backgroundColor={COLORS.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
             </BannerDetailSubHeader>
             {

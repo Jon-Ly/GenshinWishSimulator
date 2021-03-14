@@ -2,7 +2,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { BANNER_CODE } from '../../constants/banners';
-import HEXCODES from '../../constants/hexcodes';
+import HEXCODES from '../../constants/colors';
 import HISTORY_TYPE from '../../constants/history-type';
 import { ItemData } from '../../constants/user-data';
 import { useWishState } from '../../state-management/store';
@@ -68,7 +68,7 @@ const HistoryTable = ({historyType}: HistoryTableProps) => {
     )
 
     const Row = ({item}: RowDataProps) => {
-        const itemColor = item.stars === 4 ? HEXCODES.FOUR_STAR_HISTORY_COLOR : item.stars === 5 ? HEXCODES.FIVE_STAR_HISTORY_COLOR : ''
+        const itemColor = item.stars === 4 ? '#A45AE1' : item.stars === 5 ? '#BF6D38' : ''
         return (
             <tr>
                 <td>{item.type}</td>

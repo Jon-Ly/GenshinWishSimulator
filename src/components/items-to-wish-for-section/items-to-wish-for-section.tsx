@@ -1,6 +1,6 @@
 import React from 'react';
 import BANNERS from '../../constants/banners';
-import HEXCODES from '../../constants/hexcodes';
+import COLORS from '../../constants/colors';
 import WEAPONS from '../../constants/weapons';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
@@ -78,11 +78,11 @@ const ItemsToWishForSection = () => {
                     Items to wish for:
                 </h1>
             </div>
-            <BannerDetailSubHeader backgroundColor={HEXCODES.FIVE_STAR_CHANCE_BANNER} stars={5}>
+            <BannerDetailSubHeader backgroundColor={COLORS.FIVE_STAR_CHANCE_BANNER} stars={5}>
                 Base Probability for 5-Star Item Drops: 0.600% (Incl. guarantee: 1.600%)
             </BannerDetailSubHeader>
             <ItemTable items={currentBanner?.fiveStars}/>
-            <BannerDetailSubHeader backgroundColor={HEXCODES.FOUR_STAR_CHANCE_BANNER} stars={4}>
+            <BannerDetailSubHeader backgroundColor={COLORS.FOUR_STAR_CHANCE_BANNER} stars={4}>
                 Base Probability for 4-Star Item Drops: 5.100% (Incl. guarantee: 13.000%)
             </BannerDetailSubHeader>
             <ItemTable items={currentBanner?.fourStars}/>

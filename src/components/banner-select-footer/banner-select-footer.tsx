@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HEXCODES from '../../constants/hexcodes';
+import HEXCODES from '../../constants/colors';
 import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import './banner-select-footer.css';
@@ -34,13 +34,13 @@ const BannerFooter = (props: BannerFooterProps) => {
 
     const WishButton = ({primogems}: WishButtonProps) => {
       const currentPrimogems = wishState.primogems;
-      const primoFontColor = currentPrimogems >= 1600 || (currentPrimogems >= 160 && primogems === 160) ? `${HEXCODES.WISH_BUTTON_TEXT}` : `${HEXCODES.ERROR}`
+      const primoFontColor = currentPrimogems >= 1600 || (currentPrimogems >= 160 && primogems === 160) ? '#BAA996' : '#FF5F40';
       return (
           <button
             className='wish-button'
             onClick={primogems === 160 ? wishOne : wishTen}
             style={{
-              color: `${HEXCODES.WISH_BUTTON_TEXT}`,
+              color: '#BAA996',
               backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.webp")`
             }}>
             <p>Wish {primogems === 160 ? 1 : 10}</p>
