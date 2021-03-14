@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HEXCODES from '../../constants/colors';
 import PATHS from '../../constants/paths';
 import { useWishState } from '../../state-management/store';
 import './banner-select-footer.css';

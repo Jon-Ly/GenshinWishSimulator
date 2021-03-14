@@ -2,7 +2,6 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { BANNER_CODE } from '../../constants/banners';
-import HEXCODES from '../../constants/colors';
 import HISTORY_TYPE from '../../constants/history-type';
 import { ItemData } from '../../constants/user-data';
 import { useWishState } from '../../state-management/store';
@@ -27,7 +26,7 @@ const HistoryTable = ({historyType}: HistoryTableProps) => {
         const start = (page - 1) * 6;
         const end = (page) * 6;
 
-        setValidItems(_ => {
+        setValidItems(() => {
             const items = wishState.items.filter(item => {
                 const isWanderlust = historyType === HISTORY_TYPE.WANDERLUST && item.banner === BANNER_CODE.WANDERLUST;
                 const isCharacterEvent = historyType !== HISTORY_TYPE.WANDERLUST && item.banner !== BANNER_CODE.WANDERLUST;
@@ -68,7 +67,7 @@ const HistoryTable = ({historyType}: HistoryTableProps) => {
     )
 
     const Row = ({item}: RowDataProps) => {
-        const itemColor = item.stars === 4 ? '#A45AE1' : item.stars === 5 ? '#BF6D38' : ''
+        const itemColor = item.stars === 4 ? '#A45AE1' : item.stars === 5 ? '#BF6D38' : '';
         return (
             <tr>
                 <td>{item.type}</td>
@@ -93,7 +92,6 @@ const HistoryTable = ({historyType}: HistoryTableProps) => {
                     </thead>
                     <tbody>
                         {
-                            // Redo the quick work on Text color
                             tableData.length > 0 ?
                             (
                                 tableData.map((item, index) => <Row key={`${item.name}-${index}`} item={item}/>)

@@ -5,8 +5,7 @@ import { ACTION_TYPE } from '../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../state-management/store';
 import './banner-select-header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import { faBriefcase, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Select from '../select/select';
 
 interface BannerHeaderProps {
