@@ -94,19 +94,19 @@ const Inventory = () => {
             <BannerDetailSubHeader backgroundColor={COLORS.FIVE_STAR_CHANCE_BANNER} stars={5}/>
             <InventoryItemContainer>
                 {
-                    fiveStarItems.length > 0 ? fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>) : <p>No 5 Stars</p>
+                    fiveStarItems.length > 0 ? fiveStarItems.map((item: ItemDataWithCount) => <InventoryItem key={item.name} item={item}/>) : <p>No 5 Stars</p>
                 }
             </InventoryItemContainer>
             <BannerDetailSubHeader backgroundColor={COLORS.FOUR_STAR_CHANCE_BANNER} stars={4}/>
             <InventoryItemContainer>
                 {
-                    fourStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>)
+                    fourStarItems.map((item: ItemDataWithCount) => <InventoryItem key={item.name} item={item}/>)
                 }
             </InventoryItemContainer>
             <BannerDetailSubHeader backgroundColor='#A5BACC' stars={3}/>
             <InventoryItemContainer>
                 {
-                    threeStarItems.length > 0 ? threeStarItems.map((item: ItemDataWithCount) => <InventoryItem item={item}/>) : <p>No 3 Stars</p>
+                    threeStarItems.length > 0 ? threeStarItems.map((item: ItemDataWithCount) => <InventoryItem key={item.name} item={item}/>) : <p>No 3 Stars</p>
                 }
             </InventoryItemContainer>
         </InformationContainer>
