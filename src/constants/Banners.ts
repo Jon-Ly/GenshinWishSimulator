@@ -13,6 +13,7 @@ export enum BANNER_CODE {
     KLEE = 'klee_banner',
     TARTAGLIA = 'tartaglia_banner',
     VENTI = 'venti_banner',
+    VENTI_2 = 'venti_banner_2',
     WANDERLUST = 'wanderlust_banner',
     WEAPON = 'weapon_banner',
     XIAO = 'xiao_banner',
@@ -129,6 +130,18 @@ const EVENT_BANNERS = {
         occurrence: 1,
         label: 'Venti'
     },
+    VENTI_2: {
+        code: BANNER_CODE.VENTI_2,
+        title: 'Ballad of Goblets',
+        eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.VENTI,
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.SUCROSE, CHARACTERS.PLAYABLE_CHARACTERS.RAZOR, CHARACTERS.PLAYABLE_CHARACTERS.NOELLE],
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.VENTI, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
+        fourStars: [],
+        imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.VENTI_2}.webp`,
+        startDate: new Date(2021, 3, 16),
+        occurrence: 1,
+        label: 'Venti 2'
+    },
     XIAO: {
         code: BANNER_CODE.XIAO,
         title: 'Invitation to Mundane Life',
@@ -201,6 +214,10 @@ const BANNERS = new Array<Banner>(
     {
         ...EVENT_BANNERS.VENTI,
         fourStars: [...EVENT_BANNERS.VENTI.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.VENTI), ...WEAPONS.FOUR_STAR_WEAPONS]
+    },
+    {
+        ...EVENT_BANNERS.VENTI_2,
+        fourStars: [...EVENT_BANNERS.VENTI_2.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.VENTI_2), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.XIAO,

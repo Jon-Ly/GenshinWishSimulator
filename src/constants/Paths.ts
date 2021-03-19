@@ -6,7 +6,8 @@ const PATHS = {
     CHARACTER_THUMBNAIL_WITH_BACKGROUND: './genshin_assets/character_thumbnail_with_background',
     ITEMS: './genshin_assets/items',
     SHOP: './genshin_assets/shop',
-    VIDEOS: './genshin_assets/videos'
+    VIDEOS: './genshin_assets/videos',
+    WEAPONS: './genshin_assets/weapons'
 }
 
 export default PATHS;

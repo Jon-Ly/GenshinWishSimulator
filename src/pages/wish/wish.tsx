@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PATHS from '../../constants/paths';
+import Character from '../../models/character';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
 import './wish.css';
@@ -14,8 +15,6 @@ const Wish = (props: WishProps) => {
     const state = useWishState();
     const { setIsWishing } = props;
     const videoRef = React.createRef<HTMLVideoElement>();
-
-    const getImageSource = (name: string): string => `${PATHS.CHARACTER_WISH_IMAGES}/character_${name.toLowerCase()}.png`;
 
     const getVideoPath = () => {
         const hasFiveStar = state.results.some((item: Item) => item.stars === 5);
@@ -43,7 +42,12 @@ const Wish = (props: WishProps) => {
 
     const Image = () => {
         const resultItem = state.results[itemIndex];
-        return <img className='item-img' src={getImageSource(resultItem.name)} alt={`${resultItem.name}`}/>
+        const itemFileName = resultItem.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
+        const imageSrc = (resultItem as Character).elementType ? 
+            `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
+            `${PATHS.WEAPONS}/${itemFileName}.webp`;
+
+        return <img className='item-img' src={imageSrc} alt={`${resultItem.name}`}/>
     }
 
     const skipVideo = () => {

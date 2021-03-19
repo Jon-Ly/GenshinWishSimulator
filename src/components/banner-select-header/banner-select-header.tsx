@@ -27,7 +27,7 @@ const BannerHeader = ({setAppInformationOpen}: BannerHeaderProps) => {
     const selectListItems = BANNERS_DATE_ASCENDING.map(banner => {
             return {
                 value: banner.code,
-                label: banner.code === BANNER_CODE.WANDERLUST ? 'Wanderlust' : banner.eventFiveStar?.name
+                label: banner.code === BANNER_CODE.WANDERLUST ? 'Wanderlust' : banner.label
             }
         });
 
