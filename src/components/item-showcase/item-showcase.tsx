@@ -21,7 +21,7 @@ const ItemShowcase = (props: ItemShowcaseProps) => {
 
     const Image = (props: ImageProps) => {
         const {item} = props;
-        const itemFileName = item.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
+        const itemFileName = item.name.replaceAll(' ', '_').replaceAll('\'', '').replace('-', '_').toLowerCase();
         const imageSrc = (item as Character).elementType ? 
             `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
             `${PATHS.WEAPONS}/${itemFileName}.webp`;

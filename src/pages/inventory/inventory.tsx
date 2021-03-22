@@ -11,19 +11,27 @@ interface ItemDataWithCount extends ItemData {
     count: number
 }
 
+interface ItemThumbnailProps {
+    item: ItemData
+}
+
 const Inventory = () => {
     const wishState = useWishState();
     const [fiveStarItems, setFiveStarItems] = useState<Array<ItemDataWithCount>>([]);
     const [fourStarItems, setFourStarItems] = useState<Array<ItemDataWithCount>>([]);
     const [threeStarItems, setThreeStarItems] = useState<Array<ItemDataWithCount>>([]);
 
-    const CharacterImage = ({name}: any) => (
-        <img className='character-image' src={`${PATHS.CHARACTER_THUMBNAILS}/${name}.png`} alt={`${name}`}/>
-    )
+    const ItemThumbnail = ({item}: ItemThumbnailProps) => {
+        const path = item.type === 'Character' ? PATHS.CHARACTER_THUMBNAILS : PATHS.WEAPON_THUMBNAILS;
+        const itemFileName = item.name.replaceAll(' ', '_').replaceAll('\'', '').replace('-', '_').toLowerCase();
+        return (
+            <img className='item-image' src={`${path}/${itemFileName}.png`} alt={`${item.name}`}/>
+        )
+    }
 
     const InventoryItem = ({item}: any) => (
         <div className='inventory-item flex-row'>
-            <CharacterImage name={item.name}/>
+            <ItemThumbnail item={item}/>
             <p className='item-name'>{item.name}</p>
             <div className='counter'>
                 {item.count}

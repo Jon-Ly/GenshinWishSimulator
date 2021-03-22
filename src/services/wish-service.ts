@@ -202,9 +202,9 @@ export default class WishService {
 
             return eventFourStarCharacters[fourStarIndex];
         } else {
-            const fourStarCharacters = currentBanner?.fourStars || [];
+            const fourStarItems = currentBanner?.fourStars || [];
 
-            const fourStarIndex = Math.floor(Math.random() * (fourStarCharacters.length));
+            const fourStarIndex = Math.floor(Math.random() * (fourStarItems.length));
 
             if (this.userData.banner !== BANNER_CODE.WANDERLUST) {
                 this.userData.eventFourStarCharacterPity = 0;
@@ -213,7 +213,7 @@ export default class WishService {
                 this.userData.wanderlustFourStarPity = 0;
             }
 
-            return fourStarCharacters[fourStarIndex];
+            return fourStarItems[fourStarIndex];
         }
     }
 

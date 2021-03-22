@@ -15,7 +15,7 @@ const WANDERLUST_FIVE_STAR_WEAPONS = [
 
 const FOUR_STAR_WEAPONS = [
     new Weapon('Rust', 4, 0.75),
-    new Weapon('Sacrifical Bow', 4, 0.75),
+    new Weapon('Sacrificial Bow', 4, 0.75),
     new Weapon('The Stringless', 4, 0.75),
     new Weapon('Favonius Warbow', 4, 0.75),
     new Weapon('Eye of Perception', 4, 0.75),

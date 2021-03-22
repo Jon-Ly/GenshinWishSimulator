@@ -7,7 +7,8 @@ const PATHS = {
     ITEMS: './genshin_assets/items',
     SHOP: './genshin_assets/shop',
     VIDEOS: './genshin_assets/videos',
-    WEAPONS: './genshin_assets/weapons'
+    WEAPONS: './genshin_assets/weapons',
+    WEAPON_THUMBNAILS: './genshin_assets/weapons/thumbnails'
 }
 
 export default PATHS;
