@@ -12,14 +12,16 @@ import './banner-select.css';
 
 interface BannerSelectProps {
     isWishing: boolean,
-    setIsWishing: (isWishing: boolean) => void
+    setIsWishing: (isWishing: boolean) => void,
+    toggleMute: () => void,
+    isMuted: boolean
 }
 
 const BannerSelect = (props: BannerSelectProps) => {
     const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
     const [isInsufficientDialogOpen, setIsInsufficientDialogOpen] = useState(false);
     const [isAppInformationOpen, setIsAppInformationOpen] = useState(false);
-    const { isWishing, setIsWishing } = props;
+    const { isWishing, setIsWishing, toggleMute, isMuted } = props;
     const wishDispatch = useWishDispatch();
     const wishState = useWishState();
 
@@ -27,6 +29,7 @@ const BannerSelect = (props: BannerSelectProps) => {
     
     const wishOne = () => {
       if (!isWishing && wishState.primogems >= 160) {
+        toggleMute();
         wishDispatch({type: ACTION_TYPE.WISH, payload: 1});
         setIsWishing(true);
       } else {
@@ -36,6 +39,7 @@ const BannerSelect = (props: BannerSelectProps) => {
     
     const wishTen = () => {
       if (!isWishing && wishState.primogems >= 1600) {
+        toggleMute();
         wishDispatch({type: ACTION_TYPE.WISH, payload: 10});
         setIsWishing(true);
       } else {
@@ -48,7 +52,7 @@ const BannerSelect = (props: BannerSelectProps) => {
             <ResetAlert isOpen={isResetDialogOpen} setIsOpen={setIsResetDialogOpen}/>
             <InsufficientPrimogemsDialog isOpen={isInsufficientDialogOpen} setIsOpen={setIsInsufficientDialogOpen}/>
             <AppInformaiton isOpen={isAppInformationOpen} setIsOpen={setIsAppInformationOpen}/>
-            <BannerSelectHeader setAppInformationOpen={setIsAppInformationOpen}/>
+            <BannerSelectHeader isMuted={isMuted} setAppInformationOpen={setIsAppInformationOpen} toggleMute={toggleMute}/>
             <BannerSelectCenter/>
             <BannerSelectFooter
               isWishing={isWishing}

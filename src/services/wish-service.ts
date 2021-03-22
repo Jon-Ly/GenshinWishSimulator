@@ -99,7 +99,7 @@ export default class WishService {
         this.addItemsToUserData(results);
         this.saveUserDataToLocal();
 
-        return {...this.userData, results: results};
+        return {...this.userData, results: results, isMute: localStorage.getItem('mute') === 'true'};
     }
 
     private addItemsToUserData = (results: Array<Item>): void => {

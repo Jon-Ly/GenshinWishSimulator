@@ -5,11 +5,11 @@ import { useWishState } from '../../state-management/store';
 import './banner-select-footer.css';
 
 interface BannerFooterProps {
-  isWishing: boolean;
+  isWishing: boolean,
   setIsWishing: (isWishing: boolean) => void,
-  wishOne: () => void;
-  wishTen: () => void;
-  setResetDialogOpen: () => void;
+  wishOne: () => void,
+  wishTen: () => void,
+  setResetDialogOpen: () => void
 }
 
 interface FooterButtonProps {
@@ -24,6 +24,7 @@ interface WishButtonProps {
 const BannerFooter = (props: BannerFooterProps) => {
     const wishState = useWishState();
     const { wishOne, wishTen, setResetDialogOpen } = props;
+    const currentPrimogems = wishState.primogems;
 
     const FooterButton = ({children, onClick}: FooterButtonProps) => (
       <button onClick={onClick} className='footer-button' style={{backgroundColor: '#E2DED4', color: '#343434'}}>
@@ -32,7 +33,6 @@ const BannerFooter = (props: BannerFooterProps) => {
     )
 
     const WishButton = ({primogems}: WishButtonProps) => {
-      const currentPrimogems = wishState.primogems;
       const primoFontColor = currentPrimogems >= 1600 || (currentPrimogems >= 160 && primogems === 160) ? '#BAA996' : '#FF5F40';
       return (
           <button

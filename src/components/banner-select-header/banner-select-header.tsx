@@ -5,16 +5,19 @@ import { ACTION_TYPE } from '../../state-management/reducer';
 import { useWishDispatch, useWishState } from '../../state-management/store';
 import './banner-select-header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faQuestionCircle, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import Select from '../select/select';
 
 interface BannerHeaderProps {
-    setAppInformationOpen: (bool: boolean) => void;
+    setAppInformationOpen: (bool: boolean) => void,
+    toggleMute: () => void,
+    isMuted: boolean
 }
 
-const BannerHeader = ({setAppInformationOpen}: BannerHeaderProps) => {
+const BannerHeader = (props: BannerHeaderProps) => {
     const wishState = useWishState();
     const wishDispatch = useWishDispatch();
+    const {setAppInformationOpen, toggleMute, isMuted} = props;
     const BANNERS_DATE_ASCENDING = BANNERS.sort((banner1: Banner, banner2: Banner) => {
         if (banner1.startDate < banner2.startDate) {
             return -1;
@@ -50,6 +53,7 @@ const BannerHeader = ({setAppInformationOpen}: BannerHeaderProps) => {
                     <p>{wishState.primogems}</p>
                 </div>
                 <FontAwesomeIcon onClick={() => setAppInformationOpen(true)} icon={faQuestionCircle}/>
+                <FontAwesomeIcon onClick={toggleMute} icon={isMuted ? faVolumeMute : faVolumeUp}/>
             </div>
         </header>
     );

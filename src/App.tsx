@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Wish from "./pages/wish/wish";
-import BannerSelectMenu from "./pages/banner-select/banner-select";
+import BannerSelect from "./pages/banner-select/banner-select";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,16 +12,29 @@ import './App.css';
 import { ChakraProvider } from "@chakra-ui/react";
 import Inventory from "./pages/inventory/inventory";
 import Shop from "./pages/shop/shop";
+import PATHS from "./constants/paths";
 
 export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
+  const [isMuted, setIsMuted] = useState(localStorage.getItem('muted') === 'true');
+
+  const toggleMute = () => {
+    localStorage.setItem('muted', `${!isMuted}`);
+    setIsMuted(isMuted => !isMuted);
+  }
 
   return (
     <ChakraProvider>
       <Router>
+        <audio style={{display: 'none'}} autoPlay muted={isMuted} loop>
+          <source src={`${PATHS.MUSIC}/statue_of_the_seven.ogg`} type="audio/ogg"/>
+          <source src={`${PATHS.MUSIC}/statue_of_the_seven.wav`} type="audio/wav"/>
+          <source src={`${PATHS.MUSIC}/statue_of_the_seven.mp3`} type="audio/mp3"/>
+          Your browser does not support the audio element.
+        </audio>
         <Switch>
           <Route exact path='/'>
-            {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelectMenu setIsWishing={setIsWishing} isWishing={isWishing}/>}
+            {isWishing ? <Wish setIsWishing={setIsWishing} toggleMute={toggleMute}/> : <BannerSelect setIsWishing={setIsWishing} isWishing={isWishing} isMuted={isMuted} toggleMute={toggleMute}/>}
           </Route>
           <Route path='/details'>
             <BannerDetail/>

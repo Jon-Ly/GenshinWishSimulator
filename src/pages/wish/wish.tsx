@@ -7,14 +7,15 @@ import { useWishState } from '../../state-management/store';
 import './wish.css';
 
 interface WishProps {
-    setIsWishing: (isWishing: boolean) => void
+    setIsWishing: (isWishing: boolean) => void,
+    toggleMute: () => void
 }
 
 const Wish = (props: WishProps) => {
     const [hasVideoEnded, setHasVideoEnded] = useState(false);
     const [itemIndex, setItemIndex] = useState(0);
     const state = useWishState();
-    const { setIsWishing } = props;
+    const { setIsWishing, toggleMute } = props;
     const videoRef = React.createRef<HTMLVideoElement>();
 
     const getVideoPath = () => {
@@ -36,6 +37,7 @@ const Wish = (props: WishProps) => {
             document.getElementsByTagName('body')[0].className = '';
             setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
             if (itemIndex === state.results.length || state.results.length === 1) {
+                toggleMute();
                 setIsWishing(false);
             }
         }
