@@ -1,0 +1,30 @@
+.item-showcase {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.item-container {
+    background: rgb(82,107,148);
+    background: linear-gradient(180deg, rgba(82,107,148,1) 0%, rgba(188,198,174,1) 50%, rgba(82,107,148,1) 100%);
+    width: 8%;
+    border: 1px solid #abcbfc;
+    position: relative;
+    overflow: hidden;
+    height: 50%;
+    border-radius: 25px;
+    margin: 0 1px;
+}
+
+.item-weapon {
+    position: absolute;
+    top: 30%;
+    transform: rotate(-15deg) scale(1.65);
+}
+
+.item-character {
+    position: absolute;
+    transform: scale(13) !important;
+    top: 70% !important;
+}

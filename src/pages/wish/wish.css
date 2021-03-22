@@ -12,6 +12,7 @@
 .wish-container {
     height: 100vh;
     overflow: hidden;
+    justify-content: center;
 }
 
 .wish-video {
@@ -25,12 +26,12 @@
     z-index: 2;
 }
 
-.item-img {
-    -webkit-animation: reveal 0.8s ease-in both;
-    animation: reveal 0.8s ease-in both;
-    -moz-animation: reveal 0.3s linear both;
-    -o-animation: reveal 0.3s linear both;
-    -ms-animation: reveal 0.3s linear both;
+.item-img-character {
+    -webkit-animation: character-reveal 0.8s ease-in both;
+    animation: character-reveal 0.8s ease-in both;
+    -moz-animation: character-reveal 0.3s linear both;
+    -o-animation: character-reveal 0.3s linear both;
+    -ms-animation: character-reveal 0.3s linear both;
     -webkit-perspective: 400px;
     perspective: 400px;
     transition: transform 0.15ms linear;  
@@ -42,11 +43,93 @@
             user-select: none;
 }
 
-.item-img:hover {
-    transform: perspective(400px) translateZ(-400px);
+.item-img-weapon {
+    -webkit-animation: weapon-reveal 0.8s ease-in both;
+    animation: weapon-reveal 0.8s ease-in both;
+    -moz-animation: weapon-reveal 0.3s linear both;
+    -o-animation: weapon-reveal 0.3s linear both;
+    -ms-animation: weapon-reveal 0.3s linear both;
+    -webkit-perspective: 400px;
+    perspective: 400px;
+    transition: transform 0.15ms linear;  
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
-@keyframes reveal {
+@keyframes weapon-reveal {
+    0% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(400px);
+        transform: perspective(400px) translateZ(400px);
+    }
+    3% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(334px);
+        transform: perspective(400px) translateZ(334px);
+    }
+    6% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(268px);
+        transform: perspective(400px) translateZ(268px);
+    }
+    9% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(202px);
+        transform: perspective(400px) translateZ(202px);
+    }
+    12% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(136px);
+        transform: perspective(400px) translateZ(136px);
+    }
+    15% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(70px);
+        transform: perspective(400px) translateZ(70px);
+    }
+    18% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(0px);
+        transform: perspective(400px) translateZ(0px);
+    }
+    20% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(0px);
+        transform: perspective(400px) translateZ(-70px);
+    }
+    22% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(0px);
+        transform: perspective(400px) translateZ(-140px);
+    }
+    24% {
+        -webkit-filter: brightness(0%);
+        filter: brightness(0%);
+        -webkit-transform: perspective(400px) translateZ(0px);
+        transform: perspective(400px) translateZ(-210px);
+    }
+    100% {
+        -webkit-filter: brightness(100%);
+        filter: brightness(100%);
+        -webkit-transform: perspective(400px) translateZ(0);
+        transform: perspective(400px) translateZ(-210px);
+    }
+}
+
+@keyframes character-reveal {
     0% {
         -webkit-filter: brightness(0%);
         filter: brightness(0%);
@@ -96,3 +179,4 @@
         transform: perspective(400px) translateZ(0);
     }
 }
+

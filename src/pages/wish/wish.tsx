@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ItemShowcase from '../../components/item-showcase/item-showcase';
 import PATHS from '../../constants/paths';
 import Character from '../../models/character';
 import { Item } from '../../models/item';
@@ -46,8 +47,21 @@ const Wish = (props: WishProps) => {
         const imageSrc = (resultItem as Character).elementType ? 
             `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
             `${PATHS.WEAPONS}/${itemFileName}.webp`;
+        const classString = `${resultItem.type === 'Weapon' ? 'item-img-weapon' : 'item-img-character'}`;
 
-        return <img className='item-img' src={imageSrc} alt={`${resultItem.name}`}/>
+        return <img className={classString} src={imageSrc} alt={`${resultItem.name}`}/>
+    }
+
+    const orderByImportance = (items: Array<Item>) => {
+        // 5 Star Character, 5 Star Weapon, 4 Star Character, 4 Star Weapon, 3 Star
+
+        const fiveStarCharacters = items.filter(i => i.stars === 5 && i.type === 'Character');
+        const fiveStarWeapons = items.filter(i => i.stars === 5 && i.type === 'Weapon');
+        const fourStarCharacters = items.filter(i => i.stars === 4 && i.type === 'Character');
+        const fourStarWeapons = items.filter(i => i.stars === 4 && i.type === 'Weapon');
+        const threeStarWeapons = items.filter(i => i.stars === 3);
+
+        return [...fiveStarCharacters, ...fiveStarWeapons, ...fourStarCharacters, ...fourStarWeapons, ...threeStarWeapons];
     }
 
     const skipVideo = () => {
@@ -59,7 +73,7 @@ const Wish = (props: WishProps) => {
     const setVideoEnded = () => setHasVideoEnded(true);
 
     return (
-        <div onClick={incrementItemIndex} className='wish-container' style={{backgroundImage: `url("${PATHS.ASSETS}/item_showcase_background.webp")`}}>
+        <div onClick={incrementItemIndex} className='flex-row wish-container' style={{backgroundImage: `url("${PATHS.ASSETS}/item_showcase_background.webp")`}}>
             {
                 !hasVideoEnded ? (
                     <button className='skip-button' onClick={skipVideo}>
@@ -76,7 +90,7 @@ const Wish = (props: WishProps) => {
                 ) : 
                 itemIndex < state.results.length ? <Image/> :
                 (
-                    state.results.map((item, index) => <p key={`${item.name}${index}`}>{item.name}</p>)
+                    <ItemShowcase items={orderByImportance(state.results)}/>
                 )
             }
         </div>

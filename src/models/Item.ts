@@ -8,11 +8,13 @@ export default class ItemBase {
     stars: number;
     chance: number;
     chancePretty: string;
+    type: 'Character' | 'Weapon';
 
-    constructor(name: string, stars: number, chance: number) {
+    constructor(name: string, stars: number, chance: number, type: 'Character' | 'Weapon') {
         this.name = name;
         this.stars = stars;
         this.chance = chance;
+        this.type = type;
 
         this.chancePretty = `${chance*100}%`;
     }
