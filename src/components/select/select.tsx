@@ -26,7 +26,7 @@ const Select = (props: SelectProps) => {
     return (
         <div className='select-outer-wrapper'>
             <div className='select-inner-wrapper' onClick={toggleShowSelection} onBlur={toggleShowSelectionFalse} tabIndex={0}>
-                <input value={inputLabel} readOnly/>
+                <input value={inputLabel} style={{width: '100%'}} readOnly/>
                 {
                     showSelection ?
                     <FontAwesomeIcon icon={faSortUp} className='dropdown-arrow-up'/> :

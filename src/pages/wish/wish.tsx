@@ -66,7 +66,7 @@ const Wish = (props: WishProps) => {
 
     const skipVideo = () => {
         if (videoRef && videoRef.current) {
-            videoRef.current.currentTime = videoRef.current.currentTime + 10;
+            videoRef.current.currentTime = videoRef.current.currentTime + 15;
         }
     }
 

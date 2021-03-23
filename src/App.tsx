@@ -31,7 +31,7 @@ export const App = () => {
   return (
     <ChakraProvider>
       <Router>
-        <audio style={{display: 'none'}} autoPlay muted={isMuted} loop>
+        <audio style={{display: 'none'}} autoPlay={true} muted={isMuted} loop>
           <source src={`${PATHS.MUSIC}/statue_of_the_seven.ogg`} type="audio/ogg"/>
           <source src={`${PATHS.MUSIC}/statue_of_the_seven.wav`} type="audio/wav"/>
           <source src={`${PATHS.MUSIC}/statue_of_the_seven.mp3`} type="audio/mp3"/>
