@@ -49,7 +49,7 @@ const reducer = (state: WishState, action: Action): WishState => {
             return {...state};
         case ACTION_TYPE.RESET:
             const result = wishService.reset();
-            return {...result, results: [], isMute: state.isMute};
+            return {...result, results: []};
         case ACTION_TYPE.WISH:
             const wishes = action.payload as number;
             const wishResult = wishService.wish(wishes);

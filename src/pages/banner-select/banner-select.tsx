@@ -13,7 +13,7 @@ import './banner-select.css';
 interface BannerSelectProps {
     isWishing: boolean,
     setIsWishing: (isWishing: boolean) => void,
-    toggleMute: () => void,
+    toggleMute: (mute?: boolean) => void,
     isMuted: boolean
 }
 
@@ -29,7 +29,7 @@ const BannerSelect = (props: BannerSelectProps) => {
     
     const wishOne = () => {
       if (!isWishing && wishState.primogems >= 160) {
-        toggleMute();
+        toggleMute(true);
         wishDispatch({type: ACTION_TYPE.WISH, payload: 1});
         setIsWishing(true);
       } else {
@@ -39,7 +39,7 @@ const BannerSelect = (props: BannerSelectProps) => {
     
     const wishTen = () => {
       if (!isWishing && wishState.primogems >= 1600) {
-        toggleMute();
+        toggleMute(true);
         wishDispatch({type: ACTION_TYPE.WISH, payload: 10});
         setIsWishing(true);
       } else {

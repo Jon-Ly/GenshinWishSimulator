@@ -10,7 +10,7 @@ import Select from '../select/select';
 
 interface BannerHeaderProps {
     setAppInformationOpen: (bool: boolean) => void,
-    toggleMute: () => void,
+    toggleMute: (mute?: boolean) => void,
     isMuted: boolean
 }
 
@@ -53,7 +53,7 @@ const BannerHeader = (props: BannerHeaderProps) => {
                     <p>{wishState.primogems}</p>
                 </div>
                 <FontAwesomeIcon onClick={() => setAppInformationOpen(true)} icon={faQuestionCircle}/>
-                <FontAwesomeIcon onClick={toggleMute} icon={isMuted ? faVolumeMute : faVolumeUp}/>
+                <FontAwesomeIcon onClick={() => toggleMute()} icon={isMuted ? faVolumeMute : faVolumeUp}/>
             </div>
         </header>
     );

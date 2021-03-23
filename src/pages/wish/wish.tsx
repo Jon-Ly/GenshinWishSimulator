@@ -37,7 +37,6 @@ const Wish = (props: WishProps) => {
             document.getElementsByTagName('body')[0].className = '';
             setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
             if (itemIndex === state.results.length || state.results.length === 1) {
-                toggleMute();
                 setIsWishing(false);
             }
         }

@@ -18,9 +18,14 @@ export const App = () => {
   const [isWishing, setIsWishing] = useState(false);
   const [isMuted, setIsMuted] = useState(localStorage.getItem('muted') === 'true');
 
-  const toggleMute = () => {
-    localStorage.setItem('muted', `${!isMuted}`);
-    setIsMuted(isMuted => !isMuted);
+  const toggleMute = (mute?: boolean) => {
+    if (mute === true || mute === false) {
+      localStorage.setItem('muted', `${mute}`);
+      setIsMuted(mute);
+    } else {
+      localStorage.setItem('muted', `${!isMuted}`);
+      setIsMuted(isMuted => !isMuted);
+    }
   }
 
   return (

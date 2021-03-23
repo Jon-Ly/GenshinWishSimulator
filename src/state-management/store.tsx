@@ -5,17 +5,14 @@ import WishService from '../services/wish-service';
 import reducer, { Action } from './reducer';
 
 export interface WishState extends UserData{
-    results: Array<Item>,
-    isMute: boolean
+    results: Array<Item>
 }
-
-const initIsMuted = localStorage.getItem('muted') === 'true';
 
 type Dispatch = (action: Action) => void;
 
 const wishService = new WishService();
 
-const initialState = {...wishService.getUserData(), results: new Array<Item>(), isMute: initIsMuted};
+const initialState = {...wishService.getUserData(), results: new Array<Item>()};
 
 const StateContext = React.createContext<WishState>(initialState);
 const DispatchContext = React.createContext<Dispatch |  undefined>(undefined);
