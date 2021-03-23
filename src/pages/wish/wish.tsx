@@ -7,15 +7,14 @@ import { useWishState } from '../../state-management/store';
 import './wish.css';
 
 interface WishProps {
-    setIsWishing: (isWishing: boolean) => void,
-    toggleMute: () => void
+    setIsWishing: (isWishing: boolean) => void
 }
 
 const Wish = (props: WishProps) => {
     const [hasVideoEnded, setHasVideoEnded] = useState(false);
     const [itemIndex, setItemIndex] = useState(0);
     const state = useWishState();
-    const { setIsWishing, toggleMute } = props;
+    const { setIsWishing } = props;
     const videoRef = React.createRef<HTMLVideoElement>();
 
     const getVideoPath = () => {

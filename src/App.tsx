@@ -39,7 +39,7 @@ export const App = () => {
         </audio>
         <Switch>
           <Route exact path='/'>
-            {isWishing ? <Wish setIsWishing={setIsWishing} toggleMute={toggleMute}/> : <BannerSelect setIsWishing={setIsWishing} isWishing={isWishing} isMuted={isMuted} toggleMute={toggleMute}/>}
+            {isWishing ? <Wish setIsWishing={setIsWishing}/> : <BannerSelect setIsWishing={setIsWishing} isWishing={isWishing} isMuted={isMuted} toggleMute={toggleMute}/>}
           </Route>
           <Route path='/details'>
             <BannerDetail/>
