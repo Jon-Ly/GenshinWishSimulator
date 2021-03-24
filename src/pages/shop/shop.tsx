@@ -8,7 +8,7 @@ import './shop.css';
 
 interface TopUpOptionProps {
     topUp: IPrimoTopUp,
-    index: number
+    firstTimeBonus: boolean
 }
 
 const Shop = () => {
@@ -20,6 +20,26 @@ const Shop = () => {
         setTopUpSelected(topUp);
         setPayDialogOpen(true);
     }
+
+    const TopUpOption = React.memo(({topUp, firstTimeBonus}: TopUpOptionProps) => {
+        const bonus = firstTimeBonus ? topUp.primogems : topUp.bonus;
+        return (
+            <div className='flex-column top-up-option' onClick={() => setPayDialogOpenTrue(topUp)}>
+                <div className='bonus' style={{backgroundImage: `url("${PATHS.ASSETS}/bonus_star.webp")`}}>
+                    <p>Bonus!</p>
+                    <p>+{bonus}</p>
+                </div>
+                <div className='top-up-option-image' style={{backgroundImage: `url("${PATHS.SHOP}/${topUp.primogems}_primogems.webp")`}}>
+                    <div className='top-up-option-primogems'>
+                        {topUp.primogems} Primogems
+                    </div>
+                </div>
+                <div className='top-up-option-cost'>
+                    ${topUp.cost}
+                </div>
+            </div>
+        )
+    }, (prevProps, nextProps) => prevProps.firstTimeBonus === nextProps.firstTimeBonus);
 
     return (
         <>
@@ -34,26 +54,7 @@ const Shop = () => {
                 </div>
                 <h1 id='shop-title'>Primogem Top Ups</h1>
                 {
-                    PrimoTopUp.map((ptu, index) => {
-                        const hasFirstTimeBonus = wishState.firstTimeBonus[index];
-                        const bonus = hasFirstTimeBonus ? ptu.primogems : ptu.bonus;
-                        return (
-                            <div className='flex-column top-up-option' onClick={() => setPayDialogOpenTrue(ptu)}>
-                                <div className='bonus' style={{backgroundImage: `url("${PATHS.ASSETS}/bonus_star.webp")`}}>
-                                    <p>Bonus!</p>
-                                    <p>+{bonus}</p>
-                                </div>
-                                <div className='top-up-option-image' style={{backgroundImage: `url("${PATHS.SHOP}/${ptu.primogems}_primogems.webp")`}}>
-                                    <div className='top-up-option-primogems'>
-                                        {ptu.primogems} Primogems
-                                    </div>
-                                </div>
-                                <div className='top-up-option-cost'>
-                                    ${ptu.cost}
-                                </div>
-                            </div>
-                        )
-                    })
+                    PrimoTopUp.map((ptu, index) => <TopUpOption key={ptu.primogems} topUp={ptu} firstTimeBonus={wishState.firstTimeBonus[index]}/>)
                 }
             </InformationContainer>
         </>

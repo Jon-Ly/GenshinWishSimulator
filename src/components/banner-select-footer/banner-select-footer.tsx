@@ -12,6 +12,10 @@ interface BannerFooterProps {
   setResetDialogOpen: () => void
 }
 
+interface WishButtonProps {
+  primogems: number
+}
+
 interface FooterButtonProps {
     children?: React.ReactNode,
     onClick?: () => void
@@ -26,6 +30,25 @@ const BannerFooter = (props: BannerFooterProps) => {
           {children}
       </button>
     )
+
+    const WishButton = React.memo(({primogems}: WishButtonProps) => {
+      const textColor = wishState.primogems >= 1600 || (wishState.primogems >= 160 && primogems === 160) ? '#BAA996' : '#FF5F40';
+      return (
+        <button
+          className='wish-button'
+          onClick={primogems === 160 ? wishOne : wishTen}
+          style={{
+            color: '#BAA996',
+            backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.webp")`
+          }}>
+          <p>Wish {primogems === 160 ? 1 : 10}</p>
+          <div className='flex-row' style={{ justifyContent: 'center' }}>
+            <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px' alt='Wish Button Primogem'/> 
+            <span style={{color: textColor}}>x {primogems}</span>
+          </div>
+        </button>
+      )
+    }, (prevProps, nextProps) => prevProps.primogems === nextProps.primogems);
     
     return (
       <div className='flex-row flex-wrap footer-container'>
@@ -57,32 +80,8 @@ const BannerFooter = (props: BannerFooterProps) => {
             </div>
           </div>
           <div className='flex-row-responsive'>
-            <button
-              className='wish-button'
-              onClick={wishOne}
-              style={{
-                color: '#BAA996',
-                backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.webp")`
-              }}>
-              <p>Wish 1</p>
-              <div className='flex-row' style={{ justifyContent: 'center' }}>
-                <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px' alt='Wish Button Primogem'/> 
-                <span style={{color: wishState.primogems >= 160 ? '#BAA996' : '#FF5F40'}}>x 160</span>
-              </div>
-            </button>
-            <button
-              className='wish-button'
-              onClick={wishTen}
-              style={{
-                color: '#BAA996',
-                backgroundImage: `url("${PATHS.ASSETS}/wish_button_background.webp")`
-              }}>
-              <p>Wish 10</p>
-              <div className='flex-row' style={{ justifyContent: 'center' }}>
-                <img src={`${PATHS.ITEMS}/item_primogem.png`} height='32px' width='32px' alt='Wish Button Primogem'/> 
-                <span style={{color: wishState.primogems >= 1600 ? '#BAA996' : '#FF5F40'}}>x 1600</span>
-              </div>
-            </button>
+            <WishButton primogems={160}/>
+            <WishButton primogems={1600}/>
           </div>
       </div>
     );

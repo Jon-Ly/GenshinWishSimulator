@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemShowcase from '../../components/item-showcase/item-showcase';
 import PATHS from '../../constants/paths';
 import Character from '../../models/character';
@@ -10,46 +10,69 @@ interface WishProps {
     setIsWishing: (isWishing: boolean) => void
 }
 
+interface ItemImageProps {
+    index: number
+}
+
+const ItemImage = ({index}: ItemImageProps) => {
+    const wishState = useWishState();
+    const resultItem = wishState.results[index];
+    const itemFileName = resultItem.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
+    const imageSrc = (resultItem as Character).elementType ? 
+        `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
+        `${PATHS.WEAPONS}/${itemFileName}.webp`;
+    const classString = `${resultItem.type === 'Weapon' ? 'item-img-weapon' : 'item-img-character'}`;
+
+    return (
+        <img key={resultItem.name + index} src={imageSrc} className={classString}/>
+    )
+}
+
 const Wish = (props: WishProps) => {
     const [hasVideoEnded, setHasVideoEnded] = useState(false);
     const [itemIndex, setItemIndex] = useState(0);
-    const state = useWishState();
+    const wishState = useWishState();
     const { setIsWishing } = props;
     const videoRef = React.createRef<HTMLVideoElement>();
+    const [resultImages, setResultImages] = useState(new Array<JSX.Element>());
+    
+    const fiveStarVideo = <source src={`${PATHS.VIDEOS}/five_star.mp4`}/>;
+    const fourStarVideo = <source src={`${PATHS.VIDEOS}/four_star.mp4`}/>;
+    const threeStarVideo = <source src={`${PATHS.VIDEOS}/three_star.mp4`}/>;
 
-    const getVideoPath = () => {
-        const hasFiveStar = state.results.some((item: Item) => item.stars === 5);
+    useEffect(() => {
+        const resultImgs = wishState.results.map((result, i) => <ItemImage index={i}/>);
+        setResultImages(resultImgs);
 
-        if (hasFiveStar)
-            return `${PATHS.VIDEOS}/five_star.mp4`;
+        return () => {
+            setIsWishing(false);
+        }
+    }, [])
+
+    const WishVideoSource = () => {
+        const hasFiveStar = wishState.results.some((item: Item) => item.stars === 5);
+
+        if (hasFiveStar) {
+            return fiveStarVideo;
+        }
         
-        const hasFourStar = state.results.some((item: Item) => item.stars === 4);
+        const hasFourStar = wishState.results.some((item: Item) => item.stars === 4);
 
-        if (hasFourStar)
-            return `${PATHS.VIDEOS}/four_star.mp4`;
+        if (hasFourStar) {
+            return fourStarVideo;
+        }
         
-        return `${PATHS.VIDEOS}/three_star.mp4`;
+        return threeStarVideo;
     }
 
     const incrementItemIndex = () => {
         if (hasVideoEnded) {
             document.getElementsByTagName('body')[0].className = '';
-            setItemIndex(itemIndex < state.results.length ? itemIndex + 1 : itemIndex);
-            if (itemIndex === state.results.length || state.results.length === 1) {
+            setItemIndex(itemIndex < wishState.results.length ? itemIndex + 1 : itemIndex);
+            if (itemIndex === wishState.results.length || wishState.results.length === 1) {
                 setIsWishing(false);
             }
         }
-    }
-
-    const Image = () => {
-        const resultItem = state.results[itemIndex];
-        const itemFileName = resultItem.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
-        const imageSrc = (resultItem as Character).elementType ? 
-            `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
-            `${PATHS.WEAPONS}/${itemFileName}.webp`;
-        const classString = `${resultItem.type === 'Weapon' ? 'item-img-weapon' : 'item-img-character'}`;
-
-        return <img className={classString} src={imageSrc} alt={`${resultItem.name}`}/>
     }
 
     const orderByImportance = (items: Array<Item>) => {
@@ -85,12 +108,12 @@ const Wish = (props: WishProps) => {
                 !hasVideoEnded ?
                 (
                     <video ref={videoRef} className='wish-video' autoPlay={true} onEnded={setVideoEnded}>
-                        <source src={getVideoPath()}/>
+                        <WishVideoSource/>
                     </video>
                 ) : 
-                itemIndex < state.results.length ? <Image/> :
+                itemIndex < wishState.results.length ? resultImages[itemIndex]:
                 (
-                    <ItemShowcase items={orderByImportance(state.results)}/>
+                    <ItemShowcase items={orderByImportance(wishState.results)}/>
                 )
             }
         </div>
