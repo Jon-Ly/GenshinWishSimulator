@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PATHS from '../../constants/paths';
 import Character from '../../models/character';
 import { Item } from '../../models/item';
@@ -19,6 +19,19 @@ const ItemShowcase = (props: ItemShowcaseProps) => {
     const fourStarBoxShadow = '0px -10px 15px 10px #dec5ff, 0px 10px 15px 10px #dec5ff';
     const fiveStarBoxShadow = '0px -12px 20px 10px #fffc93, 0px 12px 20px 10px #fffc93';
 
+    const itemContainerRefs = useRef<Array<HTMLDivElement | null>>(new Array<HTMLDivElement>());
+
+    useEffect(() => {
+        itemContainerRefs.current.map((ref, index) => {
+            setTimeout(() => {
+                if (ref) {
+                    ref.classList.add('fade-in');
+                    ref.classList.add('move-to-place');
+                }
+            }, 85 * index)
+        });
+    }, []);
+
     const Image = (props: ImageProps) => {
         const {item} = props;
         const itemFileName = item.name.replaceAll(' ', '_').replaceAll('\'', '').replace('-', '_').toLowerCase();
@@ -35,7 +48,7 @@ const ItemShowcase = (props: ItemShowcaseProps) => {
                items.map((item, index) => {
                 const shadow = item.stars === 3 ? threeStarBoxShadow : item.stars === 4 ? fourStarBoxShadow : fiveStarBoxShadow;
                    return (
-                        <div key={index} style={{boxShadow: shadow}} className='item-container'>
+                        <div key={index} style={{boxShadow: shadow}} className='item-container' ref={(ref) => itemContainerRefs.current.push(ref)}>
                             <Image item={item}/>
                         </div>
                    )

@@ -1,3 +1,12 @@
+.fade-in {
+    animation: fadeIn ease-out 0.5s;
+    -webkit-animation: fadeIn ease-out 0.5s;
+    -moz-animation: fadeIn ease-out 0.5s;
+    -o-animation: fadeIn ease-out 0.5s;
+    -ms-animation: fadeIn ease-out 0.5s;
+    animation-fill-mode: forwards;
+}
+
 .item-showcase {
     justify-content: center;
     align-items: center;
@@ -12,19 +21,56 @@
     border: 1px solid #abcbfc;
     position: relative;
     overflow: hidden;
+    opacity: 0;
     height: 50%;
     border-radius: 25px;
     margin: 0 1px;
+    left: 200px;
+    transition: left 0.4s ease-out;
 }
 
 .item-weapon {
     position: absolute;
     top: 30%;
     transform: rotate(-15deg) scale(1.65);
+    animation-fill-mode: forwards;
 }
 
 .item-character {
     position: absolute;
     transform: scale(13) !important;
     top: 70% !important;
+}
+
+.move-to-place {
+    left: 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+    
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
