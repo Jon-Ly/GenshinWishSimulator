@@ -38,7 +38,7 @@ const Select = (props: SelectProps) => {
                             {
                                 listItems.map(listItem => {
                                     return (
-                                        <li className={listItem.value === value ? 'item-active' : ''} onClick={() => onChange(listItem.value)}>
+                                        <li key={listItem.value} className={listItem.value === value ? 'item-active' : ''} onClick={() => onChange(listItem.value)}>
                                             {listItem.label}
                                         </li>
                                     );

@@ -22,14 +22,13 @@ const ItemShowcase = (props: ItemShowcaseProps) => {
     const itemContainerRefs = useRef<Array<HTMLDivElement | null>>(new Array<HTMLDivElement>());
 
     useEffect(() => {
-        itemContainerRefs.current.map((ref, index) => {
+        const refs = itemContainerRefs.current;
+        for (let i = 0; i < refs.length; i ++) {
             setTimeout(() => {
-                if (ref) {
-                    ref.classList.add('fade-in');
-                    ref.classList.add('move-to-place');
-                }
-            }, 85 * index)
-        });
+                refs[i]?.classList.add('fade-in');
+                refs[i]?.classList.add('move-to-place');
+            }, 85 * i)
+        }
     }, []);
 
     const Image = (props: ImageProps) => {

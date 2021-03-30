@@ -14,8 +14,9 @@ interface ItemImageProps {
     index: number
 }
 
-const ItemImage = ({index}: ItemImageProps) => {
+const ItemImage = (props: ItemImageProps) => {
     const wishState = useWishState();
+    const {index} = props;
     const resultItem = wishState.results[index];
     const itemFileName = resultItem.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
     const imageSrc = (resultItem as Character).elementType ? 
@@ -24,7 +25,7 @@ const ItemImage = ({index}: ItemImageProps) => {
     const classString = `${resultItem.type === 'Weapon' ? 'item-img-weapon' : 'item-img-character'}`;
 
     return (
-        <img key={resultItem.name + index} src={imageSrc} className={classString}/>
+        <img key={resultItem.name + index} src={imageSrc} className={classString} alt={resultItem.name}/>
     )
 }
 
@@ -34,20 +35,25 @@ const Wish = (props: WishProps) => {
     const wishState = useWishState();
     const { setIsWishing } = props;
     const videoRef = React.createRef<HTMLVideoElement>();
-    const [resultImages, setResultImages] = useState(new Array<JSX.Element>());
     
     const fiveStarVideo = <source src={`${PATHS.VIDEOS}/five_star.mp4`}/>;
     const fourStarVideo = <source src={`${PATHS.VIDEOS}/four_star.mp4`}/>;
     const threeStarVideo = <source src={`${PATHS.VIDEOS}/three_star.mp4`}/>;
 
     useEffect(() => {
-        const resultImgs = wishState.results.map((result, i) => <ItemImage index={i}/>);
-        setResultImages(resultImgs);
+        wishState.results.forEach((result, i) => {
+            const preloadImg = new Image();
+            const itemFileName = result.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
+            const imageSrc = (result as Character).elementType ? 
+                `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
+                `${PATHS.WEAPONS}/${itemFileName}.webp`;
+            preloadImg.src = imageSrc;
+        });
 
         return () => {
             setIsWishing(false);
         }
-    }, [])
+    }, [wishState.results, setIsWishing])
 
     const WishVideoSource = () => {
         const hasFiveStar = wishState.results.some((item: Item) => item.stars === 5);
@@ -111,7 +117,7 @@ const Wish = (props: WishProps) => {
                         <WishVideoSource/>
                     </video>
                 ) : 
-                itemIndex < wishState.results.length ? resultImages[itemIndex]:
+                itemIndex < wishState.results.length ? <ItemImage index={itemIndex}/>:
                 (
                     <ItemShowcase items={orderByImportance(wishState.results)}/>
                 )

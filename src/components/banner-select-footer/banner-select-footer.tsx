@@ -63,7 +63,7 @@ const BannerFooter = (props: BannerFooterProps) => {
                 <p key='stardust_amount'>{wishState.stardust}</p>
               </div>
             </div>
-            <div className='flex-row-responsive'>
+            <nav className='flex-row-responsive'>
               <Link to='/shop'>
                 <FooterButton>Shop</FooterButton>
               </Link>
@@ -77,7 +77,7 @@ const BannerFooter = (props: BannerFooterProps) => {
                 <FooterButton>Inventory</FooterButton>
               </Link>
               <FooterButton onClick={setResetDialogOpen}>Reset</FooterButton>
-            </div>
+            </nav>
           </div>
           <div className='flex-row-responsive'>
             <WishButton primogems={160}/>

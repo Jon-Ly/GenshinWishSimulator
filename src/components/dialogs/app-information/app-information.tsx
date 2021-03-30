@@ -3,8 +3,13 @@ import React from 'react';
 import '../../../styles/dialog.css';
 import { DefaultActive, DefaultDialogProps, DefaultFocus, DefaultHover } from '../dialog-options';
 
-const AppInformaiton = (props: DefaultDialogProps) => {
-    const { isOpen, setIsOpen } = props;
+interface AppInformationProps extends DefaultDialogProps {
+    children?: React.ReactNode,
+    title?: string
+}
+
+const AppInformaiton = (props: AppInformationProps) => {
+    const { isOpen, setIsOpen, children, title } = props;
     const cancelRef = React.useRef<any>();
 
     const onClose = (): void => setIsOpen(false);
@@ -19,17 +24,10 @@ const AppInformaiton = (props: DefaultDialogProps) => {
             <AlertDialogOverlay>
                 <AlertDialogContent width='700px' padding='25px'>
                     <AlertDialogHeader textAlign='center' fontSize='24px' fontWeight='bold'>
-                        Thanks for Visting!
+                        {title}
                     </AlertDialogHeader>
                     <AlertDialogBody>
-                        <p>
-                            Welcome to the my fanmade Genshin Wishing Simulator. I am an active player and just wanted to create a simulation of the dopamine we all get from 
-                            wishing without breaking the bank. I tried to get the experience as close as I could while allowing for anyone to wish on previous banners.
-                        </p>
-                        <hr style={{margin: '10px'}}/>
-                        Public Repo: <a href='https://github.com/Jon-Ly/GenshinWishSimulator' style={{color: '#4a7fd4'}}>Github</a>
-                        <hr style={{margin: '10px'}}/>
-                        <p>※Disclaimer※ Most images were taken from 3rd-party sites or taken straight from the game through screenshots and the Kamera.</p>
+                        {children}
                     </AlertDialogBody>
                     <AlertDialogFooter className='dialog-footer'>
                         <Button

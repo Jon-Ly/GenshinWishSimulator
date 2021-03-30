@@ -1,15 +1,17 @@
-.banner-image {  
+.banner-image {
     -webkit-animation: fadeInSlideLeft 0.3s ease-out both;
     animation: fadeInSlideLeft 0.3s ease-out both;
     -webkit-animation: fadeInSlideLeft ease-out both 0.3s;
     -moz-animation: fadeInSlideLeft ease-out both 0.3s;
     -o-animation: fadeInSlideLeft ease-out both 0.3s;
     -ms-animation: fadeInSlideLeft ease-out both 0.3s;
+    width: 1080px;
+    height: 533px;
+    margin-top: 2%;
 }
 
 .banner-select-center {
     justify-content: center;
-    min-height: 600px;
 }
 
 @keyframes fadeInSlideLeft {

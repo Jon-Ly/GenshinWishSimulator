@@ -48,10 +48,19 @@ const BannerSelect = (props: BannerSelectProps) => {
     }
 
     return (
-        <div className='select-menu' style={{backgroundImage: `url("${PATHS.ASSETS}/wish_background.webp")`}}>
+        <div className='select-menu flex-column' style={{backgroundImage: `url("${PATHS.ASSETS}/wish_background.webp")`}}>
             <ResetAlert isOpen={isResetDialogOpen} setIsOpen={setIsResetDialogOpen}/>
             <InsufficientPrimogemsDialog isOpen={isInsufficientDialogOpen} setIsOpen={setIsInsufficientDialogOpen}/>
-            <AppInformaiton isOpen={isAppInformationOpen} setIsOpen={setIsAppInformationOpen}/>
+            <AppInformaiton isOpen={isAppInformationOpen} setIsOpen={setIsAppInformationOpen} title='Thanks for Visting!'>
+              <p>
+                  Welcome to the my fanmade Genshin Wishing Simulator. I am an active player and just wanted to create a simulation of the dopamine we all get from 
+                  wishing without breaking the bank. I tried to get the experience as close as I could while allowing for anyone to wish on previous banners.
+              </p>
+              <hr style={{margin: '10px'}}/>
+              Public Repo: <a href='https://github.com/Jon-Ly/GenshinWishSimulator' style={{color: '#4a7fd4'}}>Github</a>
+              <hr style={{margin: '10px'}}/>
+              <p>※Disclaimer※ Most images were taken from 3rd-party sites or taken straight from the game through screenshots and the Kamera.</p>
+            </AppInformaiton>
             <BannerSelectHeader isMuted={isMuted} setAppInformationOpen={setIsAppInformationOpen} toggleMute={toggleMute}/>
             <BannerSelectCenter/>
             <BannerSelectFooter

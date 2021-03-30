@@ -6,3 +6,15 @@
     min-height: 100vh;
     color: #FFFFFF;
 }
+
+.select-menu > header {
+    flex: 1;
+}
+
+.select-menu > div:nth-child(2) {
+    flex: 9;
+}
+
+.select-menu > div:nth-child(3) {
+    flex: 1;
+}
