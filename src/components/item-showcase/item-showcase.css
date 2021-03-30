@@ -33,13 +33,13 @@
 .item-weapon {
     position: absolute;
     top: 35%;
-    transform: rotate(-15deg) scale(2);
+    left: 5%;
+    transform: rotate(-15deg) scale(1.7);
 }
 
 .item-character {
     position: absolute;
     transform: scale(13) !important;
-    top: 70% !important;
 }
 
 .move-to-place {

@@ -5,8 +5,8 @@ export default class Character extends ItemBase {
     isEventCharacter: boolean;
     title: string;
 
-    constructor(name: string, stars: number, chance: number, title: string, elementType: string, isEventCharacter?: boolean) {
-        super(name, stars, chance, 'Character');
+    constructor(name: string, stars: number, chance: number, title: string, elementType: string, isEventCharacter?: boolean, style?: {}) {
+        super(name, stars, chance, 'Character', style);
         this.elementType = elementType;
         this.isEventCharacter = !!isEventCharacter;
         this.title = title || '';

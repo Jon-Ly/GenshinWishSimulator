@@ -38,7 +38,7 @@ const ItemShowcase = (props: ItemShowcaseProps) => {
             `${PATHS.CHARACTER_WISH_IMAGES}/character_${itemFileName}.png` : 
             `${PATHS.WEAPONS}/${itemFileName}.webp`;
 
-        return <img src={imageSrc} alt={`${item.name}`} className={item.type === 'Character' ? 'item-character' : 'item-weapon'}/>
+        return <img src={imageSrc} alt={`${item.name}`} style={item.style} className={item.type === 'Character' ? 'item-character' : 'item-weapon'}/>
     }
 
     return (
