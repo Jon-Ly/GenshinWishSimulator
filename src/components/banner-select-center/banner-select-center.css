@@ -14,6 +14,11 @@
     justify-content: center;
 }
 
+.banner-select-center img {
+    border-radius: 8px;
+    object-fit: contain;
+}
+
 @keyframes fadeInSlideLeft {
     0% {
         -webkit-transform: translateX(50px);
@@ -64,5 +69,11 @@
     }
     100% {
         opacity:1;
+    }
+}
+
+@media only screen and (max-width: 1075px) {
+    .banner-image {
+        height: auto;
     }
 }

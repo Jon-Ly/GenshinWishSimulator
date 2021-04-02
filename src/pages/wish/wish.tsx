@@ -4,10 +4,12 @@ import PATHS from '../../constants/paths';
 import Character from '../../models/character';
 import { Item } from '../../models/item';
 import { useWishState } from '../../state-management/store';
+import { useHistory } from "react-router-dom";
 import './wish.css';
 
 interface WishProps {
-    setIsWishing: (isWishing: boolean) => void
+    setIsWishing: (isWishing: boolean) => void,
+    isWishing: boolean
 }
 
 interface ItemImageProps {
@@ -32,8 +34,9 @@ const ItemImage = (props: ItemImageProps) => {
 const Wish = (props: WishProps) => {
     const [hasVideoEnded, setHasVideoEnded] = useState(false);
     const [itemIndex, setItemIndex] = useState(0);
+    const history = useHistory();
     const wishState = useWishState();
-    const { setIsWishing } = props;
+    const { setIsWishing, isWishing } = props;
     const videoRef = React.createRef<HTMLVideoElement>();
     
     const fiveStarVideo = <source src={`${PATHS.VIDEOS}/five_star.mp4`}/>;
@@ -41,6 +44,9 @@ const Wish = (props: WishProps) => {
     const threeStarVideo = <source src={`${PATHS.VIDEOS}/three_star.mp4`}/>;
 
     useEffect(() => {
+        if (!isWishing) {
+            history.push('/');
+        }
         wishState.results.forEach((result, i) => {
             const preloadImg = new Image();
             const itemFileName = result.name.replaceAll(' ', '_').replaceAll('\'', '').toLowerCase();
@@ -53,7 +59,7 @@ const Wish = (props: WishProps) => {
         return () => {
             setIsWishing(false);
         }
-    }, [wishState.results, setIsWishing])
+    }, [wishState.results, setIsWishing, history, isWishing])
 
     const WishVideoSource = () => {
         const hasFiveStar = wishState.results.some((item: Item) => item.stars === 5);
