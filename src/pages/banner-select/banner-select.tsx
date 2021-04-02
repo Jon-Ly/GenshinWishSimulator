@@ -93,6 +93,10 @@ const BannerSelect = (props: BannerSelectProps) => {
                   <span style={{fontWeight: 'bold'}}> F11</span>.
               </p>
               <hr style={{margin: '10px'}}/>
+              <p>
+                Try the <span style={{fontWeight: 'bold'}}> Reset </span> button if you're running into issues.
+              </p>
+              <hr style={{margin: '10px'}}/>
               <p>※Weapons Missing※ The weapon banners are missing because I've been too lazy to get the weapon assets.</p>
               <hr style={{margin: '10px'}}/>
               <p>※Disclaimer※ Most images were taken from 3rd-party sites or taken straight from the game through screenshots and the Kamera.</p>
