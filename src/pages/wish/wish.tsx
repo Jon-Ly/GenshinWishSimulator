@@ -61,22 +61,6 @@ const Wish = (props: WishProps) => {
         }
     }, [wishState.results, setIsWishing, history, isWishing])
 
-    const WishVideoSource = () => {
-        const hasFiveStar = wishState.results.some((item: Item) => item.stars === 5);
-
-        if (hasFiveStar) {
-            return fiveStarVideo;
-        }
-        
-        const hasFourStar = wishState.results.some((item: Item) => item.stars === 4);
-
-        if (hasFourStar) {
-            return fourStarVideo;
-        }
-        
-        return threeStarVideo;
-    }
-
     const incrementItemIndex = () => {
         if (hasVideoEnded) {
             document.getElementsByTagName('body')[0].className = '';
@@ -101,11 +85,16 @@ const Wish = (props: WishProps) => {
 
     const skipVideo = () => {
         if (videoRef && videoRef.current) {
-            videoRef.current.currentTime = videoRef.current.currentTime + 15;
+            videoRef.current.pause();
+            // Chrome & Edge restart the video, - 0.1 is an attempt to avoid that
+            videoRef.current.currentTime = videoRef.current.duration - 0.1;
+            videoRef.current.play();
         }
     }
 
-    const setVideoEnded = () => setHasVideoEnded(true);
+    const setVideoEnded = () => {
+        setHasVideoEnded(true);
+    }
 
     return (
         <div onClick={incrementItemIndex} className='flex-row wish-container' style={{backgroundImage: `url("${PATHS.ASSETS}/item_showcase_background.webp")`}}>
@@ -119,8 +108,11 @@ const Wish = (props: WishProps) => {
             {
                 !hasVideoEnded ?
                 (
-                    <video ref={videoRef} className='wish-video' autoPlay={true} onEnded={setVideoEnded}>
-                        <WishVideoSource/>
+                    <video ref={videoRef} className='wish-video' autoPlay onEnded={setVideoEnded}>
+                        {
+                            wishState.results.some((item: Item) => item.stars === 5) ? fiveStarVideo :
+                            wishState.results.some((item: Item) => item.stars === 4) ? fourStarVideo : threeStarVideo
+                        }
                     </video>
                 ) : 
                 itemIndex < wishState.results.length ? <ItemImage index={itemIndex}/>:

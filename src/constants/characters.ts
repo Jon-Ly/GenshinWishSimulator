@@ -67,7 +67,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Tartaglia', 5, 0.5, 'Childe', ELEMENT.HYDRO, true, {top: '53%', left: '15%'}),
     new Character('Venti', 5, 0.5, 'Windborne Bard', ELEMENT.ANEMO, true, {top: '57%', left: '17%'}),
     new Character('Xiangling', 4, 0.5, 'Exquisite Delicacy', ELEMENT.PYRO, false, {top: '55%', left: '60%'}),
-    new Character('Xingqui', 4, 0.5, 'Juvenile Galant', ELEMENT.HYDRO, false, {top: '55%', left: '60%'}),
+    new Character('Xingqui', 4, 0.5, 'Juvenile Galant', ELEMENT.HYDRO, false, {top: '65%', left: '-5%'}),
     new Character('Xinyan', 4, 0.5, 'Blazing Riff', ELEMENT.PYRO, false, {top: '55%', left: '0%'}),
     new Character('Xiao', 5, 0.5, 'Vigilant Yaksha', ELEMENT.ANEMO, false, {top: '35%', left: '5%'}),
     new Character('Zhongli', 5, 0.5, 'Vago Mundo', ELEMENT.GEO, true, {top: '65%', left: '30%'})
