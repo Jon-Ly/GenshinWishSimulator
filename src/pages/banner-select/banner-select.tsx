@@ -96,6 +96,9 @@ const BannerSelect = (props: BannerSelectProps) => {
               <p>
                 Try the <span style={{fontWeight: 'bold'}}> Reset </span> button if you're running into issues.
               </p>
+              <p>
+                <span style={{fontWeight: 'bold'}}>Clear your cookies </span> for the site if you're running into video looping issues.
+              </p>
               <hr style={{margin: '10px'}}/>
               <p>※Weapons Missing※ The weapon banners are missing because I've been too lazy to get the weapon assets.</p>
               <hr style={{margin: '10px'}}/>
