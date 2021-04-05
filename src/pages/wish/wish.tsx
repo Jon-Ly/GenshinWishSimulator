@@ -85,9 +85,10 @@ const Wish = (props: WishProps) => {
 
     const skipVideo = () => {
         if (videoRef && videoRef.current) {
+            // There is a weird thing when a production build is served locally through emulation.
+            // The video loops if you press SKIP but it doesn't happen in a production deployment.
             videoRef.current.pause();
-            // Chrome & Edge restart the video, - 0.1 is an attempt to avoid that
-            videoRef.current.currentTime = videoRef.current.duration - 0.1;
+            videoRef.current.currentTime = videoRef.current.duration;
             videoRef.current.play();
         }
     }

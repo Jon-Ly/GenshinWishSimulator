@@ -12,6 +12,7 @@ export enum BANNER_CODE {
     KEQING = 'keqing_banner',
     KLEE = 'klee_banner',
     TARTAGLIA = 'tartaglia_banner',
+    // TARTAGLIA_2 = 'tartaglia_banner_2',
     VENTI = 'venti_banner',
     VENTI_2 = 'venti_banner_2',
     WANDERLUST = 'wanderlust_banner',
@@ -29,7 +30,6 @@ export interface Banner {
     fourStars: Array<Character | Weapon>,
     imagePath: string,
     startDate: Date,
-    occurrence: number,
     label: string
 }
 
@@ -41,7 +41,6 @@ const WANDERLUST_BANNER: Banner = {
     eventFourStars: [],
     imagePath: `${PATHS.CHARACTER_BANNERS}/wanderlust_banner.webp`,
     startDate: new Date(9999, 12, 31),
-    occurrence: 1,
     label: 'Wanderlust'
 }
 
@@ -55,7 +54,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ALBEDO}.webp`,
         startDate: new Date(2020, 12, 23),
-        occurrence: 1,
         label: 'Albedo'
     },
     GANYU: {
@@ -67,7 +65,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.GANYU}.webp`,
         startDate: new Date(2021, 1, 12),
-        occurrence: 1,
         label: 'Ganyu'
     },
     HU_TAO: {
@@ -79,7 +76,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.HU_TAO}.webp`,
         startDate: new Date(2021, 3, 2),
-        occurrence: 1,
         label: 'Hu Tao'
     },
     KEQING: {
@@ -91,7 +87,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KEQING}.webp`,
         startDate: new Date(2021, 2, 17),
-        occurrence: 1,
         label: 'Keqing'
     },
     KLEE: {
@@ -103,7 +98,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.KLEE}.webp`,
         startDate: new Date(2020, 10, 20),
-        occurrence: 1,
         label: 'Klee'
     },
     TARTAGLIA: {
@@ -115,9 +109,19 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA}.webp`,
         startDate: new Date(2020, 11, 11),
-        occurrence: 1,
         label: 'Tartaglia'
     },
+    // TARTAGLIA_2: {
+    //     code: BANNER_CODE.TARTAGLIA_2,
+    //     title: 'Farewell of Snezhnaya',
+    //     eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA,
+    //     eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU],
+    //     fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
+    //     fourStars: [CHARACTERS.PLAYABLE_CHARACTERS.ROSARIA, CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
+    //     imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA_2}.webp`,
+    //     startDate: new Date(2020, 11, 11),
+    //     label: 'Tartaglia 2'
+    // },
     VENTI: {
         code: BANNER_CODE.VENTI,
         title: 'Ballad of Goblets',
@@ -127,7 +131,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.VENTI}.webp`,
         startDate: new Date(2020, 9, 28),
-        occurrence: 1,
         label: 'Venti'
     },
     VENTI_2: {
@@ -139,7 +142,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.VENTI_2}.webp`,
         startDate: new Date(2021, 3, 16),
-        occurrence: 1,
         label: 'Venti 2'
     },
     XIAO: {
@@ -151,7 +153,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.XIAO}.webp`,
         startDate: new Date(2021, 2, 3),
-        occurrence: 1,
         label: 'Xiao'
     },
     ZHONGLI: {
@@ -163,7 +164,6 @@ const EVENT_BANNERS = {
         fourStars: [],
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ZHONGLI}.webp`,
         startDate: new Date(2020, 12, 1),
-        occurrence: 1,
         label: 'Zhongli'
     },
 }
