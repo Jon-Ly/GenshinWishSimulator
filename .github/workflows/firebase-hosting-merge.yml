@@ -20,3 +20,4 @@ jobs:
           projectId: genshinwishsimulator
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
+          CI: false
