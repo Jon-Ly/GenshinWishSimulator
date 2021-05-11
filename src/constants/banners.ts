@@ -12,13 +12,14 @@ export enum BANNER_CODE {
     KEQING = 'keqing_banner',
     KLEE = 'klee_banner',
     TARTAGLIA = 'tartaglia_banner',
-    // TARTAGLIA_2 = 'tartaglia_banner_2',
+    TARTAGLIA_2 = 'tartaglia_banner_2',
     VENTI = 'venti_banner',
     VENTI_2 = 'venti_banner_2',
     WANDERLUST = 'wanderlust_banner',
     WEAPON = 'weapon_banner',
     XIAO = 'xiao_banner',
-    ZHONGLI = 'zhongli_banner'
+    ZHONGLI = 'zhongli_banner',
+    ZHONGLI_2 = 'zhongli_banner_2'
 };
 
 export interface Banner {
@@ -111,17 +112,17 @@ const EVENT_BANNERS = {
         startDate: new Date(2020, 11, 11),
         label: 'Tartaglia'
     },
-    // TARTAGLIA_2: {
-    //     code: BANNER_CODE.TARTAGLIA_2,
-    //     title: 'Farewell of Snezhnaya',
-    //     eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA,
-    //     eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.DIONA, CHARACTERS.PLAYABLE_CHARACTERS.NINGGUANG, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU],
-    //     fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
-    //     fourStars: [CHARACTERS.PLAYABLE_CHARACTERS.ROSARIA, CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
-    //     imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA_2}.webp`,
-    //     startDate: new Date(2020, 11, 11),
-    //     label: 'Tartaglia 2'
-    // },
+    TARTAGLIA_2: {
+        code: BANNER_CODE.TARTAGLIA_2,
+        title: 'Farewell of Snezhnaya',
+        eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA,
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.ROSARIA, CHARACTERS.PLAYABLE_CHARACTERS.FISCHL, CHARACTERS.PLAYABLE_CHARACTERS.BARBARA],
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.TARTAGLIA, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
+        fourStars: [],
+        imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.TARTAGLIA_2}.webp`,
+        startDate: new Date(2021, 4, 6),
+        label: 'Tartaglia 2'
+    },
     VENTI: {
         code: BANNER_CODE.VENTI,
         title: 'Ballad of Goblets',
@@ -165,6 +166,17 @@ const EVENT_BANNERS = {
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ZHONGLI}.webp`,
         startDate: new Date(2020, 12, 1),
         label: 'Zhongli'
+    },
+    ZHONGLI_2: {
+        code: BANNER_CODE.ZHONGLI_2,
+        title: 'Gentry of Hermitage',
+        eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.ZHONGLI,
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.YANFEI, CHARACTERS.PLAYABLE_CHARACTERS.NOELLE, CHARACTERS.PLAYABLE_CHARACTERS.DIONA],
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.ZHONGLI, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
+        fourStars: [],
+        imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ZHONGLI_2}.webp`,
+        startDate: new Date(2021, 4, 28),
+        label: 'Zhongli 2'
     },
 }
 
@@ -212,6 +224,10 @@ const BANNERS = new Array<Banner>(
         fourStars: [...EVENT_BANNERS.TARTAGLIA.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.TARTAGLIA), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
+        ...EVENT_BANNERS.TARTAGLIA_2,
+        fourStars: [...EVENT_BANNERS.TARTAGLIA_2.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.TARTAGLIA_2), ...WEAPONS.FOUR_STAR_WEAPONS]
+    },
+    {
         ...EVENT_BANNERS.VENTI,
         fourStars: [...EVENT_BANNERS.VENTI.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.VENTI), ...WEAPONS.FOUR_STAR_WEAPONS]
     },
@@ -226,6 +242,10 @@ const BANNERS = new Array<Banner>(
     {
         ...EVENT_BANNERS.ZHONGLI,
         fourStars: [...EVENT_BANNERS.ZHONGLI.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.ZHONGLI), ...WEAPONS.FOUR_STAR_WEAPONS]
+    },
+    {
+        ...EVENT_BANNERS.ZHONGLI_2,
+        fourStars: [...EVENT_BANNERS.ZHONGLI_2.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.ZHONGLI_2), ...WEAPONS.FOUR_STAR_WEAPONS]
     }
 );
 
