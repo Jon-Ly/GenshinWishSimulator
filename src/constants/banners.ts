@@ -7,6 +7,7 @@ import WEAPONS from './weapons';
 export enum BANNER_CODE {
     NONE = 'none',
     ALBEDO = 'albedo_banner',
+    EULA = 'eula_banner',
     GANYU = 'ganyu_banner',
     HU_TAO = 'hu_tao_banner',
     KEQING = 'keqing_banner',
@@ -56,6 +57,17 @@ const EVENT_BANNERS = {
         imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.ALBEDO}.webp`,
         startDate: new Date(2020, 12, 23),
         label: 'Albedo'
+    },
+    EULA: {
+        code: BANNER_CODE.EULA,
+        title: 'Adrift in the Harbor',
+        eventFiveStar: CHARACTERS.PLAYABLE_CHARACTERS.EULA,
+        eventFourStars: [CHARACTERS.PLAYABLE_CHARACTERS.XINYAN, CHARACTERS.PLAYABLE_CHARACTERS.XINGQUI, CHARACTERS.PLAYABLE_CHARACTERS.BEIDOU],
+        fiveStars: [CHARACTERS.PLAYABLE_CHARACTERS.EULA, ...CHARACTERS.WANDERLUST_FIVE_STAR_CHARACTERS],
+        fourStars: [],
+        imagePath: `${PATHS.CHARACTER_BANNERS}/${BANNER_CODE.EULA}.webp`,
+        startDate: new Date(2021, 5, 18),
+        label: 'Eula'
     },
     GANYU: {
         code: BANNER_CODE.GANYU,
@@ -202,6 +214,10 @@ const BANNERS = new Array<Banner>(
     {
         ...EVENT_BANNERS.ALBEDO,
         fourStars: [...EVENT_BANNERS.ALBEDO.eventFourStars, ...FilterOutFourStarEventCharacters(EVENT_BANNERS.ALBEDO), ...WEAPONS.FOUR_STAR_WEAPONS]
+    },
+    {
+        ...EVENT_BANNERS.EULA,
+        fourStars: [...WEAPONS.FOUR_STAR_WEAPONS]
     },
     {
         ...EVENT_BANNERS.GANYU,

@@ -50,6 +50,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Chongyun', 4, 0.5, 'Frozen Ardor', ELEMENT.CRYO, false, {top: '55%', left: '0%'}),
     new Character('Diluc', 5, 0.5, 'The Dark Side of Dawn', ELEMENT.PYRO, false, {top: '65%', left: '0%'}),
     new Character('Diona', 4, 0.5, 'Kätzlein Cocktail', ELEMENT.CRYO, false, {top: '35%', left: '30%'}),
+    new Character('Eula', 5, 0.5, 'Spindrift Knight', ELEMENT.CRYO, false, {top: '70%', left: '0%'}),
     new Character('Fischl', 4, 0.5, 'Prinzessin der Veruteilung!', ELEMENT.ELECTRO, false, {top: '55%', left: '0%'}),
     new Character('Ganyu', 5, 0.5, 'Plenilune Gaze', ELEMENT.CRYO, true, {top: '60%', left: '0%'}),
     new Character('Hu Tao', 5, 0.5, 'Fragrance in Thaw', ELEMENT.PYRO, true, {top: '85%', left: '-130%'}),
@@ -63,7 +64,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Noelle', 4, 0.5, 'Chivalric Blossom', ELEMENT.GEO, false, {top: '60%', left: '0%'}),
     new Character('Qiqi', 5, 0.5, 'Icy Resurrection', ELEMENT.CRYO, false, {top: '40%', left: '0%'}),
     new Character('Razor', 4, 0.5, 'Wolf Boy', ELEMENT.ELECTRO, false, {top: '55%', left: '-30%'}),
-    new Character('Rosaria', 4, 0.5, 'Thorny Benevolence', ELEMENT.CRYO, false, {top: '55%', left: '-30%'}),
+    new Character('Rosaria', 4, 0.5, 'Thorny Benevolence', ELEMENT.CRYO, false, {top: '65%', left: '0%'}),
     new Character('Sucrose', 4, 0.5, 'Harmless Sweetie', ELEMENT.ANEMO, false, {top: '65%', left: '0%'}),
     new Character('Tartaglia', 5, 0.5, 'Childe', ELEMENT.HYDRO, true, {top: '53%', left: '15%'}),
     new Character('Venti', 5, 0.5, 'Windborne Bard', ELEMENT.ANEMO, true, {top: '57%', left: '17%'}),
@@ -71,7 +72,7 @@ const PLAYABLE_CHARACTERS_ARRAY = [
     new Character('Xingqui', 4, 0.5, 'Juvenile Galant', ELEMENT.HYDRO, false, {top: '65%', left: '-5%'}),
     new Character('Xinyan', 4, 0.5, 'Blazing Riff', ELEMENT.PYRO, false, {top: '55%', left: '0%'}),
     new Character('Xiao', 5, 0.5, 'Vigilant Yaksha', ELEMENT.ANEMO, true, {top: '35%', left: '5%'}),
-    new Character('Yanfei', 5, 0.5, 'Wise Innocence', ELEMENT.PYRO, false, {top: '35%', left: '5%'}),
+    new Character('Yanfei', 4, 0.5, 'Wise Innocence', ELEMENT.PYRO, false, {top: '60%', left: '80%'}),
     new Character('Zhongli', 5, 0.5, 'Vago Mundo', ELEMENT.GEO, true, {top: '65%', left: '30%'})
 ];
 
